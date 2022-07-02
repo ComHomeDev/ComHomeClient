@@ -1,18 +1,26 @@
 .home-container {
   margin: 20px;
+  width: calc(100% - 40px);
+  height: calc(100vh - 40px);
 }
 
 .home-body {
+  float: left;
   position: relative;
-  top: 110px;
+  top: 90px;
   width: 100%;
   z-index: 10;
   display: flex;
   flex-direction: row;
+
+  left: -10px; /*전체 마진 20px에서 헤더까지 맞춤*/
+}
+.home-links {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
-  justify-content: center;
-  margin-bottom: 130px;
+  justify-content: space-evenly;
 }
 .home-fastmenu {
   position: fixed;
@@ -39,4 +47,45 @@
 .home-fastmenu .home-fast:hover {
   background-color: #e6e6e6;
   color: rgb(var(--blue));
+}
+
+.simple-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  align-items: center;
+}
+
+.simple-card-icon svg,
+.detail-card-icon svg {
+  width: 80px;
+  height: 80px;
+  fill: #7593c8;
+}
+
+.simple-card-name,
+.detail-card-name {
+  font-size: 20px;
+  word-break: keep-all;
+}
+
+.detail-card {
+  position: relative;
+  width: inherit;
+  height: inherit;
+}
+.detail-card-icon {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+
+.detail-card-name {
+}
+
+.home-right-card {
+  float: right;
+  margin-right: 18px;
 }

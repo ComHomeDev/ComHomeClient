@@ -1,3 +1,8 @@
+import { MdPermDeviceInformation } from "react-icons/md";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { AiOutlinePartition } from "react-icons/ai";
+import { SiStarship } from "react-icons/si";
+import { FaRegObjectGroup } from "react-icons/fa";
 export const fastMenu = [
   {
     name: "공식 홈페이지",
@@ -16,6 +21,8 @@ export const fastMenu = [
     address: "https://ipsi.sungshin.ac.kr/main.htm",
   },
 ];
+
+//IoAnalyticsOutline;IoGitBranchOutline;MdTimeline;
 
 export const headerMenu = [
   {
@@ -71,6 +78,56 @@ export const headerMenu = [
       { name: "대외활동 후기", address: "/" },
       { name: "취업 후기", address: "/" },
       { name: "졸업생 인터뷰", address: "/" },
+    ],
+  },
+];
+
+export const simpleBodyContent = [
+  {
+    name: "학과 소개 | 학사 정보",
+    address: "/",
+    icon: <MdPermDeviceInformation />,
+  },
+  {
+    name: "교수 소개",
+    address: "/",
+    icon: <BsFillPersonLinesFill />,
+  },
+  {
+    name: "교육과정",
+    address: "/",
+    icon: <AiOutlinePartition />,
+  },
+];
+export const detailBodyContent = [
+  {
+    name: "학생 활동",
+    address: "/",
+    icon: <SiStarship />,
+    detail: [
+      { name: "학생 수상작", address: "/" },
+      { name: "작품 전시", address: "/" },
+      { name: "동아리/소모임 소개", address: "/" },
+    ],
+  },
+  {
+    name: "커뮤니티",
+    address: "/",
+    icon: <FaRegObjectGroup />,
+    detail: [
+      { name: "대외활동 후기", address: "/" },
+      { name: "취업 후기", address: "/" },
+      { name: "졸업생 인터뷰", address: "/" },
+    ],
+  },
+  {
+    name: "교육과정",
+    address: "/",
+    icon: <AiOutlinePartition />,
+    detail: [
+      { name: "학생별수상작", address: "/" },
+      { name: "작품전시게시판", address: "/" },
+      { name: "동아리,소모임 소개", address: "/" },
     ],
   },
 ];
