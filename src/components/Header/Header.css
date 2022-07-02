@@ -1,16 +1,32 @@
 .headerWrap {
-  position: relative;
-  margin-top: 1vw;
-  margin-left: 3vw;
-  width: 94vw;
+  position: absolute;
+
+  width: 95%;
   height: 70px;
+  margin-bottom: 20px;
   box-shadow: 0px 4px 4px rgba(137, 163, 216, 0.58);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   font-family: "Inter";
   word-break: keep-all;
+  z-index: 100;
+  background: linear-gradient(
+    150deg,
+    white 43%,
+    rgb(var(--basic-blue)) 43% 100%
+  );
+  transition: 0.5s;
+}
+
+.headerWrap.block {
+  height: 280px;
+  background: linear-gradient(
+    150deg,
+    white 35%,
+    rgb(var(--basic-blue)) 35% 100%
+  );
 }
 
 .headerTitle {
@@ -20,6 +36,7 @@
   font-weight: 600;
   font-size: 38px;
   margin-left: 2vw;
+  height: 70px;
 }
 
 .headerDesc {
@@ -30,18 +47,106 @@
   padding-top: 0.5vw;
 }
 
-.headerMenu {
+.headerMenu.web {
   position: relative;
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: rgb(var(--basic-blue));
+
   height: 70px;
 
   margin-left: auto;
 
   border-radius: 0 10px 10px 0;
+}
+
+.headerButtonWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.headerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70px;
+  font-size: 17px;
+  font-weight: 600;
+
+  padding: 0 2vw;
+  cursor: pointer;
+}
+
+.headerButtonWrap:hover {
+  background-color: white;
+}
+.headerButtonWrap:hover .headerLink {
+  color: rgb(var(--blue));
+}
+
+.headerLink {
+  text-decoration: none;
+  color: black;
+}
+.headerHoverMenu {
+  transition: 0.5s;
+}
+.headerHoverMenu.none {
+  display: none;
+}
+
+.headerHoverMenu.block {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+
+  font-size: 15px;
+  line-height: 2em;
+  text-align: center;
+
+  padding: 70px 1.7vw 0 1.7vw;
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+/* .headerHoverMenu.block:last-child {
+  padding: 70px 0 0 1.7vw;
+} */
+.hoverMenuButton {
+  padding: 0.5em 0;
+  border-bottom: 1px solid rgb(var(--blue));
+}
+
+.hoverMenuButton:hover {
+  background-color: rgb(var(--blue));
+}
+.hoverMenuButton:hover .headerLink {
+  color: white;
+}
+
+/*웹 삼각형*/
+.headerColor {
+  width: 0px;
+  height: 0px;
+  border-bottom: 70px solid rgb(var(--basic-blue));
+  border-left: 8vw solid transparent;
+  border-right: 0px solid transparent;
+  background-color: white;
+}
+
+/* 모바일 메뉴 */
+.mobileMenuIcon {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  width: 50px;
+  height: 50px;
+  color: black;
+  left: auto;
 }
 
 @media (min-width: 1200px) {
@@ -60,72 +165,40 @@
   }
 }
 
-.headerButtonWrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.headerButton {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 70px;
-  font-size: 17px;
-  font-weight: 600;
-
-  padding: 0 2vw;
-  cursor: pointer;
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.headerButtonWrap:last-child {
-  padding: 0 1.5vw 0 0;
-  border-radius: 0 10px 10px 0;
+/*animation*/
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-.headerButtonWrap:hover {
-  background-color: white;
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.headerButtonWrap:hover .headerLink {
-  color: rgb(var(--blue));
-}
-
-.headerLink {
-  text-decoration: none;
-  color: black;
-}
-.headerHoverMenu.none {
-  display: none;
-}
-
-.headerHoverMenu.block {
-  position: absolute;
-  height: 200px;
-  width: 100%;
-
-  font-size: 15px;
-  line-height: 2em;
-  text-align: center;
-
-  padding: 90px 1.7vw 0 1.7vw;
-}
-.hoverMenuButton {
-  padding: 0.5em 0;
-  border-bottom: 1px solid rgb(var(--basic-blue));
-}
-
-.hoverMenuButton:hover {
-  background-color: rgb(var(--blue));
-}
-.hoverMenuButton:hover .headerLink {
-  color: white;
-}
-
-.headerColor {
-  width: 0px;
-  height: 0px;
-  border-bottom: 70px solid rgb(var(--basic-blue));
-  border-left: 5vw solid transparent;
-  border-right: 0px solid transparent;
-  background-color: white;
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
