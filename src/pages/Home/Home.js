@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 import Card from "../../components/Card";
+import FastMenu from "../../components/Menu/FastMenu";
 
 import {
-  fastMenu,
   simpleBodyContent,
   detailBodyContent,
 } from "../../components/variables";
@@ -69,19 +69,7 @@ function Home() {
           </Card>
         </div>
       </div>
-
-      <div className="home-fastmenu">
-        {fastMenu.map((data) => {
-          return (
-            <div
-              className="home-fast"
-              onClick={() => window.open(data.address)}
-            >
-              {data.name}
-            </div>
-          );
-        })}
-      </div>
+      <FastMenu />
     </div>
   );
 }
