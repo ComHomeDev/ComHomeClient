@@ -22,7 +22,7 @@ function Home2() {
     afterChange: (current) => setPage(current),
   };
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   console.log(page);
   const sliderRef = useRef();
 
