@@ -28,16 +28,16 @@ const StyledCard = styled.div`
   box-shadow: 2px 2px 10px
     ${(props) => props.shadowColor || "rgb(var(--basic-blue))"};
   border-radius: 10px;
-  padding: 2vw;
+  padding: 20px;
   margin: 10px;
   &:hover {
     background-color: ${(props) =>
       props.hover ? "rgb(var(--blue))" : "white"};
   }
-  @media (max-width: 658px) {
-    width: 275px;
-    height: 180px;
-  }
+  // @media (max-width: 658px) {
+  //   width: 200px;
+  //   height: 100px;
+  // }
 `;
 
 export default Card;
