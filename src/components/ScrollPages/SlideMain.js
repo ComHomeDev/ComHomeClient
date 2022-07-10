@@ -9,7 +9,10 @@ function SlideMain() {
     <div className="main-container">
       <div className="main-head">
         <div className="main-title">ComHome</div>
-        <form id="main-search-form" onSubmit={() => window.alert("submit")}>
+        <form
+          className="main-search-form"
+          onSubmit={() => window.alert("submit")}
+        >
           <input type="text" className="main-search" />
           <button type="submit" className="main-search-button">
             <AiOutlineSearch />
@@ -17,14 +20,14 @@ function SlideMain() {
         </form>
         <button className="main-head-login">로그인</button>
       </div>
-      {/* <div className="main-content">
+
+      <div className="main-content">
         {simpleBodyContent.map((data) => {
           return (
             <Card
               hover={false}
-              width={"200px"}
-              height={"100px"}
-              shadowColor={"rgba(255, 6, 170, 0.27);"}
+              width={"235px"}
+              shadowColor={"rgba(var(--basic-blue), 1);"}
             >
               <div className="simple-card">
                 <div className="simple-card-name">{data.name}</div>
@@ -33,7 +36,7 @@ function SlideMain() {
             </Card>
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }

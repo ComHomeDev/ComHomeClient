@@ -84,7 +84,7 @@ export const headerMenu = [
 
 export const simpleBodyContent = [
   {
-    name: "학과 소개 | 학사 정보",
+    name: "학과 소개\n | 학사 정보",
     address: "/",
     icon: <MdPermDeviceInformation />,
   },

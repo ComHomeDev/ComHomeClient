@@ -1,6 +1,7 @@
 .main-container {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
+  padding-bottom: 10vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -17,20 +18,21 @@
   justify-items: center;
   justify-content: center;
   column-gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .main-head .main-title {
   font-size: 38px;
   font-weight: 700;
+  cursor: pointer;
 }
 
-#main-search-form {
+.main-search-form {
   position: relative;
   width: calc(45vw + 50px);
 }
 
-#main-search-form .main-search {
+.main-search-form .main-search {
   padding: 5px 45px 5px 5px;
 
   width: 45vw;
@@ -40,10 +42,10 @@
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
-#main-search-form .main-search:focus {
+.main-search-form .main-search:focus {
   border: none;
 }
-#main-search-form .main-search-button {
+.main-search-form .main-search-button {
   position: absolute;
   top: 15px;
   right: 10px;
@@ -69,15 +71,27 @@
   word-break: keep-all;
 }
 
-@media (max-width: 850px) {
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 315px);
+
+  justify-items: center;
+}
+
+.simple-card {
+  height: 100%;
+}
+
+@media (max-width: 950px) {
   .main-head {
     grid-template-rows: 70px 50px;
     grid-template-columns: calc(45vw + 29px) 100px;
+    margin-bottom: 20px;
   }
   .main-title {
     grid-column: span 2;
   }
-  #main-search-form .main-search {
+  .main-search-form .main-search {
     height: 30px;
   }
   .main-search-button svg {
@@ -89,6 +103,22 @@
     font-size: 14px;
     width: 80px;
   }
+  .main-content {
+    grid-template-columns: repeat(2, 315px);
+  }
+}
+
+@media (max-width: 630px) {
+  .main-head {
+    margin-bottom: 10px;
+  }
+  .main-content {
+    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: 315px;
+  }
+  .simple-card {
+    height: 100px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -99,9 +129,4 @@
     font-size: 12px;
     width: 50px;
   }
-}
-.main-content {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  column-gap: 50px;
 }

@@ -1,9 +1,12 @@
-import React, { useRef, useCallback, useEffect } from "react";
+import React, { useRef, useCallback, useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home2.css";
-import SlideMain from "./SlideMain";
+import SlideMain from "../../components/ScrollPages/SlideMain";
+import SlideSecond from "../../components/ScrollPages/SlideSecond";
+import SlideLast from "../../components/ScrollPages/SlideLast";
+import MainScrollBtn from "../../components/Button/MainScrollBtn";
 
 function Home2() {
   var settings = {
@@ -16,8 +19,11 @@ function Home2() {
     verticalSwiping: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    afterChange: (current) => setPage(current),
   };
 
+  const [page, setPage] = useState(1);
+  console.log(page);
   const sliderRef = useRef();
 
   const scroll = useCallback(
@@ -36,6 +42,14 @@ function Home2() {
     });
   }, [scroll]);
 
+  const onClickHandler = (direction) => {
+    if (direction === "up") {
+      sliderRef?.current?.slickPrev();
+    } else {
+      sliderRef?.current?.slickNext();
+    }
+  };
+
   return (
     <div className="home-slick-container">
       <Slider {...settings} ref={sliderRef}>
@@ -44,21 +58,13 @@ function Home2() {
         </div>
 
         <div className="slick-cell">
-          <h3>2</h3>
+          <SlideSecond />
         </div>
         <div className="slick-cell">
-          <h3>3</h3>
-        </div>
-        <div className="slick-cell">
-          <h3>4</h3>
-        </div>
-        <div className="slick-cell">
-          <h3>5</h3>
-        </div>
-        <div className="slick-cell">
-          <h3>6</h3>
+          <SlideLast />
         </div>
       </Slider>
+      <MainScrollBtn page={page} onClick={onClickHandler} />
     </div>
   );
 }
