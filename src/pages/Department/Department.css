@@ -1,0 +1,261 @@
+.home-container {
+    margin: 20px;
+    width: calc(100% - 40px);
+    height: calc(100vh - 40px);
+}
+
+.main-container {
+    position: absolute;
+    left: 25%;
+    transform: translateX(-50%);
+
+}
+
+.department-notice{
+    position: absolute;
+    width: 280px;
+    height: 77px;
+    left: 165px;
+    top: 291px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+
+    color: #8DA9E1;
+}
+
+.line-1{
+    position: absolute;
+    width: 818px;
+    height: 0px;
+    left: 428px;
+    top: 291px;
+
+    border: 1px solid #AEC9FF;
+}
+
+.line-2{
+    position: absolute;
+    width: 1078px;
+    height: 0px;
+    left: 168px;
+    top: 425px;
+    
+    border: 1px solid #AEC9FF;
+}
+
+.line-3{
+    position: absolute;
+    width: 1078px;
+    height: 0px;
+    left: 168px;
+    top: 563px;
+    
+    border: 1px solid #AEC9FF;
+}
+
+.line-4{
+    position: absolute;
+    width: 1078px;
+    height: 0px;
+    left: 168px;
+    top: 1045px;
+    
+    border: 1px solid #AEC9FF;
+}
+
+.line-5{
+    position: absolute;
+    width: 1078px;
+    height: 0px;
+    left: 168px;
+    top: 1373px;
+    
+    border: 1px solid #AEC9FF;
+}
+
+.track-sw-architect{
+    position: absolute;
+    width: 181.24px;
+    height: 173px;
+    left: 262px;
+    top: 671px;
+
+    background: url(../../../public/applied_software_track.png);
+}
+
+.track-sw-architect-text{
+    position: absolute;
+    width: 340px;
+    height: 111px;
+    left: 183px;
+    top: 859px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.track-applied-sw{
+    position: absolute;
+    width: 173px;
+    height: 173px;
+    left: 627px;
+    top: 676px;
+
+    background: url(../../../public/applied_software_track.png);
+}
+
+.track-applied-sw-text{
+    position: absolute;
+    width: 340px;
+    height: 111px;
+    left: 550px;
+    top: 859px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    
+    color: #000000;
+}
+
+.track-database-ai{
+    position: absolute;
+    width: 173px;
+    height: 173px;
+    left: 1001px;
+    top: 676px;
+
+    background: url(../../../public/applied_software_track.png);
+}
+
+.track-database-ai-text{
+    position: absolute;
+    width: 340px;
+    height: 111px;
+    left: 917px;
+    top: 859px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    
+    color: #000000;
+}
+
+.notice-text{
+    position: absolute;
+    width: 1065px;
+    height: 72px;
+    left: 181px;
+    top: 471px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+}
+
+.education-goal-text{
+    position: absolute;
+    width: 1065px;
+    height: 72px;
+    left: 181px;
+    top: 1211px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    color: #000000;
+}
+
+.right-people-text{
+    position: absolute;
+    width: 1065px;
+    height: 72px;
+    left: 181px;
+    top: 1539px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    color: #000000;
+}
+
+.education-track{
+    position: absolute;
+    width: 270px;
+    height: 48px;
+    left: 168px;
+    top: 612px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    
+    color: #ffffff;
+    
+    text-shadow: -1px 0 #8DA9E1, 0 1px #8DA9E1, 1px 0 #8DA9E1, 0 -1px #8DA9E1;
+}
+
+.education-goal{
+    position: absolute;
+    width: 270px;
+    height: 48px;
+    left: 168px;
+    top: 1114px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    
+    color: #FFFFFF;
+    
+    text-shadow: -1px 0 #8DA9E1, 0 1px #8DA9E1, 1px 0 #8DA9E1, 0 -1px #8DA9E1;
+}
+
+.right-people{
+    position: absolute;
+    width: 270px;
+    height: 48px;
+    left: 168px;
+    top: 1442px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    
+    color: #FFFFFF;
+    
+    text-shadow: -1px 0 #8DA9E1, 0 1px #8DA9E1, 1px 0 #8DA9E1, 0 -1px #8DA9E1;
+}

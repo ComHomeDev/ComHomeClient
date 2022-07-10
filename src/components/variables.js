@@ -48,7 +48,7 @@ export const headerMenu = [
     name: "공지사항",
     address: "/",
     detail: [
-      { name: "학과 공지", address: "/" },
+      { name: "학과 공지", address: "/DepartmentNotice" },
       { name: "채용/인턴십", address: "/" },
       { name: "교육/공모전", address: "/" },
     ],
