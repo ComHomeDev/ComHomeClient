@@ -22,11 +22,11 @@ function DepartmentNotice() {
           </div>
           <div className="education-track">교육과정 트랙</div>
           <div track-applied-sw>d</div>
-          <img className="track-sw-architect" alt="소프트웨어아키텍트트랙" src="../../../public/software_architect_track.png" />
+          <div className="track-sw-architect"></div>
           <div className="track-sw-architect-text"> <p>소프트웨어 아키텍트 트랙</p>전문적인 소프트웨어 설계자 양성을 위한 교육과정</div>
-          <img className="track-applied-sw" alt="응용소프트웨어트랙" src="../../../public/applied_software_track.png" />
+          <div className="track-applied-sw"></div>
           <div className="track-applied-sw-text"> <p>응용소프트웨어 트랙</p>전문적인 소프트웨어 개발자 양성을 위한 교육과정</div>
-          <img className="track-database-ai" alt="데이터베이스인공지능트랙" src="../../../public/database_ai_track.png" />
+          <div className="track-database-ai"></div>
           <div className="track-database-ai-text"><p>데이터베이스 및 인공지능 트랙</p>데이터베이스 및 인공지능 전문가 양성을 위한 교육과정</div>
           <div className="line-3"></div>
           <div className="education-goal">교육 목표</div>

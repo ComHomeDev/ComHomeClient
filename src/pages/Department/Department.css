@@ -84,7 +84,8 @@
     left: 262px;
     top: 671px;
 
-    background: url(../../../public/applied_software_track.png);
+    background-image: url(../../../public/software_architect_track.png);
+    background-size: cover;
 }
 
 .track-sw-architect-text{
@@ -111,7 +112,8 @@
     left: 627px;
     top: 676px;
 
-    background: url(../../../public/applied_software_track.png);
+    background-image: url(../../../public/applied_software_track.png);
+    background-size: cover;
 }
 
 .track-applied-sw-text{
@@ -138,7 +140,8 @@
     left: 1001px;
     top: 676px;
 
-    background: url(../../../public/applied_software_track.png);
+    background-image: url(../../../public/database_ai_track.png);
+    background-size: cover;
 }
 
 .track-database-ai-text{

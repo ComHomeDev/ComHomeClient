@@ -29,7 +29,7 @@ export const headerMenu = [
     name: "학과소개",
     address: "/",
     detail: [
-      { name: "학과 소개", address: "/" },
+      { name: "학과 소개", address: "/DepartmentNotice" },
       { name: "교수 소개", address: "/" },
       { name: "졸업 후 진로", address: "/" },
       { name: "입학 안내", address: "/" },
@@ -48,7 +48,7 @@ export const headerMenu = [
     name: "공지사항",
     address: "/",
     detail: [
-      { name: "학과 공지", address: "/DepartmentNotice" },
+      { name: "학과 공지", address: "/" },
       { name: "채용/인턴십", address: "/" },
       { name: "교육/공모전", address: "/" },
     ],
@@ -85,7 +85,7 @@ export const headerMenu = [
 export const simpleBodyContent = [
   {
     name: "학과 소개 | 학사 정보",
-    address: "/",
+    address: "/DepartmentNotice",
     icon: <MdPermDeviceInformation />,
   },
   {
