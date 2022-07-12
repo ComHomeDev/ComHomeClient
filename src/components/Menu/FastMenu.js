@@ -9,6 +9,7 @@ function FastMenu() {
         {fastMenu.map((data) => {
           return (
             <div
+              key={data.name}
               className="menu-fast"
               onClick={() => window.open(data.address)}
             >

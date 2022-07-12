@@ -94,11 +94,11 @@
 .headerHoverMenu {
   transition: 0.5s;
 }
-.headerHoverMenu.none {
+.headerMenu.web .headerHoverMenu.none {
   display: none;
 }
 
-.headerHoverMenu.block {
+.headerMenu.web .headerHoverMenu.block {
   position: absolute;
   height: 200px;
   width: 100%;
@@ -158,10 +158,8 @@
   .headerMenu.web {
     display: none;
   }
-}
-@media (max-width: 1295px) {
-  .headerColor {
-    display: none;
+  .headerWrap.block {
+    height: max-content;
   }
 }
 

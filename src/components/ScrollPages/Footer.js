@@ -85,14 +85,58 @@ const StyledFooter = styled.div`
   }
 
   @media (max-width: 785px) {
+    .footer-content {
+      margin-left: 30px;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+    }
+
+    .footer-poly {
+      width: 100vw;
+      min-width: 500px;
+      clip-path: polygon(
+        0 100%,
+        0 24%,
+        25% 0,
+        49% 25%,
+        76% 18%,
+        100% 50%,
+        100% 100%
+      );
+    }
     .footer-desc {
+      font-size: 13px;
       top: -50px;
+    }
+    .footer-logo {
+      margin-right: auto;
+    }
+    .footer-link a {
+      font-size: 13px;
     }
   }
 
   @media (max-width: 500px) {
+    .footer-content {
+      margin-left: 20px;
+    }
+    .footer-poly {
+      width: 100vw;
+      min-width: 500px;
+      clip-path: polygon(
+        0 100%,
+        0 24%,
+        25% 0,
+        49% 25%,
+        76% 18%,
+        100% 50%,
+        100% 100%
+      );
+    }
     .footer-logo {
-      width: 100px;
+      width: 130px;
     }
     .footer-desc {
       top: -20px;

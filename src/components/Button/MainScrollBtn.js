@@ -15,6 +15,7 @@ function MainScrollBtn({ page, onClick }) {
           style={{ position: "absolute", top: "5px", left: "5px" }}
         />
       </div>
+      <div className="scroll-desc">더보기</div>
 
       <div
         className={`bounce-top scroll-btn ${page === 2 ? "disabled" : ""}`}
@@ -33,6 +34,12 @@ export default MainScrollBtn;
 
 const StyledScrollBtn = styled.div`
   margin-top: 20px;
+  .scroll-desc {
+    position: fixed;
+    bottom: 105px;
+    right: 50px;
+    font-weight: 600;
+  }
   .scroll-btn {
     position: fixed;
     bottom: 50px;
@@ -45,13 +52,20 @@ const StyledScrollBtn = styled.div`
     animation: motion 1.3s linear 0s 3;
   }
   .scroll-btn:first-child {
-    bottom: 110px;
+    bottom: 130px;
   }
   .disabled {
     display: none;
   }
 
   @media (max-width: 630px) {
+    .scroll-desc {
+      position: fixed;
+      bottom: 100px;
+      right: 35px;
+      font-size: 13px;
+      font-weight: 600;
+    }
     .scroll-btn {
       position: absolute;
       bottom: 30px;
@@ -64,7 +78,7 @@ const StyledScrollBtn = styled.div`
     }
     .scroll-btn:first-child {
       position: fixed;
-      bottom: 90px;
+      bottom: 120px;
       right: 30px;
       width: 50px;
       height: 50px;

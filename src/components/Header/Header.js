@@ -32,7 +32,7 @@ function Header() {
               >
                 {data.detail.map((details) => {
                   return (
-                    <div className="hoverMenuButton">
+                    <div className="hoverMenuButton" key={details.name}>
                       <a href={details.address} className="headerLink">
                         {details.name}
                       </a>
@@ -62,30 +62,33 @@ function Header() {
             onClick={() => setmenuToggle(false)}
           />
         )}
-        {headerMenu.map((data) => {
-          return (
-            <div className="headerButtonWrap">
-              <div className="headerButton">
-                <a href={data.address} className="headerLink">
-                  {data.name}
-                </a>
+        {menuToggle &&
+          headerMenu.map((data) => {
+            return (
+              <div className="headerButtonWrap" key={data.name}>
+                <div className="headerButton">
+                  <a href={data.address} className="headerLink">
+                    {data.name}
+                  </a>
+                </div>
+                <div
+                  className={`headerHoverMenu ${
+                    !menuToggle ? "none" : "block"
+                  }`}
+                >
+                  {data.detail.map((details) => {
+                    return (
+                      <div className="hoverMenuButton" key={details.name}>
+                        <a href={details.address} className="headerLink">
+                          {details.name}
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-              <div
-                className={`headerHoverMenu ${!menuToggle ? "none" : "block"}`}
-              >
-                {data.detail.map((details) => {
-                  return (
-                    <div className="hoverMenuButton">
-                      <a href={details.address} className="headerLink">
-                        {details.name}
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </div>
   );

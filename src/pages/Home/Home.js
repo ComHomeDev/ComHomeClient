@@ -31,6 +31,7 @@ function Home() {
           {simpleBodyContent.map((data) => {
             return (
               <Card
+                key={data.name}
                 hover={false}
                 width={"275px"}
                 height={"100px"}
@@ -45,7 +46,12 @@ function Home() {
           })}
           {detailBodyContent.map((data) => {
             return (
-              <Card hover={true} width={"275px"} height={"205px"}>
+              <Card
+                key={data.name}
+                hover={true}
+                width={"275px"}
+                height={"205px"}
+              >
                 <div className="detail-card">
                   <div className="detail-card-name">{data.name}</div>
                   <div className="detail-card-icon">{data.icon}</div>
