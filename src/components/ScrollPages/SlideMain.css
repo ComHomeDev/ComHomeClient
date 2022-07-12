@@ -78,8 +78,18 @@
   justify-items: center;
 }
 
-.simple-card {
+.slide-card {
+  width: 235px;
+  height: 100px;
+}
+
+.slide-card .simple-card {
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 @media (max-width: 950px) {

@@ -25,8 +25,8 @@ function SlideMain() {
         {simpleBodyContent.map((data) => {
           return (
             <Card
+              className="slide-card"
               hover={false}
-              width={"235px"}
               shadowColor={"rgba(var(--basic-blue), 1);"}
             >
               <div className="simple-card">

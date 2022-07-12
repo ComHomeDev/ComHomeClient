@@ -2,6 +2,8 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: fixed;
+  /*모바일 화면 address바 고정 */
 }
 
 .slick-cell {

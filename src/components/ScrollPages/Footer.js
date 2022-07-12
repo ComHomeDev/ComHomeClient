@@ -25,17 +25,18 @@ function Footer() {
 export default Footer;
 
 const StyledFooter = styled.div`
+  position: absolute;
+  bottom: 0;
   .footer {
-    position: absolute;
-    bottom: 0;
     width: 100vw;
     height: 200px;
   }
   .footer-poly {
     position: absolute;
-    width: 1469px;
+    width: 1500px;
     height: 200px;
     overflow: hidden;
+    left: -20px;
     clip-path: polygon(
       0 100%,
       9% 0,
@@ -53,11 +54,10 @@ const StyledFooter = styled.div`
   }
 
   .footer-content {
-    margin-top: 30px;
+    padding-top: 100px;
     margin-left: 100px;
     position: absolute;
     width: 90vw;
-    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -86,6 +86,7 @@ const StyledFooter = styled.div`
 
   @media (max-width: 785px) {
     .footer-content {
+      padding-top: 0;
       margin-left: 30px;
       margin-top: 50px;
       display: flex;

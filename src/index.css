@@ -3,9 +3,7 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior-y: contain;
   height: 97%;
-  position: fixed; /*모바일 화면 address바 고정*/
 }
 
 code {
