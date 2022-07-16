@@ -14,19 +14,14 @@
   z-index: 100;
   background: linear-gradient(
     150deg,
-    white 43%,
-    rgb(var(--basic-blue)) 43% 100%
+    white 300px,
+    rgb(var(--basic-blue)) 300px 100%
   );
   transition: 0.5s;
 }
 
 .headerWrap.block {
   height: 280px;
-  background: linear-gradient(
-    150deg,
-    white 35%,
-    rgb(var(--basic-blue)) 35% 100%
-  );
 }
 
 .headerTitle {
@@ -94,11 +89,8 @@
 .headerHoverMenu {
   transition: 0.5s;
 }
-.headerMenu.web .headerHoverMenu.none {
-  display: none;
-}
 
-.headerMenu.web .headerHoverMenu.block {
+.headerMenu.web .headerHoverMenu {
   position: absolute;
   height: 200px;
   width: 100%;
@@ -113,9 +105,7 @@
   -webkit-animation: fadein 1s; /* Safari and Chrome */
   -o-animation: fadein 1s; /* Opera */
 }
-/* .headerHoverMenu.block:last-child {
-  padding: 70px 0 0 1.7vw;
-} */
+
 .hoverMenuButton {
   padding: 0.5em 0;
   border-bottom: 1px solid rgb(var(--blue));
@@ -147,6 +137,12 @@
   height: 50px;
   color: black;
   left: auto;
+}
+
+.headerMenu.mobile .headerLink {
+  /*모바일에서 사용할 것*/
+  pointer-events: none;
+  cursor: default;
 }
 
 @media (min-width: 1200px) {

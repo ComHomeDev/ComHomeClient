@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { IoIosMenu, IoMdClose } from "react-icons/io";
 import { headerMenu } from "../variables";
+import Menu from "../Menu/HeaderMenu";
 import "./Header.css";
 
 function Header() {
-  const [menuToggle, setmenuToggle] = useState(false);
+  const [menuToggle, setMenuToggle] = useState(false);
 
   return (
     <div className={`headerWrap ${!menuToggle ? "none" : "block"}`}>
@@ -14,36 +15,19 @@ function Header() {
           Sungshin W. University {<br />} Computer Engineering
         </div>
       </div>
+
+      {/* 웹 */}
       <div
         className="headerMenu web"
-        onMouseEnter={() => setmenuToggle(true)}
-        onMouseLeave={() => setmenuToggle(false)}
+        onMouseEnter={() => setMenuToggle(true)}
+        onMouseLeave={() => setMenuToggle(false)}
       >
-        {headerMenu.map((data) => {
-          return (
-            <div className="headerButtonWrap" key={data.name}>
-              <div className="headerButton">
-                <a href={data.address} className="headerLink">
-                  {data.name}
-                </a>
-              </div>
-              <div
-                className={`headerHoverMenu ${!menuToggle ? "none" : "block"}`}
-              >
-                {data.detail.map((details) => {
-                  return (
-                    <div className="hoverMenuButton" key={details.name}>
-                      <a href={details.address} className="headerLink">
-                        {details.name}
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
+        {headerMenu.map((data) => (
+          <Menu data={data} onClick={menuToggle} />
+        ))}
       </div>
+
+      {/* 모바일 */}
       <div
         className={`headerMenu mobile ${
           !menuToggle ? "menuBox" : "menuBoxHidden"
@@ -53,42 +37,17 @@ function Header() {
           <IoIosMenu
             className="mobileMenuIcon"
             alt="메뉴 펼치기 버튼"
-            onClick={() => setmenuToggle(true)}
+            onClick={() => setMenuToggle(true)}
           />
         ) : (
           <IoMdClose
             className="mobileMenuIcon"
             alt="메뉴 닫기 버튼"
-            onClick={() => setmenuToggle(false)}
+            onClick={() => setMenuToggle(false)}
           />
         )}
         {menuToggle &&
-          headerMenu.map((data) => {
-            return (
-              <div className="headerButtonWrap" key={data.name}>
-                <div className="headerButton">
-                  <a href={data.address} className="headerLink">
-                    {data.name}
-                  </a>
-                </div>
-                <div
-                  className={`headerHoverMenu ${
-                    !menuToggle ? "none" : "block"
-                  }`}
-                >
-                  {data.detail.map((details) => {
-                    return (
-                      <div className="hoverMenuButton" key={details.name}>
-                        <a href={details.address} className="headerLink">
-                          {details.name}
-                        </a>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
+          headerMenu.map((data) => <Menu data={data} onClick={false} />)}
       </div>
     </div>
   );
