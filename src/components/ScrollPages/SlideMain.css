@@ -10,6 +10,20 @@
   background-color: white;
 }
 
+.main-expand-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(var(--basic-blue));
+  width: 100px;
+  height: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
 .main-head {
   display: grid;
   width: 100vw;

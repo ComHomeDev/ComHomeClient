@@ -51,4 +51,9 @@ const StyledFast = styled.div`
     background-color: #e6e6e6;
     color: rgb(var(--blue));
   }
+  @media (max-width: 500px) {
+    .menu-fastmenu {
+      display: none;
+    }
+  }
 `;

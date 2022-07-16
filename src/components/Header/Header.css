@@ -40,6 +40,7 @@
   line-height: 13px;
   margin-left: 1vw;
   padding-top: 0.5vw;
+  width: max-content;
 }
 
 .headerMenu.web {
@@ -56,7 +57,7 @@
   border-radius: 0 10px 10px 0;
 }
 
-.headerButtonWrap {
+.headerMenu.web .headerButtonWrap {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -75,10 +76,10 @@
   cursor: pointer;
 }
 
-.headerButtonWrap:hover {
+.headerMenu.web .headerButtonWrap:hover {
   background-color: white;
 }
-.headerButtonWrap:hover .headerLink {
+.headerMenu.web .headerButtonWrap:hover .headerLink {
   color: rgb(var(--blue));
 }
 
@@ -129,20 +130,59 @@
 }
 
 /* 모바일 메뉴 */
+
+.headerMenu.mobile {
+  position: relative;
+  width: 100%;
+}
 .mobileMenuIcon {
   position: absolute;
-  right: 13px;
+  right: 8px;
   top: 13px;
   width: 50px;
   height: 50px;
   color: black;
   left: auto;
 }
+.mobileMenuIcon.ham {
+  width: 40px;
+  right: 13px;
+}
 
-.headerMenu.mobile .headerLink {
+.headerMenu.mobile .headerButton .headerLink {
   /*모바일에서 사용할 것*/
   pointer-events: none;
   cursor: default;
+}
+
+.headerMenu.mobile .headerButtonWrap {
+  text-align: center;
+}
+.headerMenu.mobile .headerButtonWrap:nth-child(2) {
+  margin-top: 70px;
+}
+
+.headerMenu.mobile .headerButton .headerLink::after {
+  position: absolute;
+  right: 20px;
+  margin-left: 10px;
+  content: "▼";
+}
+
+.headerMenu.mobile .headerButtonWrap.focus {
+  background-color: white;
+  color: rgb(var(--blue));
+}
+
+.headerMenu.mobile .hoverMenuButton {
+  background-color: rgb(var(--blue));
+}
+.headerMenu.mobile .hoverMenuButton .headerLink {
+  color: white;
+}
+
+.headerMenu.mobile .headerButtonWrap.focus .headerButton .headerLink::after {
+  content: "▲";
 }
 
 @media (min-width: 1200px) {
@@ -156,6 +196,63 @@
   }
   .headerWrap.block {
     height: max-content;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerWrap {
+    background: linear-gradient(
+      150deg,
+      white 150px,
+      rgb(var(--basic-blue)) 150px 100%
+    );
+  }
+  .headerTitle {
+    font-size: 30px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .headerDesc {
+    font-size: 13px;
+    line-height: 12px;
+    margin-top: -5px;
+    margin-left: -5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .headerWrap {
+    width: 100%;
+  }
+  .headerTitle {
+    font-weight: 600;
+    font-size: 25px;
+  }
+  .headerDesc {
+    font-size: 8px;
+    line-height: 9px;
+  }
+}
+
+@media (max-width: 350px) {
+  .headerButtonWrap .headerButton {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 300px) {
+  .headerButtonWrap .headerButton {
+    font-size: 15px;
+  }
+  .headerMenu.mobile .headerButton .headerLink::after {
+    position: absolute;
+    right: 20px;
+    margin-left: 10px;
+    content: "";
+  }
+
+  .headerMenu.mobile .headerButtonWrap.focus .headerButton .headerLink::after {
+    content: "";
   }
 }
 

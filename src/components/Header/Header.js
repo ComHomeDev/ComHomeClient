@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { IoIosMenu, IoMdClose } from "react-icons/io";
+import { IoIosClose } from "react-icons/io";
+import { IoMenuOutline } from "react-icons/io5";
 import { headerMenu } from "../variables";
 import Menu from "../Menu/HeaderMenu";
 import "./Header.css";
@@ -28,19 +29,15 @@ function Header() {
       </div>
 
       {/* 모바일 */}
-      <div
-        className={`headerMenu mobile ${
-          !menuToggle ? "menuBox" : "menuBoxHidden"
-        }`}
-      >
+      <div className={"headerMenu mobile"}>
         {!menuToggle ? (
-          <IoIosMenu
-            className="mobileMenuIcon"
+          <IoMenuOutline
+            className="mobileMenuIcon ham"
             alt="메뉴 펼치기 버튼"
             onClick={() => setMenuToggle(true)}
           />
         ) : (
-          <IoMdClose
+          <IoIosClose
             className="mobileMenuIcon"
             alt="메뉴 닫기 버튼"
             onClick={() => setMenuToggle(false)}

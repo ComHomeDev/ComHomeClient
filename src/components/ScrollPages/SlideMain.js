@@ -1,12 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
 import { AiOutlineSearch } from "react-icons/ai";
 import { simpleBodyContent } from "../../components/variables";
 import "./SlideMain.css";
 
 function SlideMain() {
+  const navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/`;
+    navigate(path);
+  };
   return (
     <div className="main-container">
+      <button className="main-expand-btn" onClick={routeChange}>
+        모든 메뉴
+        <br />
+        모아보기
+      </button>
       <div className="main-head">
         <div className="main-title">ComHome</div>
         <form

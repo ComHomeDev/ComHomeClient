@@ -12,13 +12,16 @@ function HeaderMenu({ data, onClick }) {
     return toggle || onClick;
   };
   return (
-    <div className="headerButtonWrap" key={data.name}>
+    <div
+      className={`headerButtonWrap ${toggle ? "focus" : ""}`}
+      key={data.name}
+    >
       <div className="headerButton" onClick={onClickHandler}>
         <a href={data.address} className="headerLink">
           {data.name}
         </a>
       </div>
-      <div className={`headerHoverMenu`}>
+      <div className="headerHoverMenu">
         {check() &&
           data.detail.map((details) => {
             return (
