@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoIosClose } from "react-icons/io";
 import { IoMenuOutline } from "react-icons/io5";
 import { headerMenu } from "../variables";
@@ -23,8 +24,8 @@ function Header() {
         onMouseEnter={() => setMenuToggle(true)}
         onMouseLeave={() => setMenuToggle(false)}
       >
-        {headerMenu.map((data) => (
-          <Menu data={data} onClick={menuToggle} />
+        {headerMenu.map((data, index) => (
+          <Menu key={data.name + index} data={data} onClick={menuToggle} />
         ))}
       </div>
 

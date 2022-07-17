@@ -87,9 +87,8 @@ function Home() {
         })}
       </div>
       <FastMenu />
-      <div className="home-footer">
-        <Footer />
-      </div>
+
+      <Footer />
     </div>
   );
 }

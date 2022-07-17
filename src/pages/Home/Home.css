@@ -53,15 +53,6 @@
   right: 10px;
 }
 
-.home-container .home-footer {
-  position: absolute;
-  width: 100vw;
-  height: 200px;
-  margin-left: -38px;
-  bottom: 0;
-  overflow: hidden;
-}
-
 /*웹, 모바일 환경에 따라 그리드 바꿈*/
 
 @media (min-width: 1300px) {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function HeaderMenu({ data, onClick }) {
   const [toggle, setToggle] = useState(false);
@@ -17,18 +18,18 @@ function HeaderMenu({ data, onClick }) {
       key={data.name}
     >
       <div className="headerButton" onClick={onClickHandler}>
-        <a href={data.address} className="headerLink">
+        <Link to={data.address} className="headerLink">
           {data.name}
-        </a>
+        </Link>
       </div>
       <div className="headerHoverMenu">
         {check() &&
           data.detail.map((details) => {
             return (
               <div className="hoverMenuButton" key={details.name}>
-                <a href={details.address} className="headerLink">
+                <Link to={details.address} className="headerLink">
                   {details.name}
-                </a>
+                </Link>
               </div>
             );
           })}

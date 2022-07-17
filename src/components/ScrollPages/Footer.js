@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Footer() {
@@ -15,7 +16,8 @@ function Footer() {
           </div>
         </div>
         <div className="footer-link">
-          <a href="/">개인정보처리방침</a> | <a href="/">이메일무단수집거부</a>
+          <Link to="/">개인정보처리방침</Link> |{" "}
+          <Link to="/">이메일무단수집거부</Link>
         </div>
       </div>
     </StyledFooter>
@@ -26,7 +28,11 @@ export default Footer;
 
 const StyledFooter = styled.div`
   position: absolute;
+  width: 100vw;
+  height: 200px;
+  margin-left: -38px;
   bottom: 0;
+  overflow: hidden;
   .footer {
     width: 100vw;
     height: 200px;

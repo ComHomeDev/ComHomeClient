@@ -73,11 +73,23 @@ export const headerMenu = [
   },
   {
     name: "커뮤니티",
-    address: "/",
+    address: "/community/extracurricular?page=1",
     detail: [
-      { name: "대외활동 후기", address: "/" },
-      { name: "취업 후기", address: "/" },
-      { name: "졸업생 인터뷰", address: "/" },
+      {
+        name: "대외활동 후기",
+        eng: "extracurricular",
+        address: "/community/extracurricular?page=1",
+      },
+      {
+        name: "취업 후기",
+        eng: "employment",
+        address: "/community/employment?page=1",
+      },
+      {
+        name: "졸업생 인터뷰",
+        eng: "interview",
+        address: "/community/interview?page=1",
+      },
     ],
   },
 ];
