@@ -11,12 +11,12 @@ function Header() {
 
   return (
     <div className={`headerWrap ${!menuToggle ? "none" : "block"}`}>
-      <div className="headerTitle">
+      <Link to="/" className="headerTitle">
         ComHome{" "}
         <div className="headerDesc">
           Sungshin W. University {<br />} Computer Engineering
         </div>
-      </div>
+      </Link>
 
       {/* 웹 */}
       <div

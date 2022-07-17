@@ -2,23 +2,24 @@
   position: relative;
   margin: 20px 20px 0 20px;
   width: calc(100vw - 40px);
-  height: calc(100vh + 100px);
+  height: calc(100vh + 500px);
 }
 
 .community-body {
   position: absolute;
   width: 100%;
   margin-top: 100px;
-  height: calc(100vh - 20px);
+  height: max-content;
 }
 
 .community-menu {
   display: flex;
   flex-direction: row;
+  width: max-content;
 }
 
 .small-menu-card {
-  width: 160px;
+  width: 140px;
   height: 30px;
   text-align: center;
 }
@@ -31,4 +32,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.new-post {
+  font-size: 16px;
+  font-weight: 600;
 }
