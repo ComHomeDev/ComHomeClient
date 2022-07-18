@@ -1,0 +1,89 @@
+.community-container {
+  position: relative;
+  margin: 20px 0 0 20px;
+  width: calc(100vw - 40px);
+  height: calc(100vh + 500px);
+}
+
+.community-body {
+  position: absolute;
+  width: calc(100% - 20px);
+  margin-top: 100px;
+  height: max-content;
+}
+
+.community-menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.community-sub-title {
+  margin-top: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #727272;
+}
+.community-sub-title::after {
+  content: "|";
+  margin: 0 10px;
+  color: black;
+  font-weight: 400;
+}
+
+.community-sub-title:nth-child(2) {
+  margin-left: 30px;
+}
+
+.community-sub-title:nth-child(4)::after {
+  content: "";
+}
+
+.community-sub-title.selected {
+  color: black;
+  font-weight: 600;
+}
+
+.sub-search-form {
+  margin: 10px 10px 0 auto;
+  position: relative;
+  width: calc(20vw + 40px);
+  height: 20px;
+}
+.sub-search-form .sub-search {
+  position: absolute;
+  height: 100%;
+  width: 20vw;
+  padding: 7px 40px 5px 5px;
+  border: none;
+  border-bottom: 2px solid rgb(var(--mid-gray));
+}
+
+.sub-search-form .sub-search::placeholder {
+  font-size: 15px;
+}
+
+.sub-search-form .sub-search-button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  right: -3px;
+  bottom: -15px;
+  cursor: pointer;
+}
+
+.new-post {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 630px) {
+  .community-sub-title {
+    font-size: 15px;
+  }
+  .community-sub-title:nth-child(2) {
+    margin-left: 10px;
+  }
+}

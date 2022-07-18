@@ -1,0 +1,146 @@
+/*create post*/
+.create-post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.create-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.create-section:nth-child(2) {
+  align-items: flex-start;
+}
+
+.create-section input {
+  padding: 5px 15px;
+  border: 2px solid rgb(var(--basic-blue));
+}
+
+.create-section textarea {
+  font-family: inherit;
+  padding: 15px;
+  overflow-y: scroll;
+  resize: horizontal;
+  border: 2px solid rgb(var(--basic-blue));
+}
+
+.post-title {
+  margin-right: 20px;
+}
+
+.post-title.desc {
+  margin: 5px 20px 0 0;
+}
+
+.create-title,
+.create-desc {
+  width: 80vw;
+  border-radius: 10px;
+}
+
+.create-title {
+  height: 5vh;
+}
+
+.create-desc {
+  height: 40vh;
+}
+
+.create-post-container .button-group {
+  position: absolute;
+  right: 50px;
+}
+
+.create-post-container .button-group .form-button {
+  z-index: 200;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #b4b6b8;
+  cursor: pointer;
+}
+.form-button:nth-child(2) {
+  background-color: rgb(var(--basic-blue));
+  border: 2px solid rgb(var(--blue));
+}
+
+@media (max-width: 650px) {
+  .post-title {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .post-title.desc {
+    font-size: 12px;
+    margin: 5px 10px 0 0;
+  }
+  .create-title,
+  .create-desc {
+    width: 70vw;
+  }
+  .create-post-container .button-group {
+    right: 10px;
+  }
+}
+
+/*read post*/
+
+.read-post-container {
+  position: relative;
+  width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.read-post-container .post-list {
+  width: 100%;
+}
+
+.read-post-container .post-list-cards {
+  width: calc(100% - 50px);
+  height: 40px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 0;
+}
+
+.read-post-container .post-list-cards .post-list-number {
+  font-size: 14px;
+  margin-right: 30px;
+  margin-left: 10px;
+}
+
+.read-post-container .post-list-cards .post-list-title {
+  width: calc(88vw - 15px - 150px);
+}
+
+.read-post-container .post-list-cards .post-list-date {
+  font-size: 12px;
+  color: #b4b6b8;
+  margin-left: auto;
+}
+
+.read-post-container .new-post {
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .read-post-container {
+    width: 100%;
+  }
+}

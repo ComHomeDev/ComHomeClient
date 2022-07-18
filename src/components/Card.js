@@ -1,13 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-function Card({ width, height, shadowColor, hover, children }) {
+function Card({
+  className,
+  padding,
+  background,
+  shadowColor,
+  hover,
+  hoverColor,
+  children,
+}) {
   return (
     <StyledCard
-      width={width}
-      height={height}
+      className={className}
+      padding={padding}
+      background={background}
       shadowColor={shadowColor}
       hover={hover}
+      hoverColor={hoverColor}
     >
       {children}
     </StyledCard>
@@ -15,28 +25,27 @@ function Card({ width, height, shadowColor, hover, children }) {
 }
 
 Card.defaultProps = {
+  className: "card",
   hover: true,
-  width: "275px",
-  height: "180px",
+  background: "#ffffff",
   shadowColor: "rgb(var(--basic-blue))",
+  padding: "20px",
+  hoverColor: "rgb(var(--blue))",
 };
 
 const StyledCard = styled.div`
-  width: ${(props) => props.width || "275px"};
-  height: ${(props) => props.height || "180px"};
-  background-color: "white";
+  z-index: 20;
+  position: relative;
+  cursor: pointer;
+  white-space: pre-line;
+  background-color: ${(props) => props.background || "#ffffff"};
   box-shadow: 2px 2px 10px
     ${(props) => props.shadowColor || "rgb(var(--basic-blue))"};
   border-radius: 10px;
-  padding: 2vw;
+  padding: ${(props) => props.padding || "20px"};
   margin: 10px;
   &:hover {
-    background-color: ${(props) =>
-      props.hover ? "rgb(var(--blue))" : "white"};
-  }
-  @media (max-width: 658px) {
-    width: 275px;
-    height: 180px;
+    background-color: ${(props) => (props.hover ? props.hoverColor : "white")};
   }
 `;
 

@@ -1,0 +1,156 @@
+.main-container {
+  width: 100vw;
+  height: 90vh;
+  padding-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.main-expand-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(var(--basic-blue));
+  width: 100px;
+  height: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.main-head {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: 200px 50vw 100px;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  margin-bottom: 50px;
+}
+
+.main-head .main-title {
+  font-size: 38px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.main-search-form {
+  position: relative;
+  width: calc(45vw + 50px);
+}
+
+.main-search-form .main-search {
+  padding: 5px 45px 5px 5px;
+
+  width: 45vw;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+.main-search-form .main-search:focus {
+  border: none;
+}
+.main-search-form .main-search-button {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+.main-search-button svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.main-head-login {
+  border: none;
+  width: 100px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 500;
+
+  background-color: rgb(var(--basic-blue));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  word-break: keep-all;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 315px);
+
+  justify-items: center;
+}
+
+.slide-card {
+  width: 235px;
+  height: 100px;
+}
+
+.slide-card .simple-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 950px) {
+  .main-head {
+    grid-template-rows: 70px 50px;
+    grid-template-columns: calc(45vw + 29px) 100px;
+    margin-bottom: 20px;
+  }
+  .main-title {
+    grid-column: span 2;
+  }
+  .main-search-form .main-search {
+    height: 30px;
+  }
+  .main-search-button svg {
+    width: 1em;
+    height: 1em;
+  }
+  .main-head-login {
+    height: 40px;
+    font-size: 14px;
+    width: 80px;
+  }
+  .main-content {
+    grid-template-columns: repeat(2, 315px);
+  }
+}
+
+@media (max-width: 630px) {
+  .main-head {
+    margin-bottom: 10px;
+  }
+  .main-content {
+    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: 315px;
+  }
+  .simple-card {
+    height: 100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .main-head {
+    grid-template-columns: calc(45vw + 29px) 70px;
+  }
+  .main-head-login {
+    font-size: 12px;
+    width: 50px;
+  }
+}
