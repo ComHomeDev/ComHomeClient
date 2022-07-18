@@ -64,11 +64,11 @@ export const headerMenu = [
   },
   {
     name: "학생 활동",
-    address: "/",
+    address: "/student/club?page=1",
     detail: [
-      { name: "동아리 소개", address: "/" },
-      { name: "학생 수상작", address: "/" },
-      { name: "작품 전시", address: "/" },
+      { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
+      { name: "학생 수상작", eng: "prize", address: "/student/prize?page=1" },
+      { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
     ],
   },
   {
@@ -117,9 +117,9 @@ export const detailBodyContent = [
     address: "/",
     icon: <SiStarship />,
     detail: [
-      { name: "학생 수상작", address: "/" },
-      { name: "작품 전시", address: "/" },
-      { name: "동아리/소모임 소개", address: "/" },
+      { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
+      { name: "학생 수상작", eng: "prize", address: "/student/prize?page=1" },
+      { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
     ],
   },
   {
@@ -127,9 +127,21 @@ export const detailBodyContent = [
     address: "/",
     icon: <FaRegObjectGroup />,
     detail: [
-      { name: "대외활동 후기", address: "/" },
-      { name: "취업 후기", address: "/" },
-      { name: "졸업생 인터뷰", address: "/" },
+      {
+        name: "대외활동 후기",
+        eng: "extracurricular",
+        address: "/community/extracurricular?page=1",
+      },
+      {
+        name: "취업 후기",
+        eng: "employment",
+        address: "/community/employment?page=1",
+      },
+      {
+        name: "졸업생 인터뷰",
+        eng: "interview",
+        address: "/community/interview?page=1",
+      },
     ],
   },
   {
