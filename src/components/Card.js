@@ -7,6 +7,7 @@ function Card({
   background,
   shadowColor,
   hover,
+  hoverColor,
   children,
 }) {
   return (
@@ -16,6 +17,7 @@ function Card({
       background={background}
       shadowColor={shadowColor}
       hover={hover}
+      hoverColor={hoverColor}
     >
       {children}
     </StyledCard>
@@ -28,9 +30,13 @@ Card.defaultProps = {
   background: "#ffffff",
   shadowColor: "rgb(var(--basic-blue))",
   padding: "20px",
+  hoverColor: "rgb(var(--blue))",
 };
 
 const StyledCard = styled.div`
+  z-index: 20;
+  position: relative;
+  cursor: pointer;
   white-space: pre-line;
   background-color: ${(props) => props.background || "#ffffff"};
   box-shadow: 2px 2px 10px
@@ -39,8 +45,7 @@ const StyledCard = styled.div`
   padding: ${(props) => props.padding || "20px"};
   margin: 10px;
   &:hover {
-    background-color: ${(props) =>
-      props.hover ? "rgb(var(--blue))" : "white"};
+    background-color: ${(props) => (props.hover ? props.hoverColor : "white")};
   }
 `;
 

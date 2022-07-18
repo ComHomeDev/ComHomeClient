@@ -28,13 +28,14 @@ export default Footer;
 
 const StyledFooter = styled.div`
   position: absolute;
-  width: 100vw;
+  width: calc(100vw - 20px);
   height: 200px;
-  margin-left: -38px;
+  margin-left: -20px;
   bottom: 0;
   overflow: hidden;
   .footer {
-    width: 100vw;
+    margin-left: -20px;
+    width: calc(100vw - 20px);
     height: 200px;
   }
   .footer-poly {
@@ -42,9 +43,10 @@ const StyledFooter = styled.div`
     width: 1500px;
     height: 200px;
     overflow: hidden;
-    left: -20px;
+
     clip-path: polygon(
       0 100%,
+      0 50%,
       9% 0,
       22% 36%,
       42% 17%,
@@ -101,7 +103,7 @@ const StyledFooter = styled.div`
     }
 
     .footer-poly {
-      width: 100vw;
+      width: calc(100vw);
       min-width: 500px;
       clip-path: polygon(
         0 100%,
@@ -126,11 +128,13 @@ const StyledFooter = styled.div`
   }
 
   @media (max-width: 500px) {
+    width: 100vw;
+
     .footer-content {
       margin-left: 20px;
     }
     .footer-poly {
-      width: 100vw;
+      width: calc(100vw);
       min-width: 500px;
       clip-path: polygon(
         0 100%,

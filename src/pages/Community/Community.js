@@ -54,7 +54,7 @@ function Community() {
       <FastMenu />
       <div className="community-body">
         <div className="community-menu" onClick={throwMessage}>
-          {headerMenu[5].detail.map((data) => {
+          {/* {headerMenu[5].detail.map((data) => {
             return (
               <Card
                 key={data.address}
@@ -68,7 +68,7 @@ function Community() {
                 <Link to={data.address}>{data.name}</Link>
               </Card>
             );
-          })}
+          })} */}
         </div>
         {getContent(mode)}
       </div>

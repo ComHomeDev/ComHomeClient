@@ -1,8 +1,9 @@
+/*create post*/
 .create-post-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 20px;
-  margin-left: 20px;
 }
 
 .create-section {
@@ -30,11 +31,11 @@
 }
 
 .post-title {
-  margin: 0 20px;
+  margin-right: 20px;
 }
 
 .post-title.desc {
-  margin: 5px 20px 0 20px;
+  margin: 5px 20px 0 0;
 }
 
 .create-title,
@@ -53,7 +54,7 @@
 
 .create-post-container .button-group {
   position: absolute;
-  right: 7vw;
+  right: 50px;
 }
 
 .create-post-container .button-group .form-button {
@@ -67,4 +68,70 @@
 .form-button:nth-child(2) {
   background-color: rgb(var(--basic-blue));
   border: 2px solid rgb(var(--blue));
+}
+
+@media (max-width: 650px) {
+  .post-title {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .post-title.desc {
+    font-size: 12px;
+    margin: 5px 10px 0 0;
+  }
+  .create-title,
+  .create-desc {
+    width: 70vw;
+  }
+  .create-post-container .button-group {
+    right: 10px;
+  }
+}
+
+/*read post*/
+
+.read-post-container {
+  position: relative;
+  width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.read-post-container .post-list {
+  width: 100%;
+}
+
+.read-post-container .post-list-cards {
+  width: calc(100% - 50px);
+  height: 40px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 0;
+}
+
+.read-post-container .post-list-cards .post-list-title {
+  width: calc(88vw - 15px - 100px);
+}
+
+.read-post-container .post-list-cards .post-list-date {
+  font-size: 12px;
+  color: #b4b6b8;
+}
+
+.read-post-container .new-post {
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
+}
+
+@media (max-width: 500px) {
+  .read-post-container {
+    width: 100%;
+  }
 }

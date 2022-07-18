@@ -47,6 +47,7 @@ const StyledFast = styled.div`
     flex-direction: row;
     cursor: pointer;
     z-index: 100;
+    font-size: 12px;
   }
   .menu-fastmenu.hide .basic {
     display: none;
