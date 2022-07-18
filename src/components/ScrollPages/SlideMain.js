@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
 import { AiOutlineSearch } from "react-icons/ai";
 import { simpleBodyContent } from "../../components/variables";
+import Title from "../Header/Title";
 import "./SlideMain.css";
 
 function SlideMain() {
@@ -19,7 +20,9 @@ function SlideMain() {
         모아보기
       </button>
       <div className="main-head">
-        <div className="main-title">ComHome</div>
+        <div className="main-title">
+          <Title title={"ComHome"} />
+        </div>
         <form
           className="main-search-form"
           onSubmit={() => window.alert("submit")}

@@ -111,23 +111,32 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-left: 0;
 }
 
+.read-post-container .post-list-cards .post-list-number {
+  font-size: 14px;
+  margin-right: 30px;
+  margin-left: 10px;
+}
+
 .read-post-container .post-list-cards .post-list-title {
-  width: calc(88vw - 15px - 100px);
+  width: calc(88vw - 15px - 150px);
 }
 
 .read-post-container .post-list-cards .post-list-date {
   font-size: 12px;
   color: #b4b6b8;
+  margin-left: auto;
 }
 
 .read-post-container .new-post {
   margin-left: auto;
   border: none;
   background-color: transparent;
+  margin-top: 5px;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {

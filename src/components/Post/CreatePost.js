@@ -15,8 +15,10 @@ function CreatePost({ setMode }) {
     setDesc(e.target.value);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     console.log(title, desc);
+    setMode("read");
   };
   return (
     <div className="create-post-container">

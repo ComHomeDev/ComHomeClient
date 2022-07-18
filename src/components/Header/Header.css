@@ -135,6 +135,7 @@
   height: 50px;
   color: black;
   left: auto;
+  cursor: pointer;
 }
 .mobileMenuIcon.ham {
   width: 40px;

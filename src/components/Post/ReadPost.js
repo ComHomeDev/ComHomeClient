@@ -14,7 +14,7 @@ function ReadPost({ setMode }) {
         글 작성하기
       </button>
       <div className="post-list">
-        {postList.map((data) => {
+        {postList.map((data, index) => {
           return (
             <Card
               key={data.title}
@@ -22,6 +22,7 @@ function ReadPost({ setMode }) {
               hoverColor={"#DFE7F6"}
               shadowColor={"#DFDFDF"}
             >
+              <div className="post-list-number">{index}</div>
               <div className="post-list-title">{data.title}</div>
               <div className="post-list-date">{data.date}</div>
             </Card>
