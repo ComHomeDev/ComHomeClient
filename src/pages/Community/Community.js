@@ -6,8 +6,10 @@ import "./Community.css";
 import Footer from "../../components/ScrollPages/Footer";
 import { headerMenu } from "../../components/variables";
 import Card from "../../components/Card";
+import Title from "../../components/Header/Title";
 import CreatePost from "../../components/Post/CreatePost";
 import ReadPost from "../../components/Post/ReadPost";
+import { AiOutlineSearch } from "react-icons/ai";
 
 function Community() {
   const [mode, setMode] = useState("read");
@@ -46,30 +48,50 @@ function Community() {
     }
     return content;
   };
-  console.log(mode);
 
   return (
     <div className="community-container">
       <Header />
       <FastMenu />
       <div className="community-body">
-        <div className="community-menu" onClick={throwMessage}>
-          {/* {headerMenu[5].detail.map((data) => {
+        <div className="community-menu">
+          <Title title={"커뮤니티"} fontSize="36px" />
+          {headerMenu[5].detail.map((data) => {
             return (
-              <Card
-                key={data.address}
-                className={"small-menu-card"}
-                background={
-                  sub === data.eng ? "rgb(var(--basic-blue))" : "white"
-                }
-                padding={"10px"}
-                hover={false}
+              <Link
+                key={data.eng + data.name}
+                to={data.address}
+                className={`community-sub-title ${
+                  data.eng === sub ? "selected" : ""
+                }`}
+                onClick={throwMessage}
               >
-                <Link to={data.address}>{data.name}</Link>
-              </Card>
+                {data.name}
+              </Link>
             );
-          })} */}
+          })}
+          <form
+            className="sub-search-form"
+            onSubmit={() => window.alert("submit")}
+          >
+            <input
+              type="text"
+              className="sub-search"
+              placeholder="검색어를 입력하세요"
+            />
+            <button type="submit" className="sub-search-button">
+              <AiOutlineSearch size={26} />
+            </button>
+          </form>
         </div>
+        <hr
+          style={{
+            height: "2px",
+            backgroundColor: "#b0c4eb",
+            border: "none",
+            marginBottom: "10px",
+          }}
+        />
         {getContent(mode)}
       </div>
       <Footer />

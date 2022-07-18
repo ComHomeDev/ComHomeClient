@@ -120,6 +120,9 @@
 .hoverMenuButton:hover .headerLink {
   color: white;
 }
+.headerMenu.web .hoverMenuButton:hover .headerLink {
+  color: white;
+}
 
 /* 모바일 메뉴 */
 

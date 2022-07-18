@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../Card";
+import Modal from "../Modal/Modal";
 import "./Post.css";
+import logo512 from "./logo512.png";
 
 function ReadPost({ setMode }) {
+  const [modalState, setModalState] = useState(false);
+  const [displayContent, setDisplayContent] = useState({});
+  const openModal = (data) => {
+    console.log(data);
+    setDisplayContent(data);
+    setModalState(true);
+  };
+
+  const closeModal = (event) => {
+    event.preventDefault();
+    setModalState(false);
+  };
+
   return (
     <div className="read-post-container">
       <button
@@ -16,19 +31,48 @@ function ReadPost({ setMode }) {
       <div className="post-list">
         {postList.map((data, index) => {
           return (
-            <Card
-              key={data.title}
-              className="post-list-cards"
-              hoverColor={"#DFE7F6"}
-              shadowColor={"#DFDFDF"}
+            <div
+              key={data.title + index}
+              value={index}
+              onClick={() => openModal(data)}
             >
-              <div className="post-list-number">{index}</div>
-              <div className="post-list-title">{data.title}</div>
-              <div className="post-list-date">{data.date}</div>
-            </Card>
+              <Card
+                key={data.title}
+                value={index}
+                className="post-list-cards"
+                hoverColor={"#DFE7F6"}
+                shadowColor={"#DFDFDF"}
+              >
+                <div className="post-list-number" value={index}>
+                  {index}
+                </div>
+                <div className="post-list-title" value={index}>
+                  {data.title}
+                </div>
+                <div className="post-list-date" value={index}>
+                  {data.date}
+                </div>
+              </Card>
+            </div>
           );
         })}
       </div>
+      {modalState && (
+        <Modal
+          className="new__review__modal"
+          onClose={closeModal}
+          maskClosable={true}
+          visible={true}
+          background={"#fff8c9"}
+          color={"#000000"}
+        >
+          <div className="display-modal">
+            <img src={logo512} alt="image" width={"150px"} height={"150px"} />
+            <div className="post-list-title">{displayContent.title}</div>
+            <div className="post-list-date">{displayContent.date}</div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
