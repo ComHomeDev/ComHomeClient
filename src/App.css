@@ -13,3 +13,87 @@ textarea::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: rgb(var(--basic-blue));
 }
+
+.page-container {
+  position: relative;
+  margin: 20px 0 0 20px;
+  width: calc(100vw - 40px);
+  height: calc(100vh + 500px);
+}
+.page-body {
+  position: absolute;
+  width: calc(100% - 20px);
+  margin-top: 100px;
+  height: max-content;
+}
+
+.subMenu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.subTitle {
+  margin-top: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #727272;
+}
+.subTitle::after {
+  content: "|";
+  margin: 0 10px;
+  color: black;
+  font-weight: 400;
+}
+
+.subTitle:nth-child(2) {
+  margin-left: 30px;
+}
+
+.subTitle:nth-child(4)::after {
+  content: "";
+}
+
+.subTitle.selected {
+  color: black;
+  font-weight: 600;
+}
+
+.sub-search-form {
+  margin: 10px 10px 0 auto;
+  position: relative;
+  width: calc(20vw + 40px);
+  height: 20px;
+}
+.sub-search-form .sub-search {
+  position: absolute;
+  height: 100%;
+  width: 20vw;
+  padding: 7px 40px 5px 5px;
+  border: none;
+  border-bottom: 2px solid rgb(var(--mid-gray));
+}
+
+.sub-search-form .sub-search::placeholder {
+  font-size: 15px;
+}
+
+.sub-search-form .sub-search-button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  right: -3px;
+  bottom: -15px;
+  cursor: pointer;
+}
+
+@media (max-width: 630px) {
+  .subTitle {
+    font-size: 15px;
+  }
+  .subTitle:nth-child(2) {
+    margin-left: 10px;
+  }
+}

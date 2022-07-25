@@ -1,0 +1,3 @@
+.student-sub-title:nth-child(3)::after {
+  content: "";
+}

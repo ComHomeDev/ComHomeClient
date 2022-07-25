@@ -6,7 +6,7 @@ import "./Community.css";
 import Footer from "../../components/ScrollPages/Footer";
 import { headerMenu } from "../../components/variables";
 import Card from "../../components/Card";
-import Title from "../../components/Header/Title";
+import SubHeader from "../../components/Header/SubHeader";
 import CreatePost from "../../components/Post/CreatePost";
 import ReadPost, { Post } from "../../components/Post/ReadPost";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -66,36 +66,8 @@ function Community() {
       <Header />
       <FastMenu />
       <div className="community-body">
-        <div className="community-menu">
-          <Title title={"커뮤니티"} fontSize="36px" />
-          {headerMenu[5].detail.map((data) => {
-            return (
-              <Link
-                key={data.eng + data.name}
-                to={data.address}
-                className={`community-sub-title ${
-                  data.eng === sub ? "selected" : ""
-                }`}
-                onClick={throwMessage}
-              >
-                {data.name}
-              </Link>
-            );
-          })}
-          <form
-            className="sub-search-form"
-            onSubmit={() => window.alert("submit")}
-          >
-            <input
-              type="text"
-              className="sub-search"
-              placeholder="검색어를 입력하세요"
-            />
-            <button type="submit" className="sub-search-button">
-              <AiOutlineSearch size={26} />
-            </button>
-          </form>
-        </div>
+        <SubHeader title={"커뮤니티"} index={5} sub={sub} />
+
         <hr
           style={{
             height: "2px",

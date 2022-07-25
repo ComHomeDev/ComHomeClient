@@ -67,7 +67,6 @@ export const headerMenu = [
     address: "/student/club?page=1",
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
-      { name: "학생 수상작", eng: "prize", address: "/student/prize?page=1" },
       { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
     ],
   },
@@ -118,7 +117,6 @@ export const detailBodyContent = [
     icon: <SiStarship />,
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
-      { name: "학생 수상작", eng: "prize", address: "/student/prize?page=1" },
       { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
     ],
   },
@@ -149,7 +147,6 @@ export const detailBodyContent = [
     address: "/",
     icon: <AiOutlinePartition />,
     detail: [
-      { name: "학생별수상작", address: "/" },
       { name: "작품전시게시판", address: "/" },
       { name: "동아리,소모임 소개", address: "/" },
     ],
