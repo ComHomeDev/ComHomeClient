@@ -13,6 +13,7 @@ function App() {
       <Route exact path="/" element={<Home />} />
       <Route path="/2" element={<Home2 />} />
       <Route path="/community/:sub" element={<Community />} />
+      <Route path="/community/:sub/:post" element={<Community />} />
       <Route path="/:menu/new" element={<CreatePost />} />
     </Routes>
   );

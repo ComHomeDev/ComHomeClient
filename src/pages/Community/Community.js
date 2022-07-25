@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import FastMenu from "../../components/Menu/FastMenu";
@@ -8,17 +8,26 @@ import { headerMenu } from "../../components/variables";
 import Card from "../../components/Card";
 import Title from "../../components/Header/Title";
 import CreatePost from "../../components/Post/CreatePost";
-import ReadPost from "../../components/Post/ReadPost";
+import ReadPost, { Post } from "../../components/Post/ReadPost";
 import { AiOutlineSearch } from "react-icons/ai";
 
 function Community() {
   const [mode, setMode] = useState("read");
   // const [searchParams, setSearchParams] = useSearchParams();
-  let { sub } = useParams();
+  let { sub, post } = useParams();
+
+  useEffect(() => {
+    if (post !== undefined) {
+      setMode("post");
+    } else {
+      setMode("read");
+    }
+  }, [post]);
 
   const setParams = (mode) => {
     setMode(mode);
   };
+  console.log(post);
 
   const throwMessage = (e) => {
     if (mode === "create") {
@@ -33,6 +42,9 @@ function Community() {
   const getContent = (mode) => {
     let content = "";
     switch (mode) {
+      case "post":
+        content = <Post data={"와랄랄라"} />;
+        break;
       case "read":
         content = <ReadPost setMode={setParams} />;
         break;
