@@ -6,15 +6,9 @@ import { headerMenu } from "../../components/variables";
 
 function SubHeader({ title, fontSize, index, sub }) {
   return (
-    <div className="subMenu">
-      <StyledTitle fontSize={fontSize}>
-        <div className="page-title">{title}</div>
-        <div className="roof">
-          <div className="roof-line" />
-          <div className="roof-line" />
-        </div>
-        <div className="roof-shadow" />
-      </StyledTitle>
+    <StyledSubTitle>
+      <div className="page-title">{title}</div>
+
       {headerMenu[index].detail.map((data) => {
         return (
           <Link
@@ -39,7 +33,7 @@ function SubHeader({ title, fontSize, index, sub }) {
           <AiOutlineSearch size={26} />
         </button>
       </form>
-    </div>
+    </StyledSubTitle>
   );
 }
 
@@ -47,6 +41,84 @@ SubHeader.defaultProps = {
   fontSize: "38px",
 };
 export default SubHeader;
+
+const StyledSubTitle = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  .page-title {
+    font-size: 18px;
+    font-weight: 600;
+    padding-left: 20px;
+  }
+  .subTitle {
+    font-size: 16px;
+    text-decoration: none;
+    color: #727272;
+  }
+  .subTitle::after {
+    content: "|";
+    margin: 0 10px;
+    color: black;
+    font-weight: 400;
+  }
+
+  .subTitle:nth-child(2) {
+    margin-left: 30px;
+  }
+
+  .subTitle:last-child::after {
+    content: "";
+    display: none;
+  }
+
+  .subTitle.selected {
+    color: black;
+    font-weight: 500;
+  }
+
+  .sub-search-form {
+    margin: 0 10px 0 auto;
+    position: relative;
+    width: calc(175px + 40px);
+    height: 30px;
+  }
+  .sub-search-form .sub-search {
+    position: absolute;
+    height: 30px;
+    width: calc(100% - 50px);
+    padding-right: 40px;
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(var(--mid-gray));
+  }
+
+  .sub-search-form .sub-search::placeholder {
+    margin-top: 7px;
+    font-size: 14px;
+  }
+
+  .sub-search-form .sub-search-button {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    right: -3px;
+    padding-top: 3px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 630px) {
+    .subTitle {
+      font-size: 15px;
+    }
+    .subTitle:nth-child(2) {
+      margin-left: 10px;
+    }
+  }
+`;
 
 export const StyledTitle = styled.div`
   position: relative;
