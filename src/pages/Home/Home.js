@@ -4,6 +4,8 @@ import Card from "../../components/Card";
 import FastMenu from "../../components/Menu/FastMenu";
 import Footer from "../../components/ScrollPages/Footer";
 
+import Calendar from "../../components/Calendar/Calendar";
+
 import {
   simpleBodyContent,
   detailBodyContent,
@@ -36,8 +38,10 @@ function Home() {
           height={"245px"}
         >
           <div className="right-card">
-            <div className="right-card-name">달력</div>
-            <div className="right-card-content">somthing</div>
+            {/* <div className="right-card-name">달력</div> */}
+            <div className="right-card-content">
+              <Calendar />
+            </div>
           </div>
         </Card>
 

@@ -60,7 +60,7 @@
     height: 1200px;
   }
   .home-body {
-    grid-template-rows: 200px 80px 80px 300px;
+    grid-template-rows: 200px 160px 0 300px;
     grid-template-columns: repeat(4, 310px);
     margin: 3px;
     align-content: space-evenly;
