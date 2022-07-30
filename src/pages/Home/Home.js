@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import Header from "../../components/Header/Header";
 import Card from "../../components/Card";
@@ -6,6 +7,7 @@ import FastMenu from "../../components/Menu/FastMenu";
 import Footer from "../../components/ScrollPages/Footer";
 
 import Calendar from "../../components/Calendar/Calendar";
+import alertConfig from "../../jsconfig.json";
 
 import {
   simpleBodyContent,
@@ -15,10 +17,24 @@ import "./Home.css";
 
 const ButtonStyle = styled.button``;
 
+function urlB64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; i++) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
 function Home() {
   const [pushSupport, setPushSupport] = useState(false);
   const [alert, setAlert] = useState("알림");
   const [buttonDisable, setButtonDisable] = useState(true);
+  const [userSubScription, setUserSubScription] = useState({});
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
@@ -26,10 +42,15 @@ function Home() {
         if (registration.pushManager) {
           setPushSupport(true);
           setButtonDisable(false);
+          //구독 정보 가져와서 저장하기
+          registration.pushManager.getSubscription().then((subscription) => {
+            setUserSubScription(subscription);
+          });
         }
       });
     }
   }, []);
+  console.log(userSubScription);
 
   const onClickHandler = () => {
     if (!pushSupport) {
@@ -38,24 +59,56 @@ function Home() {
     } else if (alert === "알림 차단됨") {
       window.alert("알림 권한 재설정이 필요합니다");
     } else {
-      Notification.requestPermission().then((permission) => {
-        console.log("push permission:", permission);
-        if (Notification.permission !== "granted") {
-          setAlert("알림 차단됨");
-          return;
-        } else {
-          setAlert("알림 설정됨");
-          navigator.serviceWorker.ready.then((registration) => {
-            registration.showNotification("ComHome", {
-              body: "새로운 게시물이 등록되었습니다.",
-              icon: "/logo192.png",
-              badge: "/logo_simple.png",
-              tag: "simple-noti",
-            });
-          });
-        }
-      });
+      if (userSubScription) {
+        pushUnsubscribe();
+      } else {
+        pushSubscribe();
+      }
     }
+  };
+
+  const pushSubscribe = () => {
+    const publicKey = urlB64ToUint8Array(alertConfig.vapidPublic);
+    navigator.serviceWorker.ready.then((registration) => {
+      const option = {
+        userVisibleOnly: true,
+        applicationServerKey: publicKey,
+      };
+      registration.pushManager
+        .subscribe(option)
+        .then((subscription) => {
+          //이 subscription이 fcm으로부터 받아온 구독정보임.
+          // updateSubscription(subscription);
+          setUserSubScription(subscription);
+          console.log("push subscribed!", subscription);
+        })
+        .catch((err) => {
+          setUserSubScription(null);
+          console.error("push subscription failed", err);
+          window.alert("푸시 알림을 구독할 수 없습니다.");
+        });
+    });
+  };
+
+  const pushUnsubscribe = () => {
+    if (!userSubScription) {
+      return;
+    }
+    userSubScription.unsubscribe().then((result) => {
+      console.log("push unsubscribed! ", result);
+      if (result) {
+        // updateSubscription(null);
+        setUserSubScription(null);
+      }
+    });
+  };
+
+  const updateSubscription = (subscription) => {
+    //여기서 사용자 정보도 같이 전해줘서 사용자 구독 정보 추가하기
+    //나중엔 게시글 구독 정보도 추가할 수 있을듯
+    axios
+      .post("api/pushSubscription", { subscription })
+      .catch((e) => console.error(e));
   };
 
   return (
@@ -68,7 +121,7 @@ function Home() {
           onClick={onClickHandler}
           disabled={buttonDisable}
         >
-          {alert}
+          {userSubScription ? "알림 끄기" : "알림 켜기"}
         </ButtonStyle>
         <Card className="card-item" hover={false} height={"100px"}>
           프로필
