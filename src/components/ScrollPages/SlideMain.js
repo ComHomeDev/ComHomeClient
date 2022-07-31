@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
 import { AiOutlineSearch } from "react-icons/ai";
 import { simpleBodyContent } from "../../components/variables";
-import { StyledTitle } from "../Header/SubHeader";
+import { StyledTitle } from "../FixedCpnt/SubHeader";
 import "./SlideMain.css";
 
 function SlideMain() {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Header from "../../components/Header/Header";
+import Header from "../../components/FixedCpnt/Header";
 import Card from "../../components/Card";
-import FastMenu from "../../components/Menu/FastMenu";
-import Footer from "../../components/ScrollPages/Footer";
+import FastMenu from "../../components/FixedCpnt/FastMenu";
+import Footer from "../../components/FixedCpnt/Footer";
 
 import Calendar from "../../components/Calendar/Calendar";
 import alertConfig from "../../jsconfig.json";
@@ -37,18 +37,18 @@ function Home() {
   const [userSubScription, setUserSubScription] = useState({});
 
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.ready.then((registration) => {
-        if (registration.pushManager) {
-          setPushSupport(true);
-          setButtonDisable(false);
-          //구독 정보 가져와서 저장하기
-          registration.pushManager.getSubscription().then((subscription) => {
-            setUserSubScription(subscription);
-          });
-        }
-      });
-    }
+    // if ("serviceWorker" in navigator) {
+    //   navigator.serviceWorker.ready.then((registration) => {
+    //     if (registration.pushManager) {
+    //       setPushSupport(true);
+    //       setButtonDisable(false);
+    //       //구독 정보 가져와서 저장하기
+    //       registration.pushManager.getSubscription().then((subscription) => {
+    //         setUserSubScription(subscription);
+    //       });
+    //     }
+    //   });
+    // }
   }, []);
   console.log(userSubScription);
 
@@ -116,13 +116,13 @@ function Home() {
       <Header />
 
       <div className="home-body">
-        <ButtonStyle
+        {/* <ButtonStyle
           className={`alert-button ${alert}`}
           onClick={onClickHandler}
           disabled={buttonDisable}
         >
           {userSubScription ? "알림 끄기" : "알림 켜기"}
-        </ButtonStyle>
+        </ButtonStyle> */}
         <Card className="card-item" hover={false} height={"100px"}>
           프로필
         </Card>

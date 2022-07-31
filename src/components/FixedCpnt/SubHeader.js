@@ -2,38 +2,51 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import { headerMenu } from "../../components/variables";
+import { headerMenu } from "../variables";
 
-function SubHeader({ title, fontSize, index, sub }) {
+function SubHeader({ title, index, sub }) {
   return (
-    <StyledSubTitle>
-      <div className="page-title">{title}</div>
+    <>
+      <StyledSubTitle>
+        <div className="page-title">{title}</div>
 
-      {headerMenu[index].detail.map((data) => {
-        return (
-          <Link
-            key={data.eng + data.name}
-            to={data.address}
-            className={`subTitle student-sub-title ${
-              data.eng === sub ? "selected" : ""
-            }`}
-            // onClick={throwMessage}
-          >
-            {data.name}
-          </Link>
-        );
-      })}
-      <form className="sub-search-form" onSubmit={() => window.alert("submit")}>
-        <input
-          type="text"
-          className="sub-search"
-          placeholder="검색어를 입력하세요"
-        />
-        <button type="submit" className="sub-search-button">
-          <AiOutlineSearch size={26} />
-        </button>
-      </form>
-    </StyledSubTitle>
+        {headerMenu[index].detail.map((data) => {
+          return (
+            <Link
+              key={data.eng + data.name}
+              to={data.address}
+              className={`subTitle student-sub-title ${
+                data.eng === sub ? "selected" : ""
+              }`}
+              // onClick={throwMessage}
+            >
+              {data.name}
+            </Link>
+          );
+        })}
+        <form
+          className="sub-search-form"
+          onSubmit={() => window.alert("submit")}
+        >
+          <input
+            type="text"
+            className="sub-search"
+            placeholder="검색어를 입력하세요"
+          />
+          <button type="submit" className="sub-search-button">
+            <AiOutlineSearch size={26} />
+          </button>
+        </form>
+      </StyledSubTitle>
+      <hr
+        style={{
+          height: "2px",
+          backgroundColor: "#b0c4eb",
+          border: "none",
+          marginBottom: "10px",
+        }}
+      />
+    </>
   );
 }
 

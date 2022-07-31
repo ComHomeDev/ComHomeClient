@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import FastMenu from "../../components/Menu/FastMenu";
+import Header from "../../components/FixedCpnt/Header";
+import FastMenu from "../../components/FixedCpnt/FastMenu";
 import "./Community.css";
-import Footer from "../../components/ScrollPages/Footer";
-import { headerMenu } from "../../components/variables";
-import Card from "../../components/Card";
-import SubHeader from "../../components/Header/SubHeader";
+import Footer from "../../components/FixedCpnt/Footer";
+
+import SubHeader from "../../components/FixedCpnt/SubHeader";
 import CreatePost from "../../components/Post/CreatePost";
 import ReadPost, { Post } from "../../components/Post/ReadPost";
-import { AiOutlineSearch } from "react-icons/ai";
 
 function Community() {
   const [mode, setMode] = useState("read");
@@ -46,7 +44,7 @@ function Community() {
         content = <Post data={"와랄랄라"} />;
         break;
       case "read":
-        content = <ReadPost setMode={setParams} />;
+        content = <ReadPost setMode={setParams} page={sub} />;
         break;
       case "create":
         content = <CreatePost setMode={setParams} />;
@@ -67,15 +65,6 @@ function Community() {
       <FastMenu />
       <div className="community-body">
         <SubHeader title={"커뮤니티"} index={5} sub={sub} />
-
-        <hr
-          style={{
-            height: "2px",
-            backgroundColor: "#b0c4eb",
-            border: "none",
-            marginBottom: "10px",
-          }}
-        />
         {getContent(mode)}
       </div>
       <Footer />

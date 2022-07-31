@@ -6,7 +6,7 @@ import Modal from "../Modal/Modal";
 import "./Post.css";
 import logo512 from "./logo512.png";
 
-function ReadPost({ setMode }) {
+function ReadPost({ setMode, page }) {
   const [modalState, setModalState] = useState(false);
   const [displayContent, setDisplayContent] = useState({});
   const openModal = (data) => {

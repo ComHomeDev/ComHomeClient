@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "./Footer";
+import Footer from "../FixedCpnt/Footer";
 import "./SlideLast.css";
 
 function SlideLast() {
