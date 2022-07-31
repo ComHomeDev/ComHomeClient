@@ -19,14 +19,18 @@ import { ko } from "date-fns/locale";
 
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import "./Calendar.css";
-const Calendar = () => {
+function Calendar({ showEvent, postEvent }) {
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
   const [event, setEvent] = useState([]);
 
   useEffect(() => {
-    setEvent(getEvent(selectedDate));
+    let tempEvent = getEvent(selectedDate);
+    if (postEvent) {
+      postEvent(tempEvent);
+    }
+    setEvent(tempEvent);
   }, [selectedDate]);
 
   const getHeader = () => {
@@ -36,7 +40,7 @@ const Calendar = () => {
           className="navIcon"
           onClick={() => {
             setActiveDate(subMonths(activeDate, 1));
-            setSelectedDate(subMonths(selectedDate, 1));
+            setDate(subMonths(selectedDate, 1));
           }}
         />
         <h4 className="currentMonth">
@@ -46,13 +50,13 @@ const Calendar = () => {
           className="navIcon"
           onClick={() => {
             setActiveDate(addMonths(activeDate, 1));
-            setSelectedDate(addMonths(selectedDate, 1));
+            setDate(addMonths(selectedDate, 1));
           }}
         />
         <div
           className="todayButton"
           onClick={() => {
-            setSelectedDate(new Date());
+            setDate(new Date());
             setActiveDate(new Date());
           }}
         >
@@ -90,8 +94,12 @@ const Calendar = () => {
   };
 
   const setDate = (date) => {
+    let tempEvent = getEvent(date);
     setSelectedDate(date);
-    setEvent(getEvent(date));
+    setEvent(tempEvent);
+    if (postEvent) {
+      postEvent(tempEvent);
+    }
   };
 
   const generateDatesForCurrentWeek = (date, selectedDate, activeDate) => {
@@ -155,28 +163,34 @@ const Calendar = () => {
       {getHeader()}
       {getWeekDaysNames()}
       {getDates()}
-      <div className="dayEvents">
-        {event.map((event) => (
-          <div
-            key={event.name + event.startDate}
-            className={`eventDesc event ${event.charge}`}
-          >
-            ⦁ &nbsp;{event.name}
-          </div>
-        ))}
+      {showEvent && (
+        <div className="dayEvents">
+          {event.map((event) => (
+            <div
+              key={event.name + event.startDate}
+              className={`eventDesc event ${event.charge}`}
+            >
+              ⦁ &nbsp;{event.name}
+            </div>
+          ))}
 
-        <button
-          className="moreButton"
-          onClick={() => navigate("/studentcouncil/calendar")}
-        >
-          더보기
-        </button>
-      </div>
+          <button
+            className="moreButton"
+            onClick={() => navigate("/studentcouncil/calendar")}
+          >
+            더보기
+          </button>
+        </div>
+      )}
     </section>
   );
-};
+}
 
 export default Calendar;
+
+Calendar.defaultProps = {
+  showEvent: true,
+};
 
 //타입 alliance 제휴 event 단기이벤트 contest 대회
 
