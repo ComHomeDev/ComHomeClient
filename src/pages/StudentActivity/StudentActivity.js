@@ -13,7 +13,7 @@ import Footer from "../../components/FixedCpnt/Footer";
 import Modal from "../../components/Modal/Modal";
 import Card from "../../components/Card";
 import Pagination from "../../components/Pagination/Pagination";
-
+import { HrStyle } from "../../components/Post/ReadPost";
 function StudentActivity() {
   const [mode, setMode] = useState("read");
   const [modalState, setModalState] = useState(false);
@@ -43,9 +43,15 @@ function StudentActivity() {
           <div className="student-club">
             {clubArr.map((club) => {
               return (
-                <div className={club.name}>
+                <div className={`${club.id} club-card-container`}>
                   <Card className={"club-card"} hover={false}>
-                    {club.name}
+                    <img src={img} className="club-img" />
+                    <div className="club-content">
+                      <div className="club-name">{club.name}</div>
+                      <hr style={HrStyle} />
+
+                      <div className="club-desc">{club.desc}</div>
+                    </div>
                   </Card>
                 </div>
               );
@@ -174,16 +180,19 @@ const ProjectModal = ({ project }) => {
 
 const clubArr = [
   {
+    id: "init",
     name: "init",
     desc: "init은 컴퓨터공학과 학생들을 위한 학과 동아리로 2020년에 결성되었습니다. init은 컴퓨터공학과 내 선후배 간의 네트워크 구축 도모라는 목표에서 시작하였습니다. 주요 동아리 활동으로 동아리원의 최신 IT 기술 발표 및 운영진의 알고리즘 교육을 매주 진행합니다. 뿐만 아니라 웹, 앱, 게임 등의 트랙별로 나누어진 팀 프로젝트와 자체 해커톤까지 준비되어 보다 많은 경험을 쌓을 수 있습니다. 컴퓨터공학 주전공생들이기에 돈독한 유대감을 형성하고, 선후배 간의 정보 공유를 통해 모두에게 도움이 될 수 있는 과 동아리입니다. init의 활동은 인스타그램 @sswu_init에서 확인하실 수 있습니다.",
     link: "https://www.instagram.com/sswu_init/",
   },
   {
+    id: "com",
     name: "C.O.M.",
     desc: "C.O.M.은 Computer Operating Mania의 약자로, 2000년에 결성된 오랜 전통을 가진 소모임으로 현재는 컴퓨터공학과, 정보시스템공학과, AI융합학부 학생들로 구성되어있습니다. 짝선배, 짝후배 제도를 통해서 선후배 간의 소통을 활성화 하고 MT, 소풍 등을 통한 친목 도모 활동을 통해 선후배 및 학과 간의 교류를 활발히 합니다. 1학기에는 파이썬을, 2학기에는 C++ 코딩 스터디를 통해 학교 강의를 심화적으로 공부하고 복습할 수 있는 기회를 제공합니다. 이외에도 다양한 정보를 제공함으로써 전공에 대한 관심도를 높여주는 길잡이 역할을 하고 있습니다.",
     link: null,
   },
   {
+    id: "chemicom",
     name: "ChemiCom",
     desc: "ChemiCom은 Chemistry와 Computer의 합성어로 1987년 성신여대 전산학과와 한양대 화학응용과(현 유기나노공학과)와 함께 만든 조인트 소모임입니다. 현재는 성신여대 컴퓨터공학과, 정보시스템공학과, AI융합학부 그리고 한양대 유기나노공학과 학생들이 함께하고 있습니다. 일주일에 한 번씩 모여 컴퓨터 관련 스터디 및 친목 도모 활동을 합니다.",
     link: null,

@@ -86,7 +86,7 @@
     height: 1350px;
   }
   .home-body {
-    grid-template-rows: repeat(2, 200px) repeat(2, 300px);
+    grid-template-rows: repeat(2, 200px) 300px 360px;
     grid-template-columns: repeat(3, 310px);
 
     grid-auto-flow: dense;
@@ -107,7 +107,7 @@
     height: 1500px;
   }
   .home-body {
-    grid-template-rows: repeat(4, 200px) 300px;
+    grid-template-rows: repeat(4, 200px) 360px;
     grid-template-columns: repeat(2, 310px);
   }
   .card-item {
@@ -127,7 +127,7 @@
     height: 2500px;
   }
   .home-body {
-    grid-template-rows: repeat(8, 200px) repeat(2, 300px);
+    grid-template-rows: repeat(8, 200px) repeat(2, 360px);
     grid-template-columns: 310px;
   }
   .card-item {

@@ -92,7 +92,7 @@ export function Post({ data2 }) {
           <div className="article-info-text">조회수 {data.lookup}</div>
         </div>
       </div>
-      <hr style={hrStyle} />
+      <hr style={HrStyle} />
       <div className="article-attach">
         <div className="article-attach-tag">첨부파일</div>
         {data.attachment.length === 0 ? (
@@ -117,7 +117,7 @@ export function Post({ data2 }) {
           </div>
         )}
       </div>
-      <hr style={hrStyle} />
+      <hr style={HrStyle} />
 
       <div className="article-content">{text}</div>
     </div>
@@ -126,7 +126,7 @@ export function Post({ data2 }) {
 
 export default ReadPost;
 
-const hrStyle = {
+export const HrStyle = {
   height: "1px",
   width: "calc(100% + 40px)",
   backgroundColor: "#b0c4eb",

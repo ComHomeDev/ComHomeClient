@@ -228,3 +228,51 @@
     margin-right: 20px;
   }
 }
+
+/*동아리*/
+
+.club-card-container {
+  margin: 40px;
+}
+.club-card {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+.club-card .club-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.club-card .club-img {
+  width: 15vw;
+  height: 15vw;
+}
+.club-card .club-name {
+  font-size: 18px;
+  font-weight: 600;
+  padding-top: 10px;
+}
+.club-card .club-desc {
+  grid-column-start: span 2;
+  grid-column-end: 4;
+  padding-top: 30px;
+}
+
+/* @media (max-width: 1000px) {
+  .club-card {
+    height: 250px;
+  }
+}
+@media (max-width: 900px) {
+  .init .club-card,
+  .com .club-card {
+    height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .club-card .club-desc {
+    font-size: 12px;
+  }
+} */
