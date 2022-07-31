@@ -25,7 +25,6 @@ function Community() {
   const setParams = (mode) => {
     setMode(mode);
   };
-  console.log(post);
 
   const throwMessage = (e) => {
     if (mode === "create") {
@@ -44,7 +43,7 @@ function Community() {
         content = <Post data={"와랄랄라"} />;
         break;
       case "read":
-        content = <ReadPost setMode={setParams} page={sub} />;
+        content = <ReadPost setMode={setParams} category={sub} />;
         break;
       case "create":
         content = <CreatePost setMode={setParams} />;

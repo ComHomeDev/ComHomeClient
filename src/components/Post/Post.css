@@ -96,7 +96,7 @@
   width: calc(100% - 30px);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .read-post-container .post-list {

@@ -12,10 +12,16 @@ import Footer from "../../components/FixedCpnt/Footer";
 
 import Modal from "../../components/Modal/Modal";
 import Card from "../../components/Card";
+import Pagination from "../../components/Pagination/Pagination";
 
 function StudentActivity() {
   const [mode, setMode] = useState("read");
   const [modalState, setModalState] = useState(false);
+
+  const [limit, setLimit] = useState(8);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+
   let { sub } = useParams();
 
   const openModal = (data) => {
@@ -47,27 +53,37 @@ function StudentActivity() {
           </div>
         ) : (
           <div className="student-project">
-            {projectArr.map((pro, index) => {
-              return (
-                <div key={pro.title + index} className="project-container">
-                  <Card
-                    key={pro.title}
-                    className={"project-card"}
-                    hover={false}
+            <div className="student-project-wrap">
+              {projectArr.slice(offset, offset + limit).map((pro, index) => {
+                return (
+                  <div
+                    key={pro.title + index}
+                    className="project-container"
+                    onClick={openModal}
                   >
-                    <img src={img} alt="img" className="display-modal-img" />
-                    <div className="project-simple-info">
-                      {pro.title} | {pro.developer}
-                    </div>
-                    {/* <button onClick={openModal}>butto</button> */}
-                  </Card>
-                </div>
-              );
-            })}
+                    <Card
+                      key={pro.title}
+                      className={"project-card"}
+                      hover={false}
+                    >
+                      <img src={img} alt="img" className="display-modal-img" />
+                      <div className="project-simple-info">
+                        {pro.title} | {pro.developer}
+                      </div>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
+            <Pagination
+              total={projectArr.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
           </div>
         )}
       </div>
-      <button onClick={openModal}>butto</button>
       {modalState && (
         <Modal
           className="new__review__modal"
@@ -199,7 +215,27 @@ const projectArr = [
 
   {
     title: "CO-IN",
-    developer: "Coin",
+    developer: "Coin12345",
+    img: "./icons.png",
+  },
+  {
+    title: "수정물산",
+    developer: "CrystalProduct3123",
+    img: "./icons.png",
+  },
+  {
+    title: "수정물산",
+    developer: "CrystalProduct3",
+    img: "./icons.png",
+  },
+  {
+    title: "수정물산",
+    developer: "CrystalProduct3",
+    img: "./icons.png",
+  },
+  {
+    title: "수정물산",
+    developer: "CrystalProduct3",
     img: "./icons.png",
   },
   {

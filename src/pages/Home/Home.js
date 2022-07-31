@@ -50,7 +50,7 @@ function Home() {
     //   });
     // }
   }, []);
-  console.log(userSubScription);
+  // console.log(userSubScription);
 
   const onClickHandler = () => {
     if (!pushSupport) {

@@ -2,23 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoIosAttach } from "react-icons/io";
 import Card from "../Card";
-import Modal from "../Modal/Modal";
 import "./Post.css";
-import logo512 from "./logo512.png";
+import Pagination from "../Pagination/Pagination";
 
-function ReadPost({ setMode, page }) {
-  const [modalState, setModalState] = useState(false);
-  const [displayContent, setDisplayContent] = useState({});
-  const openModal = (data) => {
-    console.log(data);
-    setDisplayContent(data);
-    setModalState(true);
-  };
+function ReadPost({ setMode, category }) {
+  const [posts, setPosts] = useState(postList);
+  const [limit, setLimit] = useState(6);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
-  const closeModal = (event) => {
-    event.preventDefault();
-    setModalState(false);
-  };
+  useEffect(() => {
+    setPage(1);
+  }, [category]);
 
   return (
     <div className="read-post-container">
@@ -31,13 +26,9 @@ function ReadPost({ setMode, page }) {
         글 작성하기
       </button>
       <div className="post-list">
-        {postList.map((data, index) => {
+        {posts.slice(offset, offset + limit).map((data, index) => {
           return (
-            <div
-              key={data.title + index}
-              value={index}
-              // onClick={() => openModal(data)}
-            >
+            <div key={data.title + index} value={index}>
               <Link to={`${index}`}>
                 <Card
                   key={data.title}
@@ -75,22 +66,12 @@ function ReadPost({ setMode, page }) {
           );
         })}
       </div>
-      {modalState && (
-        <Modal
-          className="new__review__modal"
-          onClose={closeModal}
-          maskClosable={true}
-          visible={true}
-          background={"#fff8c9"}
-          color={"#000000"}
-        >
-          <div className="display-modal">
-            <img src={logo512} alt="image" width={"150px"} height={"150px"} />
-            <div className="post-list-title">{displayContent.title}</div>
-            <div className="post-list-date">{displayContent.date}</div>
-          </div>
-        </Modal>
-      )}
+      <Pagination
+        total={posts.length}
+        limit={limit}
+        page={page}
+        setPage={setPage}
+      />
     </div>
   );
 }
