@@ -46,11 +46,23 @@ export const headerMenu = [
   },
   {
     name: "공지사항",
-    address: "/",
+    address: "/notice/csnotice?page=1",
     detail: [
-      { name: "학과 공지", address: "/" },
-      { name: "채용/인턴십", address: "/" },
-      { name: "교육/공모전", address: "/" },
+      {
+        name: "학과 공지",
+        eng: "csnotice",
+        address: "/notice/csnotice?page=1",
+      },
+      {
+        name: "채용/인턴십",
+        eng: "internship",
+        address: "/notice/internship?page=1",
+      },
+      {
+        name: "교육/공모전",
+        eng: "contest",
+        address: "/notice/contest?page=1",
+      },
     ],
   },
   {
@@ -130,7 +142,7 @@ export const detailBodyContent = [
   },
   {
     name: "커뮤니티",
-    address: "/",
+    address: "/community/extracurricular?page=1",
     icon: <FaRegObjectGroup />,
     detail: [
       {
