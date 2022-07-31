@@ -7,7 +7,10 @@ function Pagination({ total, limit, page, setPage }) {
       <nav className="nav">
         <button
           className="navBtn"
-          onClick={() => setPage(page - 1)}
+          onClick={() => {
+            setPage(page - 1);
+            window.scrollTo(0, 0);
+          }}
           disabled={page === 1}
         >
           &lt;
@@ -18,7 +21,10 @@ function Pagination({ total, limit, page, setPage }) {
             <button
               className="navBtn"
               key={i + 1}
-              onClick={() => setPage(i + 1)}
+              onClick={() => {
+                setPage(i + 1);
+                window.scrollTo(0, 0);
+              }}
               aria-current={page === i + 1 ? "page" : null}
             >
               {i + 1}
@@ -26,7 +32,10 @@ function Pagination({ total, limit, page, setPage }) {
           ))}
         <button
           className="navBtn"
-          onClick={() => setPage(page + 1)}
+          onClick={() => {
+            setPage(page + 1);
+            window.scrollTo(0, 0);
+          }}
           disabled={page === numPages}
         >
           &gt;
@@ -39,6 +48,8 @@ function Pagination({ total, limit, page, setPage }) {
 export default Pagination;
 
 const SytledPage = styled.div`
+  position: relative;
+  z-index: 100;
   .nav {
     display: flex;
     justify-content: center;
@@ -62,7 +73,8 @@ const SytledPage = styled.div`
   }
 
   .navBtn:disabled {
-    background: grey;
+    // background: grey;
+    opacity: 0.3;
     cursor: revert;
     transform: revert;
   }

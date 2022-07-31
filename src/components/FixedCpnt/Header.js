@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { IoIosClose } from "react-icons/io";
 import { IoMenuOutline } from "react-icons/io5";
 import { headerMenu } from "../variables";
-import Menu from "../Menu/HeaderMenu";
+import Menu from "./HeaderMenu";
 import "./Header.css";
 
 function Header() {

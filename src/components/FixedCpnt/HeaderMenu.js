@@ -17,20 +17,20 @@ function HeaderMenu({ data, onClick }) {
       className={`headerButtonWrap ${toggle ? "focus" : ""}`}
       key={data.name}
     >
-      <div className="headerButton" onClick={onClickHandler}>
-        <Link to={data.address} className="headerLink">
+      <Link to={data.address} className="headerLink">
+        <div className="headerButton" onClick={onClickHandler}>
           {data.name}
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="headerHoverMenu">
         {check() &&
           data.detail.map((details) => {
             return (
-              <div className="hoverMenuButton" key={details.name}>
-                <Link to={details.address} className="headerLink">
+              <Link to={details.address} className="headerLink">
+                <div className="hoverMenuButton" key={details.name}>
                   {details.name}
-                </Link>
-              </div>
+                </div>
+              </Link>
             );
           })}
       </div>

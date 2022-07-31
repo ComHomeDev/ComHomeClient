@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
 import { AiOutlineSearch } from "react-icons/ai";
 import { simpleBodyContent } from "../../components/variables";
-import Title from "../Header/Title";
+import { StyledTitle } from "../FixedCpnt/SubHeader";
 import "./SlideMain.css";
 
 function SlideMain() {
@@ -21,7 +21,14 @@ function SlideMain() {
       </button>
       <div className="main-head">
         <div className="main-title">
-          <Title title={"ComHome"} />
+          <StyledTitle>
+            <div className="page-title">ComHome</div>
+            <div className="roof">
+              <div className="roof-line" />
+              <div className="roof-line" />
+            </div>
+            <div className="roof-shadow" />
+          </StyledTitle>
         </div>
         <form
           className="main-search-form"

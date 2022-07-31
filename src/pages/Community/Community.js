@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import FastMenu from "../../components/Menu/FastMenu";
+import Header from "../../components/FixedCpnt/Header";
+import FastMenu from "../../components/FixedCpnt/FastMenu";
 import "./Community.css";
-import Footer from "../../components/ScrollPages/Footer";
-import { headerMenu } from "../../components/variables";
-import Card from "../../components/Card";
-import Title from "../../components/Header/Title";
+import Footer from "../../components/FixedCpnt/Footer";
+
+import SubHeader from "../../components/FixedCpnt/SubHeader";
 import CreatePost from "../../components/Post/CreatePost";
-import ReadPost from "../../components/Post/ReadPost";
-import { AiOutlineSearch } from "react-icons/ai";
+import ReadPost, { Post } from "../../components/Post/ReadPost";
 
 function Community() {
   const [mode, setMode] = useState("read");
   // const [searchParams, setSearchParams] = useSearchParams();
-  let { sub } = useParams();
+  let { sub, post } = useParams();
+
+  useEffect(() => {
+    if (post !== undefined) {
+      setMode("post");
+    } else {
+      setMode("read");
+    }
+  }, [post]);
 
   const setParams = (mode) => {
     setMode(mode);
@@ -33,8 +39,11 @@ function Community() {
   const getContent = (mode) => {
     let content = "";
     switch (mode) {
+      case "post":
+        content = <Post data={"와랄랄라"} />;
+        break;
       case "read":
-        content = <ReadPost setMode={setParams} />;
+        content = <ReadPost setMode={setParams} category={sub} />;
         break;
       case "create":
         content = <CreatePost setMode={setParams} />;
@@ -54,44 +63,7 @@ function Community() {
       <Header />
       <FastMenu />
       <div className="community-body">
-        <div className="community-menu">
-          <Title title={"커뮤니티"} fontSize="36px" />
-          {headerMenu[5].detail.map((data) => {
-            return (
-              <Link
-                key={data.eng + data.name}
-                to={data.address}
-                className={`community-sub-title ${
-                  data.eng === sub ? "selected" : ""
-                }`}
-                onClick={throwMessage}
-              >
-                {data.name}
-              </Link>
-            );
-          })}
-          <form
-            className="sub-search-form"
-            onSubmit={() => window.alert("submit")}
-          >
-            <input
-              type="text"
-              className="sub-search"
-              placeholder="검색어를 입력하세요"
-            />
-            <button type="submit" className="sub-search-button">
-              <AiOutlineSearch size={26} />
-            </button>
-          </form>
-        </div>
-        <hr
-          style={{
-            height: "2px",
-            backgroundColor: "#b0c4eb",
-            border: "none",
-            marginBottom: "10px",
-          }}
-        />
+        <SubHeader title={"커뮤니티"} index={5} sub={sub} />
         {getContent(mode)}
       </div>
       <Footer />
