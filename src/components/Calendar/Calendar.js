@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   format,
   startOfWeek,
@@ -19,6 +20,7 @@ import { ko } from "date-fns/locale";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import "./Calendar.css";
 const Calendar = () => {
+  const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
   const [event, setEvent] = useState([]);
@@ -163,7 +165,12 @@ const Calendar = () => {
           </div>
         ))}
 
-        <button className="moreButton">더보기</button>
+        <button
+          className="moreButton"
+          onClick={() => navigate("/studentcouncil/calendar")}
+        >
+          더보기
+        </button>
       </div>
     </section>
   );

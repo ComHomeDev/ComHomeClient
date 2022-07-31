@@ -55,11 +55,19 @@ export const headerMenu = [
   },
   {
     name: "학생회",
-    address: "/",
+    address: "/studentcouncil/intro",
     detail: [
-      { name: "학생회 소개", address: "/" },
-      { name: "학생회 공지", address: "/" },
-      { name: "학생회 달력", address: "/" },
+      { name: "학생회 소개", eng: "intro", address: "/studentcouncil/intro" },
+      {
+        name: "학생회 공지",
+        eng: "stnotice",
+        address: "/studentcouncil/stnotice?page=1",
+      },
+      {
+        name: "학생회 달력",
+        eng: "calendar",
+        address: "/studentcouncil/calendar",
+      },
     ],
   },
   {
