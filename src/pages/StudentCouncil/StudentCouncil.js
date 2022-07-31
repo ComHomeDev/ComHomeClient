@@ -12,6 +12,7 @@ import Card from "../../components/Card";
 import Pagination from "../../components/Pagination/Pagination";
 import { HrStyle } from "../../components/Post/ReadPost";
 import Calendar from "../../components/Calendar/Calendar";
+import ReadPost, { Post } from "../../components/Post/ReadPost";
 
 function StudentCouncil() {
   const [mode, setMode] = useState("read");
@@ -43,17 +44,19 @@ function StudentCouncil() {
               학생회는 컴퓨터공학과의 발전과 활발한 소통을 목표로 다음과 같이
               다양한 행사를 진행하고 있습니다.
               <br /> <br />
-              - 신입생 OT 및 MT, 신입생 환영회 <br />
-              - 개강 파티, 종강 파티 <br />
-              - 교수님과의 만남 <br />
-              - 중간고사와 기말고사 간식행사 및 스터디위드인 <br />
-              - E-Sports 대회 <br /> - 스승의 날 행사 <br /> - 짝선배 짝후배
-              <br /> - 학교 축제에서 컴퓨터공학과 부스 운영 <br /> - 학술제
-              <br /> - 학년별 프로젝트 <br /> - 만족도 조사, 중간 강의평가 등
-              다양한 설문조사를 통한 소통 <br /> - 다양한 행사 진행
+              ⦁ 신입생 OT 및 MT, 신입생 환영회 <br />
+              ⦁ 개강 파티, 종강 파티 <br />
+              ⦁ 교수님과의 만남 <br />
+              ⦁ 중간고사와 기말고사 간식행사 및 스터디위드인 <br />
+              ⦁ E-Sports 대회 <br /> ⦁ 스승의 날 행사 <br /> ⦁ 짝선배 짝후배
+              <br /> ⦁ 학교 축제에서 컴퓨터공학과 부스 운영 <br /> ⦁ 학술제
+              <br /> ⦁ 학년별 프로젝트 <br /> ⦁ 만족도 조사, 중간 강의평가 등
+              다양한 설문조사를 통한 소통 <br /> ⦁ 다양한 행사 진행
             </div>
             <br />
-            컴퓨터공학과 학생회 조직도 및 부서별 역할
+            <div className="council-title">
+              컴퓨터공학과 학생회 조직도 및 부서별 역할
+            </div>
             <br />
             <div className="council-img">
               <img
@@ -98,7 +101,7 @@ function StudentCouncil() {
         );
         break;
       case "stnotice":
-        content = <div className="council-notice">안내</div>;
+        content = <ReadPost category={sub} />;
         break;
       default:
         break;

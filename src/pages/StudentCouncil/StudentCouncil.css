@@ -2,7 +2,8 @@
   height: calc(100vh + 700px);
 }
 
-.council-info {
+.council-info,
+.council-notice {
   padding: 10px;
 }
 
