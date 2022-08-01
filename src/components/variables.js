@@ -3,6 +3,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { AiOutlinePartition } from "react-icons/ai";
 import { SiStarship } from "react-icons/si";
 import { FaRegObjectGroup } from "react-icons/fa";
+
 export const fastMenu = [
   {
     name: "공식 홈페이지",
@@ -55,13 +56,13 @@ export const headerMenu = [
       },
       {
         name: "채용/인턴십",
-        eng: "internship",
-        address: "/notice/internship?page=1",
+        eng: "recruit_internship",
+        address: "/notice/recruit_internship?page=1",
       },
       {
         name: "교육/공모전",
-        eng: "contest",
-        address: "/notice/contest?page=1",
+        eng: "edu_contest",
+        address: "/notice/edu_contest?page=1",
       },
     ],
   },
@@ -72,8 +73,8 @@ export const headerMenu = [
       { name: "학생회 소개", eng: "intro", address: "/studentcouncil/intro" },
       {
         name: "학생회 공지",
-        eng: "stnotice",
-        address: "/studentcouncil/stnotice?page=1",
+        eng: "student_council_notice",
+        address: "/studentcouncil/student_council_notice?page=1",
       },
       {
         name: "학생회 달력",
@@ -87,22 +88,26 @@ export const headerMenu = [
     address: "/student/club?page=1",
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
-      { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
+      {
+        name: "작품 전시",
+        eng: "exhibition",
+        address: "/student/exhibition?page=1",
+      },
     ],
   },
   {
     name: "커뮤니티",
-    address: "/community/extracurricular?page=1",
+    address: "/community/extra_review?page=1",
     detail: [
       {
         name: "대외활동 후기",
-        eng: "extracurricular",
-        address: "/community/extracurricular?page=1",
+        eng: "extra_review",
+        address: "/community/extra_review?page=1",
       },
       {
         name: "취업 후기",
-        eng: "employment",
-        address: "/community/employment?page=1",
+        eng: "job_review",
+        address: "/community/job_review?page=1",
       },
       {
         name: "졸업생 인터뷰",
@@ -137,23 +142,27 @@ export const detailBodyContent = [
     icon: <SiStarship />,
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
-      { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
+      {
+        name: "작품 전시",
+        eng: "exhibition",
+        address: "/student/exhibition?page=1",
+      },
     ],
   },
   {
     name: "커뮤니티",
-    address: "/community/extracurricular?page=1",
+    address: "/community/extra_review?page=1",
     icon: <FaRegObjectGroup />,
     detail: [
       {
         name: "대외활동 후기",
-        eng: "extracurricular",
-        address: "/community/extracurricular?page=1",
+        eng: "extra_review",
+        address: "/community/extra_review?page=1",
       },
       {
         name: "취업 후기",
-        eng: "employment",
-        address: "/community/employment?page=1",
+        eng: "job_review",
+        address: "/community/job_review?page=1",
       },
       {
         name: "졸업생 인터뷰",

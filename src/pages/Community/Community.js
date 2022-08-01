@@ -40,7 +40,7 @@ function Community() {
     let content = "";
     switch (mode) {
       case "post":
-        content = <Post data={"와랄랄라"} />;
+        content = <Post id={post} />;
         break;
       case "read":
         content = <ReadPost setMode={setParams} category={sub} />;

@@ -40,7 +40,7 @@ function Notice() {
     let content = "";
     switch (mode) {
       case "post":
-        content = <Post data={"와랄랄라"} />;
+        content = <Post id={post} category={sub} />;
         break;
       case "read":
         content = <ReadPost setMode={setParams} category={sub} />;
@@ -62,9 +62,9 @@ function Notice() {
     <div className="notice-container page-container">
       <Header />
       <FastMenu />
-      <div className="notice-body">
-        <SubHeader title={"공지사항"} index={3} sub={sub} />
-        {/* {getContent(mode)} */}
+      <div className="notice-body page-body">
+        <SubHeader title={"공지사항"} index={2} sub={sub} />
+        {getContent(mode)}
       </div>
       <Footer />
     </div>
