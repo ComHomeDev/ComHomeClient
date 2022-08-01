@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { headerMenu } from "../variables";
 
-function SubHeader({ title, index, sub }) {
+function SubHeader({ title, index, sub, search }) {
   return (
     <>
       <StyledSubTitle>
@@ -24,19 +24,21 @@ function SubHeader({ title, index, sub }) {
             </Link>
           );
         })}
-        <form
-          className="sub-search-form"
-          onSubmit={() => window.alert("submit")}
-        >
-          <input
-            type="text"
-            className="sub-search"
-            placeholder="검색어를 입력하세요"
-          />
-          <button type="submit" className="sub-search-button">
-            <AiOutlineSearch size={26} />
-          </button>
-        </form>
+        {search && (
+          <form
+            className="sub-search-form"
+            onSubmit={() => window.alert("submit")}
+          >
+            <input
+              type="text"
+              className="sub-search"
+              placeholder="검색어를 입력하세요"
+            />
+            <button type="submit" className="sub-search-button">
+              <AiOutlineSearch size={26} />
+            </button>
+          </form>
+        )}
       </StyledSubTitle>
       <hr
         style={{
@@ -52,6 +54,7 @@ function SubHeader({ title, index, sub }) {
 
 SubHeader.defaultProps = {
   fontSize: "38px",
+  search: true,
 };
 export default SubHeader;
 

@@ -17,7 +17,7 @@ function ReadPost({ setMode, category }) {
   console.log(category);
   const fetchData = async () => {
     const response = await axios.get(
-      `http://192.168.10.101:5000/api/${category}_list`
+      `http://192.168.10.104:5000/api/${category}_detail`
     );
     console.log(response.data);
     // console.log(response.data.data_det);
@@ -107,14 +107,14 @@ export function Post({ id, category }) {
   const fetchFileData = async (filename) => {
     console.log(filename);
     const response = await axios.get(
-      `http://192.168.10.101:5000/api/download/${filename}`
+      `http://192.168.10.104:5000/api/download/${filename}`
     );
     console.log(response);
   };
 
   const fetchData = async () => {
     const response = await axios.get(
-      `http://192.168.10.101:5000/api/${category}_detail/${id}`
+      `http://192.168.10.104:5000/api/${category}_detail/${id}`
     );
     console.log(response.data);
     setData(response.data.data_det);

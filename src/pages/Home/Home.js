@@ -35,6 +35,7 @@ function Home() {
   const [alert, setAlert] = useState("알림");
   const [buttonDisable, setButtonDisable] = useState(true);
   const [userSubScription, setUserSubScription] = useState({});
+  const [flip, setFlip] = useState(false);
 
   useEffect(() => {
     // if ("serviceWorker" in navigator) {
@@ -51,6 +52,7 @@ function Home() {
     // }
   }, []);
   // console.log(userSubScription);
+  console.log(flip);
 
   const onClickHandler = () => {
     if (!pushSupport) {
@@ -123,15 +125,22 @@ function Home() {
         >
           {userSubScription ? "알림 끄기" : "알림 켜기"}
         </ButtonStyle> */}
+        {/* <button
+          onClick={() =>
+            window.open("http://192.168.10.101:5000/api/auth/login", "_blank")
+          }
+        >
+          로그인
+        </button> */}
         <Card className="card-item" hover={false} height={"100px"}>
           프로필
         </Card>
         <Card
           className="card-item"
           hover={false}
-          width={"625px"}
-          height={"100px"}
-          shadowColor={"#FFE500;"}
+          // width={"625px"}
+          // height={"100px"}
+          // shadowColor={"#FFE500;"}
         >
           공지사항
         </Card>
@@ -157,7 +166,7 @@ function Home() {
               key={data.name}
               hover={false}
               height={"100px"}
-              shadowColor={"rgba(255, 6, 170, 0.27);"}
+              // shadowColor={"rgba(255, 6, 170, 0.27);"}
             >
               <div className="simple-card">
                 <div className="simple-card-name">{data.name}</div>
@@ -182,15 +191,31 @@ function Home() {
         {detailBodyContent.map((data) => {
           return (
             <Card
-              className="card-item"
+              className={`card-item ${
+                flip ? "flip-vertical-right" : "flip-vertical-left"
+              }`}
               key={data.name}
               hover={true}
               height={"205px"}
             >
-              <div className="detail-card">
-                <div className="detail-card-name">{data.name}</div>
-                <div className="detail-card-icon">{data.icon}</div>
-              </div>
+              {flip ? (
+                <div
+                  className={`detail-card`}
+                  onMouseEnter={() => setFlip(true)}
+                  onMouseLeave={() => setFlip(false)}
+                >
+                  <div className="detail-card-name">{data.name}</div>
+                  <div className="detail-card-icon">{data.icon}</div>
+                </div>
+              ) : (
+                <div
+                  className={`detail-card`}
+                  onMouseEnter={() => setFlip(true)}
+                  onMouseLeave={() => setFlip(false)}
+                >
+                  <div className="detail-card-name">우와..... </div>
+                </div>
+              )}
             </Card>
           );
         })}
