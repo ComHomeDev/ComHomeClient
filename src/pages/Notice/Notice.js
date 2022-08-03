@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import "./Notice.css";
+
 import Header from "../../components/FixedCpnt/Header";
 import FastMenu from "../../components/FixedCpnt/FastMenu";
-import "./Community.css";
 import Footer from "../../components/FixedCpnt/Footer";
-
 import SubHeader from "../../components/FixedCpnt/SubHeader";
 import CreatePost from "../../components/Post/CreatePost";
 import ReadPost, { Post } from "../../components/Post/ReadPost";
 
-function Community() {
+function Notice() {
   const [mode, setMode] = useState("read");
-  // const [searchParams, setSearchParams] = useSearchParams();
+
   let { sub, post } = useParams();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function Community() {
     let content = "";
     switch (mode) {
       case "post":
-        content = <Post id={post} />;
+        content = <Post id={post} category={sub} />;
         break;
       case "read":
         content = <ReadPost setMode={setParams} category={sub} />;
@@ -59,11 +59,11 @@ function Community() {
   };
 
   return (
-    <div className="community-container">
+    <div className="notice-container page-container">
       <Header />
       <FastMenu />
-      <div className="community-body">
-        <SubHeader title={"커뮤니티"} index={5} sub={sub} />
+      <div className="notice-body page-body">
+        <SubHeader title={"공지사항"} index={2} sub={sub} />
         {getContent(mode)}
       </div>
       <Footer />
@@ -71,4 +71,4 @@ function Community() {
   );
 }
 
-export default Community;
+export default Notice;
