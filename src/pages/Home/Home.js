@@ -114,10 +114,9 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
-      <Header />
-
-      <div className="home-body">
+    <div className="page-container home-container">
+      <Header /> <FastMenu />
+      <div className="page-body home-body">
         {/* <ButtonStyle
           className={`alert-button ${alert}`}
           onClick={onClickHandler}
@@ -213,8 +212,6 @@ function Home() {
           );
         })}
       </div>
-      <FastMenu />
-
       <Footer />
     </div>
   );

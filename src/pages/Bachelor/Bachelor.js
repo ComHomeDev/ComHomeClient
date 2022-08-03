@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import "./Bachelor.css";
 
 import Header from "../../components/FixedCpnt/Header";
 import SubHeader from "../../components/FixedCpnt/SubHeader";
@@ -15,10 +16,19 @@ function Bachelor() {
     let content = "'";
     switch (category) {
       case "curriculum":
-        content = <div className="bachelor-curriculum"></div>;
+        content = (
+          <div
+            className="bachelor-curriculum"
+            style={{
+              height: "500px",
+              backgroundColor: "gray",
+              marginBottom: "20px",
+            }}
+          ></div>
+        );
         break;
       case "track":
-        content = <div className="bachelor-track"></div>;
+        content = <div className="bachelor-track page-content"></div>;
         break;
       case "connect":
         content = "";

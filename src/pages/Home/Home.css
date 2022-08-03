@@ -2,20 +2,17 @@
   position: relative;
   margin: 20px 20px 0 20px;
   width: calc(100vw - 40px);
-  height: calc(100vh);
+  /* height: calc(100vh); */
 }
 
 .home-body {
-  position: absolute;
   top: 90px;
   left: -10px; /*전체 마진 20px에서 헤더까지 맞춤*/
   width: 100%;
-  height: max-content;
   display: grid;
   justify-content: center;
-  margin: 3px;
+  margin-bottom: 30px;
   align-content: space-evenly;
-  /* overflow: scroll; */
   padding-bottom: 20px;
 }
 
@@ -56,9 +53,9 @@
 /*웹, 모바일 환경에 따라 그리드 바꿈*/
 
 @media (min-width: 1300px) {
-  .home-container {
+  /* .home-container {
     height: 1200px;
-  }
+  } */
   .home-body {
     grid-template-rows: 200px 160px 0 300px;
     grid-template-columns: repeat(4, 310px);
@@ -82,9 +79,9 @@
 }
 
 @media (min-width: 950px) and (max-width: 1300px) {
-  .home-container {
+  /* .home-container {
     height: 1350px;
-  }
+  } */
   .home-body {
     grid-template-rows: repeat(2, 200px) 300px 360px;
     grid-template-columns: repeat(3, 310px);
@@ -103,9 +100,9 @@
 }
 
 @media (min-width: 650px) and (max-width: 950px) {
-  .home-container {
+  /* .home-container {
     height: 1500px;
-  }
+  } */
   .home-body {
     grid-template-rows: repeat(4, 200px) 360px;
     grid-template-columns: repeat(2, 310px);

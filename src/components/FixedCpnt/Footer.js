@@ -31,7 +31,7 @@ const StyledFooter = styled.div`
   width: calc(100vw - 20px);
   height: 200px;
   margin-left: -20px;
-  bottom: 0;
+  // bottom: 0;
   overflow: hidden;
   .footer {
     margin-left: -20px;
