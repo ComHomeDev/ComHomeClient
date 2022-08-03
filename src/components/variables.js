@@ -38,11 +38,19 @@ export const headerMenu = [
   },
   {
     name: "학사정보",
-    address: "/",
+    address: "/bachelor/curriculum",
     detail: [
-      { name: "교육과정", address: "/" },
-      { name: "커리큘럼 구성도", address: "/" },
-      { name: "학·석사 연계과정", address: "/" },
+      { name: "교육과정", eng: "curriculum", address: "/bachelor/curriculum" },
+      {
+        name: "교육과정 트랙 구성도",
+        eng: "track",
+        address: "/bachelor/track",
+      },
+      {
+        name: "학·석사 연계과정",
+        eng: "connect",
+        address: "/bachelor/connect",
+      },
     ],
   },
   {
@@ -131,14 +139,14 @@ export const simpleBodyContent = [
   },
   {
     name: "교육과정",
-    address: "/",
+    address: "/bachelor/curriculum",
     icon: <AiOutlinePartition />,
   },
 ];
 export const detailBodyContent = [
   {
     name: "학생 활동",
-    address: "/",
+    address: "/student/club?page=1",
     icon: <SiStarship />,
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
@@ -173,7 +181,7 @@ export const detailBodyContent = [
   },
   {
     name: "교육과정",
-    address: "/",
+    address: "/bachelor/curriculum",
     icon: <AiOutlinePartition />,
     detail: [
       { name: "작품전시게시판", address: "/" },
