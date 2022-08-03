@@ -1,0 +1,58 @@
+.council {
+  height: calc(100vh + 700px);
+}
+
+.council-info,
+.council-notice {
+  padding: 10px;
+}
+
+.council-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.council-img {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.council-map-img,
+.council-roll-img {
+  width: 40vw;
+  min-width: 500px;
+}
+
+.council-calendar {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.council-calendar-card {
+  min-width: 300px;
+  width: 50%;
+  max-width: 500px;
+}
+
+.council-calendar-card .dayContainer {
+  margin-bottom: 30px;
+}
+
+.council-calendar-event {
+  display: flex;
+  flex-direction: column;
+}
+
+.council-event {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 2px solid rgb(var(--basic-blue));
+}
+
+.council-event .council-event-name {
+  font-size: 17px;
+  font-weight: 600;
+}

@@ -73,7 +73,7 @@ const StyledSubTitle = styled.div`
   .subTitle {
     font-size: 16px;
     text-decoration: none;
-    color: #727272;
+    color: #adadad;
   }
   .subTitle::after {
     content: "|";
