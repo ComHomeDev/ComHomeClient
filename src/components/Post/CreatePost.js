@@ -8,6 +8,8 @@ const example =
 function CreatePost({ setMode }) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState(example);
+  const [imgFile, setImgFile] = useState(null);
+  const [files, setFiles] = useState([]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -16,6 +18,14 @@ function CreatePost({ setMode }) {
     setDesc(e.target.value);
   };
 
+  const onFileChange = (form, event) => {
+    if (form === "img") {
+      setImgFile(event.target.files);
+    } else {
+      setFiles(files.concat(event.target.files));
+    }
+  };
+  console.log(files);
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(title, desc);
@@ -51,6 +61,18 @@ function CreatePost({ setMode }) {
           />
         </div>
         <div className="button-group">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => onFileChange("img", e)}
+          />
+          <input
+            type="file"
+            name="filefield"
+            multiple
+            onChange={(e) => onFileChange("file", e)}
+            accept=".pdf, text/plain, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .hwp, .word"
+          />
           <button
             className="form-button"
             type="cancel"

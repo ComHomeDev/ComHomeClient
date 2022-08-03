@@ -190,33 +190,26 @@ function Home() {
 
         {detailBodyContent.map((data) => {
           return (
-            <Card
-              className={`card-item ${
-                flip ? "flip-vertical-right" : "flip-vertical-left"
-              }`}
-              key={data.name}
-              hover={true}
-              height={"205px"}
-            >
-              {flip ? (
-                <div
-                  className={`detail-card`}
-                  onMouseEnter={() => setFlip(true)}
-                  onMouseLeave={() => setFlip(false)}
-                >
-                  <div className="detail-card-name">{data.name}</div>
-                  <div className="detail-card-icon">{data.icon}</div>
-                </div>
-              ) : (
-                <div
-                  className={`detail-card`}
-                  onMouseEnter={() => setFlip(true)}
-                  onMouseLeave={() => setFlip(false)}
-                >
-                  <div className="detail-card-name">우와..... </div>
-                </div>
-              )}
-            </Card>
+            <div>
+              <Card
+                // className={`card-item ${flip ? "flip-vertical-right" : ""}`}
+                className={`card-item`}
+                key={data.name}
+                hover={true}
+                height={"205px"}
+              >
+                {
+                  <div
+                    className={`detail-card`}
+                    // onMouseEnter={() => setFlip(true)}
+                    // onMouseLeave={() => setFlip(false)}
+                  >
+                    <div className="detail-card-name">{data.name}</div>
+                    <div className="detail-card-icon">{data.icon}</div>
+                  </div>
+                }
+              </Card>
+            </div>
           );
         })}
       </div>

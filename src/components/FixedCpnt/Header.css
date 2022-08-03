@@ -2,7 +2,7 @@
   position: absolute;
 
   width: calc(100% - 20px);
-  height: 70px;
+  height: 60px;
   margin-bottom: 20px;
   box-shadow: 0px 4px 4px rgba(137, 163, 216, 0.58);
   border-radius: 10px;
@@ -29,17 +29,17 @@
   flex-direction: row;
   align-items: center;
   font-weight: 600;
-  font-size: 38px;
+  font-size: 24px;
   margin-left: 2vw;
-  height: 70px;
+  height: 60px;
   text-decoration: none;
   color: black;
 }
 
 .headerDesc {
   font-weight: 400;
-  font-size: 15px;
-  line-height: 13px;
+  font-size: 9px;
+  line-height: 10px;
   margin-left: 1vw;
   padding-top: 0.5vw;
   width: max-content;
@@ -52,7 +52,7 @@
   flex-direction: row;
   align-items: center;
 
-  height: 70px;
+  height: 60px;
 
   margin-left: auto;
 
@@ -70,7 +70,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 70px;
+  height: 60px;
   font-size: 17px;
   font-weight: 600;
 
@@ -101,7 +101,7 @@
   font-size: 15px;
   line-height: 2em;
   text-align: center;
-  padding-top: 70px;
+  padding-top: 60px;
 
   animation: fadein 1s;
   -moz-animation: fadein 1s; /* Firefox */
@@ -133,7 +133,7 @@
 .mobileMenuIcon {
   position: absolute;
   right: 8px;
-  top: 13px;
+  top: 7px;
   width: 50px;
   height: 50px;
   color: black;
@@ -149,7 +149,7 @@
   text-align: center;
 }
 .headerMenu.mobile .headerButtonWrap:nth-child(2) {
-  margin-top: 70px;
+  margin-top: 60px;
 }
 
 .headerMenu.mobile .headerLink .headerButton::after {

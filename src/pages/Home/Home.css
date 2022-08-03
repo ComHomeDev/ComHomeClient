@@ -148,12 +148,9 @@
   animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
     both;
 }
-.flip-vertical-right .detail-card {
-  -webkit-animation: flip-vertical-right 0.4s
-    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    both;
-}
+/* .flip-vertical-right .detail-card {
+  transform: rotateY(180deg);
+} */
 
 .flip-vertical-left {
   -webkit-animation: flip-vertical-left 0.4s
