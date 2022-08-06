@@ -8,6 +8,7 @@ import StudentCouncil from "./pages/StudentCouncil/StudentCouncil";
 import StudentActivity from "./pages/StudentActivity/StudentActivity";
 import Community from "./pages/Community/Community";
 import CreatePost from "./components/Post/CreatePost";
+import DepartInfo from "./pages/DepartInfo/DepartInfo";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/community/:sub" element={<Community />} />
       <Route path="/community/:sub/:post" element={<Community />} />
       <Route path="/:menu/new" element={<CreatePost />} />
+      <Route path="/departInfo/:sub" element={<DepartInfo/>}/>
     </Routes>
   );
 }
