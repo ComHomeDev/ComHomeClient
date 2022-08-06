@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Post.css";
+import axios from "axios";
 
 const example =
   "컴퓨터공학과 수정이들에게 유익한 내용을 공유해주세요!\n\n--------------------------------------------------\n\n1. 활동한 대외활동 이름\n\n\n2. 활동 기간\n\n\n3. 활동 내용";
@@ -7,6 +8,8 @@ const example =
 function CreatePost({ setMode }) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState(example);
+  const [imgFile, setImgFile] = useState(null);
+  const [files, setFiles] = useState([]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -15,9 +18,21 @@ function CreatePost({ setMode }) {
     setDesc(e.target.value);
   };
 
+  const onFileChange = (form, event) => {
+    if (form === "img") {
+      setImgFile(event.target.files);
+    } else {
+      setFiles(files.concat(event.target.files));
+    }
+  };
+  console.log(files);
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(title, desc);
+    axios.post("http://192.168.10.101:5000/job_review", {
+      title: title,
+      desc: desc,
+    });
     setMode("read");
   };
   return (
@@ -46,6 +61,18 @@ function CreatePost({ setMode }) {
           />
         </div>
         <div className="button-group">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => onFileChange("img", e)}
+          />
+          <input
+            type="file"
+            name="filefield"
+            multiple
+            onChange={(e) => onFileChange("file", e)}
+            accept=".pdf, text/plain, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .hwp, .word"
+          />
           <button
             className="form-button"
             type="cancel"
