@@ -19,11 +19,19 @@ import { ko } from "date-fns/locale";
 
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import "./Calendar.css";
+
+import { getPostList } from "../../api/main";
+
 function Calendar({ showEvent, postEvent }) {
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
   const [event, setEvent] = useState([]);
+  const [eventArr, setEventArr] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     let tempEvent = getEvent(selectedDate);
@@ -32,6 +40,14 @@ function Calendar({ showEvent, postEvent }) {
     }
     setEvent(tempEvent);
   }, [selectedDate]);
+
+  console.log(event);
+
+  const fetchData = async () => {
+    const response = await getPostList("student_council_notice");
+    console.log(response.data);
+    setEventArr(response.data.data_det);
+  };
 
   const getHeader = () => {
     return (
@@ -81,8 +97,8 @@ function Calendar({ showEvent, postEvent }) {
 
   const getEvent = (date) => {
     const event = eventArr.filter((day) => {
-      let sDate = parseISO(day.startDate);
-      let eDate = parseISO(day.endDate);
+      let sDate = parseISO(day.start_date);
+      let eDate = parseISO(day.end_date);
 
       return (
         isSameDay(sDate, date) ||
@@ -125,7 +141,7 @@ function Calendar({ showEvent, postEvent }) {
           <div className="events">
             {getEvent(cloneDate).map((e, index) => {
               return (
-                <div className={`event ${e.charge}`} key={e.name + cloneDate}>
+                <div className={`event ${e.charge}`} key={e.name + e.no}>
                   ⦁
                 </div>
               );
@@ -167,10 +183,10 @@ function Calendar({ showEvent, postEvent }) {
         <div className="dayEvents">
           {event.map((event) => (
             <div
-              key={event.name + event.startDate}
-              className={`eventDesc event ${event.charge}`}
+              key={event.title + event.start_date}
+              className={`eventDesc event ${event.idUser}`}
             >
-              ⦁ &nbsp;{event.name}
+              ⦁ &nbsp;{event.title}
             </div>
           ))}
 

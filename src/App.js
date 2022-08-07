@@ -20,6 +20,7 @@ function App() {
       <Route path="/notice/:sub/:post" element={<Notice />} />
       <Route path="/bachelor/:sub" element={<Bachelor />} />
       <Route path="/studentcouncil/:sub" element={<StudentCouncil />} />
+      <Route path="/studentcouncil/:sub/:post" element={<StudentCouncil />} />
       <Route path="/student/:sub" element={<StudentActivity />} />
       <Route path="/community/:sub" element={<Community />} />
       <Route path="/community/:sub/:post" element={<Community />} />

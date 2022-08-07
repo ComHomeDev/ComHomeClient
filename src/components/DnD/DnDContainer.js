@@ -41,7 +41,6 @@ export const DnDContainer = memo(function DnDContainer() {
   const [, drop] = useDrop(() => ({ accept: ItemTypes.CARD }));
   return (
     <div ref={drop} style={style}>
-      &nbsp;&nbsp;
       {cards.map((card) => (
         <Block
           key={card.id}
@@ -49,7 +48,7 @@ export const DnDContainer = memo(function DnDContainer() {
           item={card}
           moveCard={moveCard}
           findCard={findCard}
-        />
+        ></Block>
       ))}
     </div>
   );
