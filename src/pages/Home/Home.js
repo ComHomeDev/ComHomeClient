@@ -124,13 +124,11 @@ function Home() {
         >
           {userSubScription ? "알림 끄기" : "알림 켜기"}
         </ButtonStyle> */}
-        {/* <button
-          onClick={() =>
-            window.open("http://192.168.10.101:5000/api/auth/login", "_blank")
-          }
-        >
+
+        <a href="http://xn--cf7b27k.xn--yq5b.xn--3e0b707e:5000/api/auth/login">
           로그인
-        </button> */}
+        </a>
+
         <Card className="card-item" hover={false} height={"100px"}>
           프로필
         </Card>
@@ -144,19 +142,18 @@ function Home() {
           공지사항
         </Card>
 
-        <Card
+        {/* <Card
           className="card-item"
           hover={false}
           width={"255px"}
           height={"245px"}
         >
           <div className="right-card">
-            {/* <div className="right-card-name">달력</div> */}
             <div className="right-card-content">
               <Calendar />
             </div>
           </div>
-        </Card>
+        </Card> */}
 
         {simpleBodyContent.map((data) => {
           return (

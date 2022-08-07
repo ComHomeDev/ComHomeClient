@@ -13,9 +13,9 @@ import CreatePost from "./components/Post/CreatePost";
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
       <Route exact path="/" element={<Home />} />
       <Route path="/2" element={<Home2 />} />
+      <Route path="/userid/:userid" element={<Login />} />
       <Route path="/notice/:sub" element={<Notice />} />
       <Route path="/notice/:sub/:post" element={<Notice />} />
       <Route path="/bachelor/:sub" element={<Bachelor />} />

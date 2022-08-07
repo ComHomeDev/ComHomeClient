@@ -1,7 +1,15 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 function Login() {
-  return <div>Login</div>;
+  let { userid } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.localStorage.setItem("userId", userid);
+    navigate("/", { replace: true });
+  }, [userid, navigate]);
+
+  return <div>로그인중....</div>;
 }
 
 export default Login;

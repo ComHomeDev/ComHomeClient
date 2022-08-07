@@ -16,9 +16,21 @@ export const createPost = (category, data) => {
   });
 };
 
-export const readPost = (category, no) => {
+export const createCouncilPost = (category, data) => {
   request({
-    url: `/${category}_detail/${no}`,
+    method: "post",
+    url: `/${category}/post`,
+    data: {
+      title: data.title,
+      content: data.content,
+      files: { img: null, file: null },
+    },
+  });
+};
+
+export const readPost = (category, no) => {
+  return request({
+    url: `/${category}_detail/${no.toString()}`,
   });
 };
 
