@@ -113,7 +113,9 @@ export function Post({ id, category }) {
     const response = await readPost(category, id);
     console.log(response.data);
     setData(response.data.data_det);
-    setFiles(response.data.file);
+    if (response.data.file !== undefined) {
+      setFiles(response.data.file);
+    }
   };
 
   return (
@@ -141,26 +143,27 @@ export function Post({ id, category }) {
           <div>&nbsp;첨부파일이 없습니다.</div>
         ) : (
           <div>
-            {files.map((file) => {
-              return (
-                <div
-                  className="article-attach-file"
-                  onClick={() => {
-                    fetchFileData(file.file_infoN.substr(8));
-                  }}
-                >
-                  <IoIosAttach
-                    size={"1.5em"}
-                    style={{
-                      transform: "rotate(45deg)",
-                      marginLeft: "5px",
-                      marginTop: "5px",
+            {files.length !== 0 &&
+              files.map((file) => {
+                return (
+                  <div
+                    className="article-attach-file"
+                    onClick={() => {
+                      fetchFileData(file.file_infoN.substr(8));
                     }}
-                  />
-                  {file.file_originN}
-                </div>
-              );
-            })}
+                  >
+                    <IoIosAttach
+                      size={"1.5em"}
+                      style={{
+                        transform: "rotate(45deg)",
+                        marginLeft: "5px",
+                        marginTop: "5px",
+                      }}
+                    />
+                    {file.file_originN}
+                  </div>
+                );
+              })}
           </div>
         )}
       </div>

@@ -14,6 +14,7 @@ import { HrStyle } from "../../components/Post/ReadPost";
 import Calendar from "../../components/Calendar/Calendar";
 import ReadPost, { Post } from "../../components/Post/ReadPost";
 import { getPostList } from "../../api/main";
+import CreatePost from "../../components/Post/CreatePost";
 function StudentCouncil() {
   const [mode, setMode] = useState("read");
   const [event, setEvent] = useState([]);
@@ -23,6 +24,7 @@ function StudentCouncil() {
   const offset = (page - 1) * limit;
 
   let { sub, post } = useParams();
+  console.log(mode);
 
   useEffect(() => {
     if (post !== undefined) {
@@ -110,9 +112,15 @@ function StudentCouncil() {
         break;
       case "student_council_notice":
         if (mode === "read") {
-          content = <ReadPost category={sub} setMode={"read"} />;
+          content = (
+            <ReadPost category={sub} setMode={(mode) => setMode(mode)} />
+          );
         } else if (mode === "post") {
           content = <Post id={post} category={sub} />;
+        } else if (mode === "create") {
+          content = (
+            <CreatePost category={sub} setMode={(mode) => setMode(mode)} />
+          );
         }
 
         break;
