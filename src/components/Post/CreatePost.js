@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./Post.css";
-import axios from "axios";
+import { updatePost } from "../../api/main";
 
 const example =
   "컴퓨터공학과 수정이들에게 유익한 내용을 공유해주세요!\n\n--------------------------------------------------\n\n1. 활동한 대외활동 이름\n\n\n2. 활동 기간\n\n\n3. 활동 내용";
 
-function CreatePost({ setMode }) {
+function CreatePost({ setMode, category }) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState(example);
   const [imgFile, setImgFile] = useState(null);
@@ -28,11 +28,9 @@ function CreatePost({ setMode }) {
   console.log(files);
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(title, desc);
-    axios.post("http://192.168.10.101:5000/job_review", {
-      title: title,
-      desc: desc,
-    });
+    const data = { title: title, content: desc };
+    console.log(title, data);
+    updatePost(category, data);
     setMode("read");
   };
   return (
