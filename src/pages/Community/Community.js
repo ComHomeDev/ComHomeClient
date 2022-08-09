@@ -40,13 +40,15 @@ function Community() {
     let content = "";
     switch (mode) {
       case "post":
-        content = <Post id={post} />;
+        content = <Post id={post} category={sub} />;
         break;
       case "read":
-        content = <ReadPost setMode={setParams} category={sub} />;
+        content = <ReadPost setMode={(mode) => setMode(mode)} category={sub} />;
         break;
       case "create":
-        content = <CreatePost setMode={setParams} />;
+        content = (
+          <CreatePost setMode={(mode) => setMode(mode)} category={sub} />
+        );
         break;
       case "update":
         break;
@@ -59,10 +61,10 @@ function Community() {
   };
 
   return (
-    <div className="community-container">
+    <div className="community-container page-container">
       <Header />
       <FastMenu />
-      <div className="community-body">
+      <div className="community-body page-body">
         <SubHeader title={"커뮤니티"} index={5} sub={sub} />
         {getContent(mode)}
       </div>

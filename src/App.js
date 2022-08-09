@@ -13,13 +13,14 @@ import CreatePost from "./components/Post/CreatePost";
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
       <Route exact path="/" element={<Home />} />
       <Route path="/2" element={<Home2 />} />
+      <Route path="/userid/:userid" element={<Login />} />
       <Route path="/notice/:sub" element={<Notice />} />
       <Route path="/notice/:sub/:post" element={<Notice />} />
       <Route path="/bachelor/:sub" element={<Bachelor />} />
       <Route path="/studentcouncil/:sub" element={<StudentCouncil />} />
+      <Route path="/studentcouncil/:sub/:post" element={<StudentCouncil />} />
       <Route path="/student/:sub" element={<StudentActivity />} />
       <Route path="/community/:sub" element={<Community />} />
       <Route path="/community/:sub/:post" element={<Community />} />

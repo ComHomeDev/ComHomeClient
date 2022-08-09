@@ -13,7 +13,8 @@ import Pagination from "../../components/Pagination/Pagination";
 import { HrStyle } from "../../components/Post/ReadPost";
 import Calendar from "../../components/Calendar/Calendar";
 import ReadPost, { Post } from "../../components/Post/ReadPost";
-
+import { getPostList } from "../../api/main";
+import CreatePost from "../../components/Post/CreatePost";
 function StudentCouncil() {
   const [mode, setMode] = useState("read");
   const [event, setEvent] = useState([]);
@@ -22,14 +23,23 @@ function StudentCouncil() {
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
-  let { sub } = useParams();
+  let { sub, post } = useParams();
+  console.log(mode);
+
+  useEffect(() => {
+    if (post !== undefined) {
+      setMode("post");
+    } else {
+      setMode("read");
+    }
+  }, [post]);
 
   const getEvent = (event) => {
     setEvent(event);
   };
 
   const getContent = (category) => {
-    let content = {};
+    let content = "";
     switch (category) {
       case "intro":
         content = (
@@ -83,16 +93,16 @@ function StudentCouncil() {
               {event.map((data) => {
                 return (
                   <div className="council-event">
-                    <div className="council-event-name">{data.name}</div>
-                    <div className="council-event-desc">{data.desc}</div>
+                    <div className="council-event-name">{data.title}</div>
+                    <div className="council-event-desc">{data.content}</div>
                     <div className="council-event-date">
-                      시작 날짜 : {data.startDate}
+                      시작 날짜 : {data.start_date}
                     </div>
                     <div className="council-event-date">
-                      마감 날짜 : {data.endDate}
+                      마감 날짜 : {data.end_date}
                     </div>
 
-                    <div className="council-event-link">링크 : {data.link}</div>
+                    {/* <div className="council-event-link">링크 : {data.link}</div> */}
                   </div>
                 );
               })}
@@ -100,8 +110,19 @@ function StudentCouncil() {
           </div>
         );
         break;
-      case "stnotice":
-        content = <ReadPost category={sub} />;
+      case "student_council_notice":
+        if (mode === "read") {
+          content = (
+            <ReadPost category={sub} setMode={(mode) => setMode(mode)} />
+          );
+        } else if (mode === "post") {
+          content = <Post id={post} category={sub} />;
+        } else if (mode === "create") {
+          content = (
+            <CreatePost category={sub} setMode={(mode) => setMode(mode)} />
+          );
+        }
+
         break;
       default:
         break;

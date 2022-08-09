@@ -4,9 +4,11 @@ import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
 import { Link } from "react-router-dom";
 import { IoIosAttach } from "react-icons/io";
-import Card from "../Card";
+
 import "./Post.css";
+import Card from "../Card";
 import Pagination from "../Pagination/Pagination";
+import { getPostList, readPost, getFiles } from "../../api/main";
 
 function ReadPost({ setMode, category }) {
   const [posts, setPosts] = useState([]);
@@ -16,11 +18,8 @@ function ReadPost({ setMode, category }) {
   let tmp = "review";
   console.log(category);
   const fetchData = async () => {
-    const response = await axios.get(
-      `http://192.168.10.104:5000/api/${category}_detail`
-    );
+    const response = await getPostList(category);
     console.log(response.data);
-    // console.log(response.data.data_det);
     setPosts(response.data.data_det);
   };
   console.log(posts);
@@ -106,19 +105,17 @@ export function Post({ id, category }) {
 
   const fetchFileData = async (filename) => {
     console.log(filename);
-    const response = await axios.get(
-      `http://192.168.10.104:5000/api/download/${filename}`
-    );
+    const response = await getFiles(filename);
     console.log(response);
   };
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `http://192.168.10.104:5000/api/${category}_detail/${id}`
-    );
+    const response = await readPost(category, id);
     console.log(response.data);
     setData(response.data.data_det);
-    setFiles(response.data.file);
+    if (response.data.file !== undefined) {
+      setFiles(response.data.file);
+    }
   };
 
   return (
@@ -133,6 +130,10 @@ export function Post({ id, category }) {
             수정일 {format(parseISO(data.edited_date), "yyyy-MM-dd")}
           </div>
           <div className="article-info-text">조회수 {data.views}</div>
+          <div className="article-edit-buttons">
+            <button className="article-edit">수정하기</button>
+            <button className="article-delete">삭제하기</button>
+          </div>
         </div>
       </div>
       <hr style={HrStyle} />
@@ -142,26 +143,27 @@ export function Post({ id, category }) {
           <div>&nbsp;첨부파일이 없습니다.</div>
         ) : (
           <div>
-            {files.map((file) => {
-              return (
-                <div
-                  className="article-attach-file"
-                  onClick={() => {
-                    fetchFileData(file.file_infoN.substr(8));
-                  }}
-                >
-                  <IoIosAttach
-                    size={"1.5em"}
-                    style={{
-                      transform: "rotate(45deg)",
-                      marginLeft: "5px",
-                      marginTop: "5px",
+            {files.length !== 0 &&
+              files.map((file) => {
+                return (
+                  <div
+                    className="article-attach-file"
+                    onClick={() => {
+                      fetchFileData(file.file_infoN.substr(8));
                     }}
-                  />
-                  {file.file_originN}
-                </div>
-              );
-            })}
+                  >
+                    <IoIosAttach
+                      size={"1.5em"}
+                      style={{
+                        transform: "rotate(45deg)",
+                        marginLeft: "5px",
+                        marginTop: "5px",
+                      }}
+                    />
+                    {file.file_originN}
+                  </div>
+                );
+              })}
           </div>
         )}
       </div>
