@@ -6,6 +6,14 @@ import { FaRegObjectGroup } from "react-icons/fa";
 
 export const fastMenu = [
   {
+    name: "교수 소개",
+    address: "/",
+  },
+  {
+    name: "교육과정",
+    address: "/bachelor/curriculum",
+  },
+  {
     name: "공식 홈페이지",
     address: "https://www.sungshin.ac.kr/sites/main_kor/main.jsp",
   },

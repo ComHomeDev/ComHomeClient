@@ -7,6 +7,8 @@
   flex-direction: row;
   align-items: center;
   position: absolute;
+  z-index: 50;
+  transition: 0.3s;
 }
 .menu-container-test.toggle {
   height: 200px;
