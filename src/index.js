@@ -9,9 +9,23 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/service-worker.js")
     .then((registration) => {
-      console.log("Worker registration successful");
-    })
-    .catch((e) => console.error());
+      // 업데이트 발견
+      registration.addEventListener("updatefound", () => {
+        // 설치 중인 새로운 서비스 워커
+        const newServiceWorker = registration.installing;
+        console.log("PAPER: New update found!");
+
+        newServiceWorker.addEventListener("statechange", (event) => {
+          const state = event.target.state;
+          console.log("ComHome: " + state);
+          if (state === "installed") {
+            // window.alert(
+            //   "새로운 업데이트가 발견되었습니다!\n앱을 재시작하면 업데이트가 적용됩니다!"
+            // );
+          }
+        });
+      });
+    });
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

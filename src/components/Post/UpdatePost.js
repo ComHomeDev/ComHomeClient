@@ -1,21 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Post.css";
-import { createCouncilPost, createPost } from "../../api/main";
+import { updatePost, createPost } from "../../api/main";
 
-const example =
-  "컴퓨터공학과 수정이들에게 유익한 내용을 공유해주세요!\n\n--------------------------------------------------\n\n1. 활동한 대외활동 이름\n\n\n2. 활동 기간\n\n\n3. 활동 내용";
+function UpdatePost({ setMode, category, data }) {
+  const navigate = useNavigate();
+  const location = window.location.pathname.split("/");
+  console.log(data);
 
-function UpdatePost({ setMode, category }) {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState(example);
+  const { no, title, content } = data.data_det;
+  const [editTitle, setEditTitle] = useState(title);
+  const [editDesc, setEditDesc] = useState(content);
   const [imgFile, setImgFile] = useState(null);
   const [files, setFiles] = useState([]);
 
   const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+    setEditTitle(e.target.value);
   };
   const handleDescChange = (e) => {
-    setDesc(e.target.value);
+    setEditDesc(e.target.value);
   };
 
   const onFileChange = (form, event) => {
@@ -28,18 +31,18 @@ function UpdatePost({ setMode, category }) {
   console.log(files);
   const onSubmit = (e) => {
     e.preventDefault();
-    const data = { title: title, content: desc };
-    console.log(title, data);
+    const data = { no: no, title: editTitle, content: editDesc };
+
     switch (category) {
       case "student_council_notice":
-        createCouncilPost(category, data);
+        updatePost(category, data);
         break;
       default:
-        createPost(category, data);
+        // updatePost(category, data);
         break;
     }
 
-    setMode("read");
+    setMode("post");
   };
   return (
     <div className="create-post-container">
@@ -51,7 +54,7 @@ function UpdatePost({ setMode, category }) {
             type="text"
             name="title"
             placeholder="[동아리] 멋쟁이 사자처럼 후기"
-            value={title}
+            value={editTitle}
             onChange={handleTitleChange}
           />
         </div>
@@ -61,7 +64,7 @@ function UpdatePost({ setMode, category }) {
             className="create-desc"
             type="text"
             name="desc"
-            value={desc}
+            value={editDesc}
             placeholder="컴퓨터공학과 수정이들에게 유익한 내용을 공유해주세요!"
             onChange={handleDescChange}
           />
@@ -86,6 +89,9 @@ function UpdatePost({ setMode, category }) {
               if (
                 window.confirm("작성하던 내용이 삭제됩니다. 취소하시겠습니까?")
               ) {
+                navigate(`../${location[1]}/${location[2]}/${no}`, {
+                  replace: true,
+                });
                 setMode("read");
               } else {
                 e.preventDefault();

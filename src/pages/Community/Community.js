@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Header from "../../components/FixedCpnt/Header";
 import FastMenu from "../../components/FixedCpnt/FastMenu";
 import "./Community.css";
@@ -11,7 +11,7 @@ import ReadPost, { Post } from "../../components/Post/ReadPost";
 
 function Community() {
   const [mode, setMode] = useState("read");
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   let { sub, post } = useParams();
 
   useEffect(() => {
