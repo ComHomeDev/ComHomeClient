@@ -10,6 +10,8 @@ function CreatePost({ setMode, category }) {
   const [desc, setDesc] = useState(example);
   const [imgFile, setImgFile] = useState(null);
   const [files, setFiles] = useState([]);
+  //const userId = window.localStorage.getItem("userID");
+  const userId = "111865899156782818991";
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -28,7 +30,7 @@ function CreatePost({ setMode, category }) {
   console.log(files);
   const onSubmit = (e) => {
     e.preventDefault();
-    const data = { title: title, content: desc };
+    const data = { id: userId, title: title, content: desc };
     console.log(title, data);
     switch (category) {
       case "student_council_notice":
