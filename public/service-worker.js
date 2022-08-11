@@ -93,6 +93,9 @@ self.addEventListener("push", (event) => {
   const options = {
     body: data.message,
     requireInteraction: true,
+    icon: "/logo_simple.png",
+    badge: "/logo_simple.png",
+    tag: "simple-noti",
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
