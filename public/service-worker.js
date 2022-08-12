@@ -16,7 +16,6 @@ const CACHE_LIST = IMMUTABLE_APPSHELL.concat(MUTABLE_APPSHELL);
 const DYNAMIC_PATTERN = /(\.eot$|\.ttf$|\.woff$|\/icons)/;
 
 self.addEventListener("install", (event) => {
-  console.log("Service worker - install", VERSION);
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(CACHE_LIST);
@@ -25,8 +24,6 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  console.log("Service worker - activate", VERSION);
-
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
@@ -41,8 +38,6 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  console.log("Service worker -fetch", event.request.url);
-
   const url = new URL(event.request.url);
   if (IMMUTABLE_APPSHELL.includes(url.pathname)) {
     event.respondWith(
@@ -88,7 +83,6 @@ self.addEventListener("fetch", (event) => {
 
 self.addEventListener("push", (event) => {
   const data = event.data.json();
-  console.log("Service Worker - push : ", data);
   const title = "ComHome";
   const options = {
     body: data.message,

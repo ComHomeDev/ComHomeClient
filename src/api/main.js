@@ -1,7 +1,6 @@
 import request from "./core";
 
 export const getPostList = (category) => {
-  console.log(category);
   return request({ url: `/${category}_list` });
 };
 
@@ -75,6 +74,18 @@ export const postSubscription = (user, subscription) => {
     data: {
       iduser: user,
       subscription,
+    },
+  });
+};
+
+export const postBoardSubscription = (user, board, isSubscribe) => {
+  request({
+    method: "post",
+    url: `/pushSubscription`,
+    data: {
+      iduser: user,
+      board: board,
+      isSubscribe: isSubscribe,
     },
   });
 };

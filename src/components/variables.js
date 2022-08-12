@@ -46,6 +46,7 @@ export const headerMenu = [
   },
   {
     name: "학사정보",
+    eng: "bachelor",
     address: "/bachelor/curriculum",
     detail: [
       { name: "교육과정", eng: "curriculum", address: "/bachelor/curriculum" },
@@ -63,6 +64,7 @@ export const headerMenu = [
   },
   {
     name: "공지사항",
+    eng: "notice",
     address: "/notice/csnotice?page=1",
     detail: [
       {
@@ -84,6 +86,7 @@ export const headerMenu = [
   },
   {
     name: "학생회",
+    eng: "studentcouncil",
     address: "/studentcouncil/intro",
     detail: [
       { name: "학생회 소개", eng: "intro", address: "/studentcouncil/intro" },
@@ -101,6 +104,7 @@ export const headerMenu = [
   },
   {
     name: "학생 활동",
+    eng: "student",
     address: "/student/club?page=1",
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
@@ -113,6 +117,7 @@ export const headerMenu = [
   },
   {
     name: "커뮤니티",
+    eng: "community",
     address: "/community/extra_review?page=1",
     detail: [
       {

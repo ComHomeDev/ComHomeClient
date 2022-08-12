@@ -9,21 +9,23 @@ function SubHeader({ title, index, sub, search }) {
     <>
       <StyledSubTitle>
         <div className="page-title">{title}</div>
+        <div className="page-details">
+          {headerMenu[index].detail.map((data) => {
+            return (
+              <Link
+                key={data.eng + data.name}
+                to={data.address}
+                className={`subTitle student-sub-title ${
+                  data.eng === sub ? "selected" : ""
+                }`}
+                // onClick={throwMessage}
+              >
+                {data.name}
+              </Link>
+            );
+          })}
+        </div>
 
-        {headerMenu[index].detail.map((data) => {
-          return (
-            <Link
-              key={data.eng + data.name}
-              to={data.address}
-              className={`subTitle student-sub-title ${
-                data.eng === sub ? "selected" : ""
-              }`}
-              // onClick={throwMessage}
-            >
-              {data.name}
-            </Link>
-          );
-        })}
         {search && (
           <form
             className="sub-search-form"
@@ -40,14 +42,6 @@ function SubHeader({ title, index, sub, search }) {
           </form>
         )}
       </StyledSubTitle>
-      <hr
-        style={{
-          height: "2px",
-          backgroundColor: "#b0c4eb",
-          border: "none",
-          marginBottom: "10px",
-        }}
-      />
     </>
   );
 }
@@ -59,19 +53,24 @@ SubHeader.defaultProps = {
 export default SubHeader;
 
 const StyledSubTitle = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
+  position: absolute;
+  top: 80px;
+  display: grid;
   width: 100%;
+  grid-template-rows: 30px;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-gap: 2vw;
+  align-items: center;
+  height: 30px;
+  word-break: keep-all;
 
   .page-title {
     font-size: 18px;
     font-weight: 600;
-    padding-left: 20px;
+    padding-left: 3vw;
   }
   .subTitle {
-    font-size: 16px;
+    font-size: 1rem;
     text-decoration: none;
     color: #adadad;
   }
@@ -80,10 +79,6 @@ const StyledSubTitle = styled.div`
     margin: 0 10px;
     color: black;
     font-weight: 400;
-  }
-
-  .subTitle:nth-child(2) {
-    margin-left: 30px;
   }
 
   .subTitle:last-child::after {
@@ -125,7 +120,6 @@ const StyledSubTitle = styled.div`
     padding-top: 3px;
     cursor: pointer;
   }
-
   @media (max-width: 630px) {
     .subTitle {
       font-size: 15px;
@@ -134,70 +128,22 @@ const StyledSubTitle = styled.div`
       margin-left: 10px;
     }
   }
-`;
 
-export const StyledTitle = styled.div`
-  position: relative;
-  width: 200px;
-  height: 85px;
-
-  .page-title {
-    width: max-content;
-    position: absolute;
-    top: 25px;
-    font-size: ${(props) => (props.fontSize ? props.fontSize : "38px")};
-    text-align: center;
-    font-weight: 600;
-    z-index: 10;
-    right: 30px;
-  }
-  .roof {
-    position: absolute;
-    right: 1px;
-    top: 10px;
-    z-index: 10;
-  }
-
-  .roof-line {
-    position: absolute;
-    top: 0;
-    width: 40px;
-    height: 0px;
-    background-color: black;
-    border: 3px solid #000000;
-    border-radius: 6px;
-  }
-
-  .roof-line:nth-child(1) {
-    right: 55px;
-    transform: rotate(140deg);
-  }
-
-  .roof-line:nth-child(2) {
-    right: 24px;
-    transform: rotate(40deg);
-  }
-
-  .roof-shadow {
-    position: absolute;
-    top: 3px;
-    right: 4px;
-    background: #aec9ff;
-    box-shadow: inset 0px -25px 30px white;
-    clip-path: polygon(0 100%, 35% 32%, 59% 0, 80% 28%, 100% 100%);
-    width: 145px;
-    height: 79px;
-  }
-
-  @media (max-width: 630px) {
-    width: 120px;
-    .page-title {
-      font-size: 24px;
-      right: 0;
+  @media (max-width: 700px) {
+    grid-template-rows: 30px 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 2vw;
+    .page-details {
+      order: 3;
+      grid-column: span 2;
+      width: calc(100% - 4vw);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin: 0 2vw;
     }
-    .roof,
-    .roof-shadow {
-      display: none;
+    .subTitle::after {
+      content: "";
     }
   }
 `;
