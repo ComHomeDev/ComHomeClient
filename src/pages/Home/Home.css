@@ -1,199 +1,270 @@
-.home-container {
-  position: relative;
-  margin: 20px 20px 0 20px;
-  width: calc(100vw - 40px);
-  /* height: calc(100vh); */
-}
-
-.home-body {
-  top: 90px;
-  left: -10px; /*전체 마진 20px에서 헤더까지 맞춤*/
-  width: 100%;
+.main-content-test {
+  min-height: 100vh;
+  width: 1200px;
+  height: 630px;
+  padding-top: 10px;
   display: grid;
-  justify-content: center;
-  margin-bottom: 30px;
-  align-content: space-evenly;
-  padding-bottom: 20px;
+  grid-template-rows: 200px 200px 230px;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 10px;
 }
 
-.home-body .simple-card {
+.block:last-child {
+  text-align: end;
+}
+.block:nth-child(1),
+.block:last-child {
+  padding: 20px 14px;
+}
+
+.block:nth-child(2) {
+  grid-column-start: span 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+.block:nth-child(4) {
+  grid-column-start: span 2;
+  grid-column-end: 3;
+}
+
+/*공지사항 한눈에*/
+.main-info-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+/*빠른 메뉴*/
+.main-fast-block {
+  display: grid;
   width: 100%;
   height: 100%;
-
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(2, 80px);
+  gap: 10px;
+}
+.fast-block {
+  font-size: 0.75rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-}
-
-.simple-card-icon svg,
-.detail-card-icon svg {
+  justify-content: center;
+  background-color: #eaeaea;
   width: 80px;
   height: 80px;
-  fill: #7593c8;
+  border-radius: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
-.simple-card-name,
-.detail-card-name {
-  font-size: 20px;
-  word-break: keep-all;
+.fast-block:hover {
+  color: rgb(var(--blue));
 }
 
-.home-body .detail-card {
+.menu-card-container {
   position: relative;
   width: 100%;
   height: 100%;
+
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
 }
-.detail-card-icon {
+
+/*공지사항 스크롤 목록*/
+.scroll-card {
   position: absolute;
-  bottom: 0;
-  right: 10px;
+  width: 100%;
+  height: 100%;
+  padding-right: 50px;
+  display: grid;
+  grid-auto-columns: 260px;
+  grid-auto-flow: column;
+}
+.menu-card {
+  width: 200px;
+  border: 1px solid rgb(234, 234, 234);
+}
+.bulletin {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 80px);
+}
+.bulletin-link {
+  text-decoration: none;
+  color: black;
+}
+.bulletin-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.bulletin-post {
+  font-size: 0.9rem;
+  padding: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-/*웹, 모바일 환경에 따라 그리드 바꿈*/
-
-@media (min-width: 1300px) {
-  /* .home-container {
-    height: 1200px;
-  } */
-  .home-body {
-    grid-template-rows: 200px 160px 0 300px;
-    grid-template-columns: repeat(4, 310px);
-    margin: 3px;
-    align-content: space-evenly;
-  }
-  .card-item:nth-child(2) {
-    grid-column: span 2;
-  }
-  .card-item:nth-child(3) {
-    grid-row: span 2;
-  }
-  .card-item:nth-child(4),
-  .card-item:nth-child(5),
-  .card-item:nth-child(6) {
-    grid-row: span 2;
-  }
-  .card-item:nth-child(7) {
-    grid-row: span 2;
-  }
+.subscribe-button {
+  padding: 0 10px;
+  font-size: 1rem;
 }
 
-@media (min-width: 950px) and (max-width: 1300px) {
-  /* .home-container {
-    height: 1350px;
-  } */
-  .home-body {
-    grid-template-rows: repeat(2, 200px) 300px 360px;
-    grid-template-columns: repeat(3, 310px);
-
-    grid-auto-flow: dense;
-  }
-  .card-item:nth-child(2) {
-    grid-column: span 2;
-  }
-
-  .card-item:nth-child(3),
-  .card-item:nth-child(7) {
-    order: 10;
-    grid-row: span 1.5;
-  }
+.getsub {
+  color: rgb(var(--blue));
 }
 
-@media (min-width: 650px) and (max-width: 950px) {
-  /* .home-container {
-    height: 1500px;
-  } */
-  .home-body {
-    grid-template-rows: repeat(4, 200px) 360px;
-    grid-template-columns: repeat(2, 310px);
+.subscribe-button.unsub {
+  color: #b7b7b7;
+}
+.sub:hover::after {
+  font-size: 0.75rem;
+  content: "알림 구독 중";
+}
+.unsub:hover::after {
+  font-size: 0.75rem;
+  content: "알림 해제됨";
+}
+.cantsub:hover::after {
+  font-size: 0.75rem;
+  content: "알림 불가";
+}
+
+/*학생활동*/
+.main-interact-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.main-interact {
+  background-color: salmon;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  width: calc(100% / 3 - 10px);
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.main-interact:nth-child(1) {
+  background-image: url(../../../public/img/program.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+
+.main-interact:nth-child(2) {
+  background-image: url(../../../public/img/exhibition.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+.main-interact:nth-child(3) {
+  background-image: url(../../../public/img/conversation.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+
+.main-interact:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
+}
+
+.main-interact:nth-child(3):hover .please-login {
+  color: #00ff6e;
+}
+
+.please-login {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: transparent;
+}
+
+.notice-arrow-img {
+  width: 90%;
+}
+
+.st-act-arrow-img {
+  width: 90%;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 510px) {
+  .notice-arrow-img,
+  .st-act-arrow-img {
+    display: none;
   }
-  .card-item {
+  .main-content-test {
+    height: max-content;
+    padding-top: 0;
+    grid-template-columns: 90%;
+    grid-template-rows: 10px 350px 170px 100px;
+    justify-content: center;
+    justify-items: center;
+    gap: 20px;
+  }
+  .block:last-child {
+    display: none;
+  }
+  .block:nth-child(1) {
+    margin-right: auto;
+    padding: 0 14px;
+    justify-items: start;
+  }
+
+  .block:nth-child(2) {
     grid-row: span 1;
     grid-column: span 1;
   }
-  .card-item:nth-child(3) {
-    order: 10;
-  }
-  .card-item:nth-child(7) {
-    order: 11;
-  }
-}
-
-@media (max-width: 650px) {
-  .home-container {
-    height: 2500px;
-  }
-  .home-body {
-    grid-template-rows: repeat(8, 200px) repeat(2, 360px);
-    grid-template-columns: 310px;
-  }
-  .card-item {
+  .block:nth-child(4) {
     grid-row: span 1;
     grid-column: span 1;
   }
-  .card-item:nth-child(3) {
-    order: 10;
-  }
-  .card-item:nth-child(7) {
-    order: 11;
-  }
-}
 
-.flip-vertical-right {
-  -webkit-animation: flip-vertical-right 0.4s
-    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: flip-vertical-right 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    both;
-}
-/* .flip-vertical-right .detail-card {
-  transform: rotateY(180deg);
-} */
+  .main-info-title {
+    font-size: 1.2rem;
+  }
+  .menu-card {
+    height: calc(100% - 70px);
+  }
 
-.flip-vertical-left {
-  -webkit-animation: flip-vertical-left 0.4s
-    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: flip-vertical-left 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    both;
-}
+  .bulletin {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 200px);
+  }
 
-@-webkit-keyframes flip-vertical-right {
-  0% {
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
+  .main-interact-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
-  100% {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-  }
-}
-@keyframes flip-vertical-right {
-  0% {
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
-  }
-  100% {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-  }
-}
 
-@-webkit-keyframes flip-vertical-left {
-  0% {
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
+  .main-interact {
+    background-color: salmon;
+    width: calc(100% / 3);
+    height: 100%;
+    text-align: center;
   }
-  100% {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-  }
-}
-@keyframes flip-vertical-left {
-  0% {
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
-  }
-  100% {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+  .main-fast-block {
+    gap: 10px calc((100vw - 240px) / 3);
   }
 }

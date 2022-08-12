@@ -38,9 +38,9 @@ const StyledCard = styled.div`
   position: relative;
   cursor: pointer;
   white-space: pre-line;
-  background-color: ${(props) => "#f2f2f2" || "#ffffff"};
-  // box-shadow: 2px 2px 10px
-  //   ${(props) => props.shadowColor || "rgb(var(--basic-blue))"};
+  background-color: ${(props) => props.background || "#ffffff"};
+  box-shadow: 2px 2px 10px
+    ${(props) => props.shadowColor || "rgb(var(--basic-blue))"};
   border-radius: 10px;
   padding: ${(props) => props.padding || "20px"};
   margin: 10px;

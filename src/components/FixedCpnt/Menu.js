@@ -60,9 +60,13 @@ function Menu() {
         )}
         {toggle && (
           <div className="menu-user-text">
-            {userId === null || userId === undefined
-              ? "성신 계정으로\n 로그인하기"
-              : "마이페이지"}
+            {userId === null || userId === undefined ? (
+              <a href="http://xn--cf7b27k.xn--yq5b.xn--3e0b707e:5000/api/auth/login">
+                {`성신 계정으로\n 로그인하기`}
+              </a>
+            ) : (
+              "마이페이지"
+            )}
           </div>
         )}
       </div>
@@ -80,9 +84,13 @@ function Menu() {
             )}
 
             <div className="menu-user-text-mobile">
-              {userId === null || userId === undefined
-                ? "성신 계정으로\n 로그인하기"
-                : "마이페이지"}
+              {userId === null || userId === undefined ? (
+                <a href="http://xn--cf7b27k.xn--yq5b.xn--3e0b707e:5000/api/auth/login">
+                  {`성신 계정으로\n 로그인하기`}
+                </a>
+              ) : (
+                "마이페이지"
+              )}
             </div>
           </div>
           {headerMenu.map((menu) => {
