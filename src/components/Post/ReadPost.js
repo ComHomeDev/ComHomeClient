@@ -4,11 +4,11 @@ import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { IoIosAttach } from "react-icons/io";
-
 import "./Post.css";
 import Card from "../Card";
 import Pagination from "../Pagination/Pagination";
 import { getPostList, readPost, getFiles, deletePost } from "../../api/main";
+import KakaoShareBtn from "../Button/KakaoShareBtn";
 
 function ReadPost({ setMode, category }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,6 +24,19 @@ function ReadPost({ setMode, category }) {
   useEffect(() => {
     setSearchParams({ page: page });
   }, [page]);
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
+    script.async = true
+
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, []);
+
 
   const fetchData = async () => {
     // const response = await getPostList(category);
@@ -95,9 +108,9 @@ function ReadPost({ setMode, category }) {
 
 export function Post({ id, category, getData, setMode }) {
   const [data, setData] = useState({
-    title: "",
-    content: "",
-    views: "",
+    title: "아앙",
+    content: "아앙",
+    views: "1",
     upload_time: "2022-07-31T15:45:20.000Z",
     edited_date: "2022-07-31T15:45:20.000Z",
   });
@@ -118,20 +131,20 @@ export function Post({ id, category, getData, setMode }) {
   };
 
   const fetchData = async () => {
-    const response = await readPost(category, id);
-    console.log(response.data);
-    // const response = {
-    //   data: {
-    //     data_det: {
-    //       no: 3,
-    //       title: "뫄뫄",
-    //       content: "과과고가과과곽",
-    //       views: 4,
-    //       upload_time: "2022-07-31T15:45:20.000Z",
-    //       edited_date: "2022-07-31T15:45:20.000Z",
-    //     },
-    //   },
-    // };
+    // const response = await readPost(category, id);
+    // console.log(response.data);
+    const response = {
+      data: {
+        data_det: {
+          no: 3,
+          title: "바껴랏",
+          content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          views: 4,
+          upload_time: "2022-07-31T15:45:20.000Z",
+          edited_date: "2022-07-31T15:45:20.000Z",
+        },
+      },
+    };
     getData(response.data);
     setData(response.data.data_det);
     if (response.data.file !== undefined) {
@@ -167,6 +180,7 @@ export function Post({ id, category, getData, setMode }) {
             <button className="article-delete" onClick={onDelete}>
               삭제하기
             </button>
+            <KakaoShareBtn title={data.title} description={data.content} />
           </div>
         </div>
       </div>
@@ -209,6 +223,10 @@ export function Post({ id, category, getData, setMode }) {
 }
 
 export default ReadPost;
+
+
+
+
 
 export const HrStyle = {
   height: "1px",
@@ -295,7 +313,7 @@ const postList = {
         no: 32,
         title: "a",
         review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
+        upload_time: "2022-24T11:24:16.000Z",
         iduser: "111865899156782818991",
       },
       {
