@@ -112,7 +112,7 @@
 }
 
 .subscribe-button {
-  padding: 0 10px;
+  padding-left: 10px;
   font-size: 1rem;
 }
 
@@ -123,17 +123,9 @@
 .subscribe-button.unsub {
   color: #b7b7b7;
 }
-.sub:hover::after {
+.button-text {
   font-size: 0.75rem;
-  content: "알림 구독 중";
-}
-.unsub:hover::after {
-  font-size: 0.75rem;
-  content: "알림 해제됨";
-}
-.cantsub:hover::after {
-  font-size: 0.75rem;
-  content: "알림 불가";
+  margin-left: 5px;
 }
 
 /*학생활동*/

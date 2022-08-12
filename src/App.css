@@ -31,3 +31,9 @@ textarea::-webkit-scrollbar-thumb {
 .page-content {
   min-height: 100vh;
 }
+
+@media (max-width: 700px) {
+  .page-body {
+    padding-top: 120px;
+  }
+}

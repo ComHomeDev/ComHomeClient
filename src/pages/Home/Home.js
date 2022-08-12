@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { BsBellFill, BsBellSlash } from "react-icons/bs";
+
 import Menu from "../../components/FixedCpnt/Menu";
 import Footer from "../../components/FixedCpnt/Footer";
+import NoticeCard from "./NoticeCard";
 
-import Card from "../../components/Card";
-import Calendar from "../../components/Calendar/Calendar";
 import { postSubscription, getPublicKey } from "../../api/main";
 
 import "./Home.css";
@@ -15,51 +14,31 @@ import { urlB64ToUint8Array } from "../../components/util";
 function Home() {
   const [pushSupport, setPushSupport] = useState(false);
   const [userSubscription, setUserSubscription] = useState(null);
-  const [buttonText, setButtonText] = useState("알림 설정");
   const [noticeList, setNoticeList] = useState(postList.data.data_det);
   // const userId = window.localStorage.getItem("userID");
   const userId = "aaaaaaaaaaaa";
 
   //처음 랜딩되면 구독 정보 가져옴
-  // useEffect(() => {
-  //   if ("serviceWorker" in navigator && userId !== null) {
-  //     navigator.serviceWorker.ready.then((registration) => {
-  //       if (registration.pushManager) {
-  //         console.log(registration.pushManager);
-  //         setPushSupport(true);
-  //         registration.pushManager.getSubscription().then((subscription) => {
-  //           setUserSubscription(subscription);
-  //           console.log(subscription);
-  //           console.log(Notification.permission);
-  //         });
-  //       }
-  //     });
-  //   }
-  // }, []);
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
+    if ("serviceWorker" in navigator && userId !== null) {
       navigator.serviceWorker.ready.then((registration) => {
         if (registration.pushManager) {
           setPushSupport(true);
           registration.pushManager.getSubscription().then((subscription) => {
             setUserSubscription(subscription);
-            console.log(subscription);
+            Notification.requestPermission().then((permission) => {
+              console.log("push permission : ", permission);
+              if (Notification.permission !== "granted") {
+                return;
+              } else {
+                pushSubscribe();
+              }
+            });
           });
         }
       });
     }
-  }, []);
-  useEffect(() => {
-    if (Notification.permission === "denied") {
-      setButtonText("알림 차단됨");
-      return;
-    }
-    if (userSubscription) {
-      setButtonText("알림 끄기");
-    } else {
-      setButtonText("알림 켜기");
-    }
-  }, [Notification, userSubscription]);
+  }, [userId]);
 
   const pushSubscribe = async () => {
     const response = await getPublicKey();
@@ -84,47 +63,11 @@ function Home() {
     });
   };
 
-  // 푸시 구독 취소
-  function pushUnsubscribe() {
-    if (!userSubscription) {
-      return;
-    }
-    userSubscription
-      .unsubscribe()
-      .then((result) => {
-        console.log("push unsubscribed!: ", result);
-        if (result) {
-          updateSubscription(null);
-          setUserSubscription(null);
-        }
-      })
-      .catch((err) => console.error("push unsubscribe failed!:", err));
-  }
   // 구독 정보 서버로 전달
   function updateSubscription(subscription) {
     postSubscription(userId, subscription);
   }
 
-  const onSubscriptBtnHandler = () => {
-    if (!pushSupport) {
-      return;
-    } else {
-      Notification.requestPermission().then((permission) => {
-        console.log("push permission : ", permission);
-        if (Notification.permission !== "granted") {
-          return;
-        } else {
-          if (userSubscription) {
-            pushUnsubscribe();
-          } else {
-            pushSubscribe();
-          }
-        }
-      });
-    }
-  };
-
-  console.log(userId);
   return (
     <div className="page-container">
       <Menu />
@@ -143,11 +86,14 @@ function Home() {
             <div className="scroll-card">
               {menus.map((menu) => {
                 return (
-                  <Notice
+                  <NoticeCard
+                    key={menu.name + menu.subscribe}
                     userId={userId}
                     menu={menu}
                     noticeList={noticeList}
                     pushSupport={pushSupport}
+                    userSubscription={userSubscription}
+                    userBoardSubscription={menu.subscribe}
                   />
                 );
               })}
@@ -161,6 +107,7 @@ function Home() {
                     to={menu.address}
                     target={i >= 2 ? "_blank" : null}
                     rel="noreferrer noopener"
+                    key={menu + i + menu.address}
                     className="fast-block"
                   >
                     {menu.name}
@@ -206,79 +153,48 @@ function Home() {
 
 export default Home;
 
-function Notice({ userId, menu, noticeList, pushSupport }) {
-  return (
-    <Card key={menu} hover={false} shadowColor="#e0e0e0" className="menu-card">
-      <div className="bulletin">
-        <div
-          className={`bulletin-title ${
-            menu.subscribe === true
-              ? "sub"
-              : menu.subscribe === false
-              ? "unsub"
-              : "cantsub"
-          }`}
-        >
-          <Link to={menu.address} className="bulletin-link">
-            {menu.name}
-          </Link>
-          {userId === null ? null : menu.subscribe === true ? (
-            <BsBellFill className={`subscribe-button getsub`} />
-          ) : menu.subscribe === false ? (
-            <BsBellSlash className={`subscribe-button unsub`} />
-          ) : null}
-        </div>
-        <hr style={{ width: "100%" }} />
-        {menu.name === "학생회달력" ? (
-          <Calendar />
-        ) : menu.name === "대외활동 후기" && userId === null ? (
-          <div
-            style={{
-              textAlign: "center",
-              fontSize: "12px",
-              paddingTop: "65%",
-              color: "gray",
-            }}
-          >
-            로그인 후 이용하세요
-          </div>
-        ) : (
-          <div className="bulletin-content">
-            {noticeList.slice(0, 10).map((data) => {
-              return (
-                <div key={data.no} className="bulletin-post">
-                  {data.title}
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </Card>
-  );
-}
 const menus = [
-  { name: "학과공지", address: "/notice/csnotice?page=1", subscribe: true },
+  {
+    name: "학과공지",
+    eng: "cs_notice",
+    address: "/notice/csnotice?page=1",
+    subscribe: true,
+  },
   {
     name: "학생회공지",
+    eng: "student_council_notice",
     address: "/studentcouncil/student_council_notice?page=1",
     subscribe: true,
   },
-  { name: "학생회달력", address: "/studentcouncil/calendar", subscribe: null },
+  {
+    name: "학생회달력",
+    eng: "student_council_notice",
+    address: "/studentcouncil/calendar",
+    subscribe: null,
+  },
   {
     name: "교육/공모전",
+    eng: "edu_contest",
     address: "/notice/edu_contest?page=1",
     subscribe: true,
   },
   {
+    name: "채용/인턴십",
+    eng: "recruit_intern",
+    address: "/notice/recruit_internship?page=1",
+    subscribe: true,
+  },
+  {
     name: "대외활동 후기",
+    eng: "extra_review",
     address: "/community/extra_review?page=1",
     subscribe: false,
   },
   {
-    name: "채용/인턴십",
-    address: "/notice/recruit_internship?page=1",
-    subscribe: true,
+    name: "취업 후기",
+    eng: "job_review",
+    address: "/community/extra_review?page=1",
+    subscribe: false,
   },
 ];
 
