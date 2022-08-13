@@ -28,14 +28,12 @@ export default Footer;
 
 const StyledFooter = styled.div`
   position: absolute;
-  width: calc(100vw - 20px);
+  width: 100%;
   height: 200px;
-  margin-left: -20px;
   // bottom: 0;
   overflow: hidden;
   .footer {
-    margin-left: -20px;
-    width: calc(100vw - 20px);
+    width: 100%;
     height: 200px;
   }
   .footer-poly {
@@ -63,7 +61,7 @@ const StyledFooter = styled.div`
 
   .footer-content {
     padding-top: 100px;
-    margin-left: 100px;
+    margin-left: 20px;
     position: absolute;
     width: 90vw;
     display: flex;

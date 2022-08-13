@@ -71,7 +71,7 @@ function Home() {
   return (
     <div className="page-container">
       <Menu />
-      <div className="page-body">
+      <div className="page-bodyy">
         <div className="main-content-test">
           <div className="block">
             <div className="main-info-title"> 공지사항 한눈에 보기</div>
