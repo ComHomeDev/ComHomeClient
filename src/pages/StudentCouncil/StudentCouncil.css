@@ -1,6 +1,7 @@
 .council-info,
-.council-notice {
-  padding: 10px;
+.council-calendar {
+  width: 96%;
+  padding: 10px 3%;
 }
 
 .council-title {
@@ -16,12 +17,9 @@
 .council-map-img,
 .council-roll-img {
   width: 40vw;
-  min-width: 500px;
 }
 
 .council-calendar {
-  width: 100%;
-  padding: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -52,4 +50,11 @@
 .council-event .council-event-name {
   font-size: 17px;
   font-weight: 600;
+}
+
+@media (max-width: 510px) {
+  .council-map-img,
+  .council-roll-img {
+    width: 80vw;
+  }
 }

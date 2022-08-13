@@ -1,38 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./StudentCouncil.css";
-import { useParams, useSearchParams } from "react-router-dom";
-
-import Header from "../../components/FixedCpnt/Header";
-import SubHeader from "../../components/FixedCpnt/SubHeader";
-import FastMenu from "../../components/FixedCpnt/FastMenu";
-import Footer from "../../components/FixedCpnt/Footer";
+import { useParams } from "react-router-dom";
 
 import Card from "../../components/Card";
 
 import Calendar from "../../components/Calendar/Calendar";
-import ReadPost, { Post } from "../../components/Post/ReadPost";
-import CreatePost from "../../components/Post/CreatePost";
-import UpdatePost from "../../components/Post/UpdatePost";
 
 function StudentCouncil() {
-  const [mode, setMode] = useState("read");
+  let { sub } = useParams();
   const [event, setEvent] = useState([]);
-  const [postData, setPostData] = useState("");
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  let { sub, post } = useParams();
-
-  useEffect(() => {
-    if (post !== undefined) {
-      setMode("post");
-    } else {
-      setMode("read");
-    }
-  }, [sub, post]);
-
-  const getEvent = (event) => {
-    setEvent(event);
-  };
 
   const getContent = (category) => {
     let content = "";
@@ -44,7 +20,7 @@ function StudentCouncil() {
         content = (
           <div className="council-calendar">
             <Card hover={false} className="council-calendar-card">
-              <Calendar showEvent={false} postEvent={getEvent} />
+              <Calendar showEvent={false} postEvent={setEvent} />
             </Card>
             <div className="council-calendar-event">
               {event.map((data) => {
@@ -58,8 +34,6 @@ function StudentCouncil() {
                     <div className="council-event-date">
                       마감 날짜 : {data.end_date}
                     </div>
-
-                    {/* <div className="council-event-link">링크 : {data.link}</div> */}
                   </div>
                 );
               })}
@@ -67,69 +41,12 @@ function StudentCouncil() {
           </div>
         );
         break;
-      case "student_council_notice":
-        if (mode === "read") {
-          content = (
-            <ReadPost
-              category={sub}
-              setMode={(mode) => {
-                if (mode === "create") {
-                  const result = window.prompt(
-                    "학생회 권한이 필요합니다.\n비밀번호를 입력해주세요.",
-                    ""
-                  );
-                  if (result === process.env.REACT_APP_COUNCIL_KEY) {
-                    setMode("create");
-                  } else if (result === null) {
-                    setMode("read");
-                  } else {
-                    window.alert("비밀번호가 잘못되었습니다.");
-                    setMode("read");
-                  }
-                } else setMode(mode);
-              }}
-            />
-          );
-        } else if (mode === "post") {
-          content = (
-            <Post
-              id={post}
-              category={sub}
-              getData={(data) => setPostData(data)}
-              setMode={(mode) => setMode(mode)}
-            />
-          );
-        } else if (mode === "create") {
-          content = (
-            <CreatePost category={sub} setMode={(mode) => setMode(mode)} />
-          );
-        } else if (mode === "update") {
-          content = (
-            <UpdatePost
-              category={sub}
-              setMode={(mode) => setMode(mode)}
-              data={postData}
-            />
-          );
-        } else if (mode === "delete") {
-        }
-
-        break;
       default:
         break;
     }
     return content;
   };
-  return (
-    <div className="page-container council">
-      <Header /> <FastMenu />
-      <div className="page-body student-body">
-        <SubHeader title={"학생회"} index={3} sub={sub} />
-        {getContent(sub)}
-      </div>
-      <Footer />
-    </div>
-  );
+  return <div className="student-body">{getContent(sub)}</div>;
 }
 
 export default StudentCouncil;

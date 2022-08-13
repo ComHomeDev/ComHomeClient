@@ -47,158 +47,102 @@ export const headerMenu = [
   {
     name: "학사정보",
     eng: "bachelor",
-    address: "/bachelor/curriculum",
+    address: "/bachelor/curriculum?page=info",
     detail: [
-      { name: "교육과정", eng: "curriculum", address: "/bachelor/curriculum" },
+      {
+        name: "교육과정",
+        eng: "curriculum",
+        address: "/bachelor/curriculum?page=info",
+      },
       {
         name: "트랙 구성도",
         eng: "track",
-        address: "/bachelor/track",
+        address: "/bachelor/track?page=info",
       },
       {
         name: "학·석사 연계과정",
         eng: "connect",
-        address: "/bachelor/connect",
+        address: "/bachelor/connect?page=info",
       },
     ],
   },
   {
     name: "공지사항",
     eng: "notice",
-    address: "/notice/csnotice?page=1",
+    address: "/notice/csnotice?page=list",
     detail: [
       {
         name: "학과 공지",
         eng: "csnotice",
-        address: "/notice/csnotice?page=1",
+        address: "/notice/csnotice?page=list",
       },
       {
         name: "채용/인턴십",
         eng: "recruit_internship",
-        address: "/notice/recruit_internship?page=1",
+        address: "/notice/recruit_internship?page=list",
       },
       {
         name: "교육/공모전",
         eng: "edu_contest",
-        address: "/notice/edu_contest?page=1",
+        address: "/notice/edu_contest?page=list",
       },
     ],
   },
   {
     name: "학생회",
     eng: "studentcouncil",
-    address: "/studentcouncil/intro",
+    address: "/studentcouncil/intro?page=info",
     detail: [
-      { name: "학생회 소개", eng: "intro", address: "/studentcouncil/intro" },
+      {
+        name: "학생회 소개",
+        eng: "intro",
+        address: "/studentcouncil/intro?page=info",
+      },
       {
         name: "학생회 공지",
         eng: "student_council_notice",
-        address: "/studentcouncil/student_council_notice?page=1",
+        address: "/studentcouncil/student_council_notice?page=list",
       },
       {
         name: "학생회 달력",
         eng: "calendar",
-        address: "/studentcouncil/calendar",
+        address: "/studentcouncil/calendar?page=info",
       },
     ],
   },
   {
     name: "학생 활동",
     eng: "student",
-    address: "/student/club?page=1",
+    address: "/student/club?page=true",
     detail: [
-      { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
+      { name: "동아리 소개", eng: "club", address: "/student/club?page=info" },
       {
         name: "작품 전시",
         eng: "exhibition",
-        address: "/student/exhibition?page=1",
+        address: "/student/exhibition?page=display",
       },
     ],
   },
   {
     name: "커뮤니티",
     eng: "community",
-    address: "/community/extra_review?page=1",
+    address: "/community/extra_review?page=list",
     detail: [
       {
         name: "대외활동 후기",
         eng: "extra_review",
-        address: "/community/extra_review?page=1",
+        address: "/community/extra_review?page=list",
       },
       {
         name: "취업 후기",
         eng: "job_review",
-        address: "/community/job_review?page=1",
+        address: "/community/job_review?page=list",
       },
       {
         name: "졸업생 인터뷰",
         eng: "interview",
-        address: "/community/interview?page=1",
+        address: "/community/interview?page=list",
       },
-    ],
-  },
-];
-
-export const simpleBodyContent = [
-  {
-    name: "학과 소개\n | 학사 정보",
-    address: "/",
-    icon: <MdPermDeviceInformation />,
-  },
-  {
-    name: "교수 소개",
-    address: "/",
-    icon: <BsFillPersonLinesFill />,
-  },
-  {
-    name: "교육과정",
-    address: "/bachelor/curriculum",
-    icon: <AiOutlinePartition />,
-  },
-];
-export const detailBodyContent = [
-  {
-    name: "학생 활동",
-    address: "/student/club?page=1",
-    icon: <SiStarship />,
-    detail: [
-      { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
-      {
-        name: "작품 전시",
-        eng: "exhibition",
-        address: "/student/exhibition?page=1",
-      },
-    ],
-  },
-  {
-    name: "커뮤니티",
-    address: "/community/extra_review?page=1",
-    icon: <FaRegObjectGroup />,
-    detail: [
-      {
-        name: "대외활동 후기",
-        eng: "extra_review",
-        address: "/community/extra_review?page=1",
-      },
-      {
-        name: "취업 후기",
-        eng: "job_review",
-        address: "/community/job_review?page=1",
-      },
-      {
-        name: "졸업생 인터뷰",
-        eng: "interview",
-        address: "/community/interview?page=1",
-      },
-    ],
-  },
-  {
-    name: "교육과정",
-    address: "/bachelor/curriculum",
-    icon: <AiOutlinePartition />,
-    detail: [
-      { name: "작품전시게시판", address: "/" },
-      { name: "동아리,소모임 소개", address: "/" },
     ],
   },
 ];

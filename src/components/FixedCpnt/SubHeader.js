@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import { headerMenu } from "../variables";
 
-function SubHeader({ title, index, sub, search }) {
+function SubHeader({ menu, sub, search }) {
   return (
     <>
       <StyledSubTitle>
-        <div className="page-title">{title}</div>
+        <div className="page-title">{menu.name}</div>
         <div className="page-details">
-          {headerMenu[index].detail.map((data) => {
+          {menu.detail.map((data) => {
             return (
               <Link
                 key={data.eng + data.name}
@@ -18,7 +17,6 @@ function SubHeader({ title, index, sub, search }) {
                 className={`subTitle student-sub-title ${
                   data.eng === sub ? "selected" : ""
                 }`}
-                // onClick={throwMessage}
               >
                 {data.name}
               </Link>

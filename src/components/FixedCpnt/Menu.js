@@ -98,6 +98,7 @@ function Menu() {
               <MobileMenu
                 key={menu.name + menu.address}
                 menu={menu}
+                toggle={() => setToggle(false)}
                 select={select === menu.name}
                 setSelect={(op) => {
                   if (op === select) setSelect("");
@@ -114,7 +115,7 @@ function Menu() {
 
 export default Menu;
 
-function MobileMenu({ menu, select, setSelect }) {
+function MobileMenu({ menu, select, setSelect, toggle }) {
   return (
     <div key={menu.name} className="menu-title-wrap">
       <div
@@ -129,6 +130,7 @@ function MobileMenu({ menu, select, setSelect }) {
           {menu.detail.map((detail, i) => {
             return (
               <Link
+                onClick={toggle}
                 to={`${detail.address}`}
                 key={detail.name + i}
                 className="menu-detail-link goto"

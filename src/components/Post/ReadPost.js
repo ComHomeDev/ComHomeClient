@@ -1,102 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoIosAttach } from "react-icons/io";
 
 import "./Post.css";
-import Card from "../Card";
-import Pagination from "../Pagination/Pagination";
-import { getPostList, readPost, getFiles, deletePost } from "../../api/main";
+import { readPost, getFiles, deletePost } from "../../api/main";
 
-function ReadPost({ setMode, category }) {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [posts, setPosts] = useState([]);
-  const [limit, setLimit] = useState(6);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
-
-  useEffect(() => {
-    fetchData();
-  }, [category]);
-
-  useEffect(() => {
-    setSearchParams({ page: page });
-  }, [page]);
-
-  const fetchData = async () => {
-    // const response = await getPostList(category);
-    const response = postList;
-    console.log(response);
-    setPosts(response.data.data_det);
-  };
-
-  return (
-    <div className="read-post-container">
-      <button
-        className="new-post"
-        onClick={() => {
-          setMode("create");
-        }}
-      >
-        글 작성하기
-      </button>
-      <div className="post-list">
-        {posts.slice(offset, offset + limit).map((data, index) => {
-          return (
-            <div key={data.no} value={index}>
-              <Link to={`${data.no}`}>
-                <Card
-                  key={data.title}
-                  value={index}
-                  className="post-list-cards"
-                  hoverColor={"#DFE7F6"}
-                  shadowColor={"#DFDFDF"}
-                >
-                  <div className="post-list-column">
-                    <div className="post-list-title" value={index}>
-                      {data.title}
-                    </div>
-                    <div className="post-list-row">
-                      <div className="post-list-lookup">
-                        조회수 {data.views}
-                      </div>
-                      {data.file_status === 1 && (
-                        <IoIosAttach
-                          size={"1.5em"}
-                          style={{
-                            transform: "rotate(45deg)",
-                            marginLeft: "5px",
-                          }}
-                        />
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="post-list-date" value={index}>
-                    {format(parseISO(data.upload_time), "yyyy-MM-dd")}
-                  </div>
-                </Card>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-      <Pagination
-        total={posts.length}
-        limit={limit}
-        page={page}
-        setPage={setPage}
-      />
-    </div>
-  );
-}
-
-export function Post({ id, category, getData, setMode }) {
+function ReadPost({ id, category, getData, setMode }) {
   const [data, setData] = useState({
-    title: "",
-    content: "",
+    title: "aaaaaaaa",
+    content: "sssssssssssss",
     views: "",
     upload_time: "2022-07-31T15:45:20.000Z",
     edited_date: "2022-07-31T15:45:20.000Z",
@@ -216,95 +131,4 @@ export const HrStyle = {
   backgroundColor: "#b0c4eb",
   border: "none",
   margin: "20px 0 10px -20px",
-};
-
-const postList = {
-  data: {
-    data_det: [
-      {
-        no: 2,
-        title: "a1111",
-        review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 1,
-        title: "취업후기글제목",
-        review_cont: "취업후기글내용",
-        upload_time: "2022-07-17T12:02:42.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 4,
-        title: "a",
-        review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 5,
-        title: "취업후기글제목",
-        review_cont: "취업후기글내용",
-        upload_time: "2022-07-17T12:02:42.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 6,
-        title: "a",
-        review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 7,
-        title: "취업후기글제목",
-        review_cont: "취업후기글내용",
-        upload_time: "2022-07-17T12:02:42.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 8,
-        title: "a",
-        review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 9,
-        title: "취업후기글제목",
-        review_cont: "취업후기글내용",
-        upload_time: "2022-07-17T12:02:42.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 10,
-        title: "a",
-        review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 12,
-        title: "취업후기글제목",
-        review_cont: "취업후기글내용",
-        upload_time: "2022-07-17T12:02:42.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 32,
-        title: "a",
-        review_cont: "a",
-        upload_time: "2022-07-24T11:24:16.000Z",
-        iduser: "111865899156782818991",
-      },
-      {
-        no: 13,
-        title: "취업후기글제목2222",
-        review_cont: "취업후기글내용",
-        upload_time: "2022-07-17T12:02:42.000Z",
-        iduser: "111865899156782818991",
-      },
-    ],
-  },
 };

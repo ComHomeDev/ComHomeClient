@@ -104,7 +104,7 @@ function NoticeCard({
   };
 
   return (
-    <Card key={menu} hover={false} shadowColor="#e0e0e0" className="menu-card">
+    <Card key={menu} className="menu-card">
       <div className="bulletin">
         <div
           className={`bulletin-title ${
