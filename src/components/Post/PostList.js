@@ -35,7 +35,7 @@ function PostList({ data }) {
         {posts.slice(offset, offset + limit).map((data, index) => {
           return (
             <div key={data.no} value={index}>
-              <Link to={`/v/${data.no}`}>
+              <Link to={`./v/${data.no}`}>
                 <Card
                   key={data.title}
                   value={index}
