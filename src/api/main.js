@@ -1,8 +1,11 @@
 import request from "./core";
 
 export const getPostList = (category) => {
-  console.log(category);
   return request({ url: `/${category}_list` });
+};
+
+export const getSubscription = () => {
+  return request({ url: `/` });
 };
 
 export const createPost = (category, data) => {
@@ -76,5 +79,33 @@ export const postSubscription = (user, subscription) => {
       iduser: user,
       subscription,
     },
+  });
+};
+
+export const postBoardSubscription = (user, board, isSubscribe) => {
+  request({
+    method: "post",
+    url: `/pushSubscription`,
+    data: {
+      iduser: user,
+      board: board,
+      isSubscribe: isSubscribe,
+    },
+  });
+};
+
+export const createComment = (postData, commentData) => {
+  request({
+    method: "post",
+    url: `/api/edu_contest_comment_write`,
+    data: {
+      iduser: postData.iduser,
+      content: commentData.text,
+      edu_contest_no: postData.no, //글 아이디
+      my_secret_check_box: commentData.check, //비밀 체크 여부
+      my_anon_checkbox: commentData.anon,
+    },
+  }).then((response) => {
+    return response;
   });
 };

@@ -1,13 +1,21 @@
+.student-container {
+  width: 100%;
+}
 .student-sub-title:last-child::after {
   content: "";
 }
 
 .student-project-wrap {
-  width: 100%;
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  overflow-x: scroll;
+  width: 80%;
+  height: calc(100vh - 100px);
+  padding: 0 10%;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  background-color: #f8f8f8;
 }
 
 .student-project-wrap::-webkit-scrollbar {
@@ -22,13 +30,9 @@
   border-radius: 10px;
 }
 
-.project-container {
-  margin: 10px;
-}
 .project-card {
-  width: 200px;
-  height: 250px;
-  margin: 50px;
+  width: 150px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +42,7 @@
   font-size: 14px;
 }
 
+/*모달 스타일*/
 .new__review__modal .modal-inner {
   width: 60vw;
   height: 85vh;
@@ -49,8 +54,8 @@
 
 .display-modal-container {
   width: 95%;
-  height: 95%;
-  padding: 2.5%;
+  height: 98%;
+  padding: 1% 2.5%;
 
   display: flex;
   flex-direction: column;
@@ -81,6 +86,32 @@
 .display-simple-desc .display-title {
   font-weight: 600;
   font-size: 28px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.display-title .award-tag {
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin-left: 10%;
+  padding: 3px 10px;
+  border-radius: 0.3rem;
+}
+.award-tag.gold {
+  background-color: #fff2b3;
+}
+
+.award-tag.silver {
+  background-color: #dce4e8;
+}
+
+.award-tag.bronze {
+  background-color: #ffd5b3;
+}
+
+.award-tag.award {
+  background-color: #b3e8ff;
 }
 
 .display-simple-desc .display-developer {
@@ -119,7 +150,7 @@
   align-items: center;
   cursor: pointer;
 }
-.display-link.git {
+.display-link.github {
   background-color: black;
   color: white;
 }
@@ -154,19 +185,14 @@
 
 @media (max-width: 600px) {
   .student-project-wrap {
-    width: 100%;
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    overflow-x: hidden;
+    width: 96%;
+    padding: 0 2%;
   }
   .project-container {
     margin: 0;
-    width: 100%;
   }
   .project-card {
-    width: 70%;
+    width: 35vw;
     height: 150px;
 
     display: flex;
@@ -210,13 +236,15 @@
 
 @media (max-width: 450px) {
   .student-project-wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
+    width: 96%;
+    padding: 0 2%;
+    overflow-y: scroll;
+  }
+  .project-container {
+    width: calc(100vw - 20% - 20px);
   }
   .project-card {
-    width: 80%;
+    width: 100%;
     height: 10vw;
     display: flex;
     flex-direction: row;
@@ -231,48 +259,112 @@
 
 /*동아리*/
 
-.club-card-container {
-  margin: 40px;
-}
-.club-card {
+.student-club {
   width: 90%;
+  padding: 0 5%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.club-card .club-content {
-  display: flex;
-  flex-direction: column;
+.club-card-container {
+  margin: 2px;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 500px;
+  perspective: 1100px;
+}
+.club-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+.front,
+.back {
+  border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  box-shadow: 2px 2px 10px #e0e0e0;
 }
 
-.club-card .club-img {
-  width: 15vw;
-  height: 15vw;
+.front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.front .club-name {
+  margin-top: 30px;
+  font-size: 1.25rem;
+}
+
+.front .club-short {
+  margin-top: 20px;
+  padding: 0 20px;
+  font-size: 0.8rem;
+}
+.front .club-hover-info {
+  font-size: 0.7rem;
+  margin: auto 20px 20px auto;
+}
+/* // 뒷면은 사전에 미리 뒤집기 */
+.back {
+  background: white;
+  transform: rotateY(180deg);
+}
+
+/* // 호버 시 뒤집기 */
+.club-card-container:hover .club-card {
+  transform: rotateY(180deg);
+}
+.club-card .club-logo {
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0px 2px 4px #e0e0e0;
+  width: 100%;
+  height: 25%;
+  background-repeat: no-repeat;
+
+  background-position: center;
+}
+.club-card .club-logo.init {
+  background-image: url(../../../public/img/init_logo.png);
+  background-color: #47a7da;
+}
+.club-card .club-logo.com {
+  background-image: url(../../../public/img/com_logo.png);
+}
+.club-card .club-logo.chemicom {
+  background-image: url(../../../public/img/chemicom_logo.png);
+}
+.club-card .club-content {
+  word-break: break-all;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
 .club-card .club-name {
-  font-size: 18px;
   font-weight: 600;
   padding-top: 10px;
 }
-.club-card .club-desc {
-  grid-column-start: span 2;
-  grid-column-end: 4;
-  padding-top: 30px;
+.club-card .club-info {
+  margin: 5px 0;
+  font-weight: 600;
+}
+.club-card .club-who {
+  font-size: 0.7rem;
 }
 
-/* @media (max-width: 1000px) {
-  .club-card {
-    height: 250px;
-  }
-}
-@media (max-width: 900px) {
-  .init .club-card,
-  .com .club-card {
-    height: 300px;
-  }
+.club-card .club-what {
+  font-size: 0.9rem;
 }
 
-@media (max-width: 700px) {
-  .club-card .club-desc {
-    font-size: 12px;
-  }
-} */
+.club-card .club-who {
+  font-size: 0.9rem;
+}
+
+.club-card .club-link {
+  cursor: pointer;
+}

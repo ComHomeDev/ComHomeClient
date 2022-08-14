@@ -2,29 +2,23 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
-import Home2 from "./pages/Home/Home2";
-import Notice from "./pages/Notice/Notice";
-import Bachelor from "./pages/Bachelor/Bachelor";
-import StudentCouncil from "./pages/StudentCouncil/StudentCouncil";
-import StudentActivity from "./pages/StudentActivity/StudentActivity";
-import Community from "./pages/Community/Community";
+import Board from "./pages/Board/Board";
 import CreatePost from "./components/Post/CreatePost";
+import ReadPost from "./components/Post/ReadPost";
+import UpdatePost from "./components/Post/UpdatePost";
+import MyPage from "./pages/MyPage/MyPage";
 
 function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route path="/2" element={<Home2 />} />
+
       <Route path="/userid/:userid" element={<Login />} />
-      <Route path="/notice/:sub" element={<Notice />} />
-      <Route path="/notice/:sub/:post" element={<Notice />} />
-      <Route path="/bachelor/:sub" element={<Bachelor />} />
-      <Route path="/studentcouncil/:sub" element={<StudentCouncil />} />
-      <Route path="/studentcouncil/:sub/:post" element={<StudentCouncil />} />
-      <Route path="/student/:sub" element={<StudentActivity />} />
-      <Route path="/community/:sub" element={<Community />} />
-      <Route path="/community/:sub/:post" element={<Community />} />
-      <Route path="/:menu/new" element={<CreatePost />} />
+      <Route path="/:board/:sub" element={<Board />} />
+      <Route path="/:board/:sub/new" element={<CreatePost />} />
+      <Route path="/:board/:sub/update" element={<UpdatePost />} />
+      <Route path="/:board/:sub/v/:id" element={<ReadPost />} />
+      <Route path="/:userid/mypage" element={<MyPage />} />
     </Routes>
   );
 }

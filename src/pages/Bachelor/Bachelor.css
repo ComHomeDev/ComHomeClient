@@ -1,3 +1,9 @@
 .bachelor-track {
   width: 100%;
 }
+
+@media (max-width: 700px) {
+  .bachelor-body {
+    padding-top: 120px;
+  }
+}

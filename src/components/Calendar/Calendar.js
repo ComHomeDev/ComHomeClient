@@ -41,8 +41,6 @@ function Calendar({ showEvent, postEvent }) {
     setEvent(tempEvent);
   }, [selectedDate]);
 
-  console.log(event);
-
   const fetchData = async () => {
     const response = await getPostList("student_council_notice");
     console.log(response.data);
@@ -141,7 +139,7 @@ function Calendar({ showEvent, postEvent }) {
           <div className="events">
             {getEvent(cloneDate).map((e, index) => {
               return (
-                <div className={`event ${e.charge}`} key={e.name + e.no}>
+                <div className={`event ${e.charge}`} key={Math.random()}>
                   ⦁
                 </div>
               );
@@ -183,7 +181,7 @@ function Calendar({ showEvent, postEvent }) {
         <div className="dayEvents">
           {event.map((event) => (
             <div
-              key={event.title + event.start_date}
+              key={Math.random()}
               className={`eventDesc event ${event.idUser}`}
             >
               ⦁ &nbsp;{event.title}

@@ -5,7 +5,7 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.localStorage.setItem("userId", userid);
+    window.localStorage.setItem("userID", userid);
     navigate("/", { replace: true });
   }, [userid, navigate]);
 
