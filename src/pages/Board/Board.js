@@ -8,6 +8,7 @@ import { headerMenu } from "../../components/variables";
 
 import PostList from "../../components/Post/PostList";
 
+import DepartInfo from "../DepartInfo/DepartInfo";
 import Bachelor from "../Bachelor/Bachelor";
 import StudentActivity, {
   StudentClub,
@@ -47,8 +48,8 @@ function Board() {
 
   const getInfoContent = (board) => {
     switch (board) {
-      case "info":
-        return;
+      case "departInfo":
+        return <DepartInfo />;
       case "bachelor":
         return <Bachelor />;
       case "studentcouncil":

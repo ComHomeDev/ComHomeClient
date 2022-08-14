@@ -36,12 +36,25 @@ export const fastMenu = [
 export const headerMenu = [
   {
     name: "학과소개",
-    address: "/",
+    eng: "departInfo",
+    address: "/departInfo/info?page=info",
     detail: [
-      { name: "학과 소개", address: "/" },
-      { name: "교수 소개", address: "/" },
-      { name: "졸업 후 진로", address: "/" },
-      { name: "입학 안내", address: "/" },
+      { name: "학과 소개", address: "/departInfo/info?page=info", eng: "info" },
+      {
+        name: "교수 소개",
+        address: "/departInfo/profInfo?page=info",
+        eng: "profInfo",
+      },
+      {
+        name: "졸업 후 진로",
+        address: "/departInfo/course?page=info",
+        eng: "course",
+      },
+      {
+        name: "입학 안내",
+        address: "/departInfo/enroll?page=info",
+        eng: "enroll",
+      },
     ],
   },
   {

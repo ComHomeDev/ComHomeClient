@@ -46,7 +46,6 @@ function SubHeader({ menu, sub, search }) {
 
 SubHeader.defaultProps = {
   fontSize: "38px",
-  search: true,
 };
 export default SubHeader;
 
