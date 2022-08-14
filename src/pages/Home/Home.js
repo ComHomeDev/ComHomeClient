@@ -23,7 +23,7 @@ function Home() {
   const userId = "aaaaaaaaaaaa";
 
   //처음 랜딩되면 구독 정보 가져옴
-  useEffect(async () => {
+  useEffect(() => {
     // const data = await getSubscription();
     // console.log(data);
     if ("serviceWorker" in navigator && userId !== null) {

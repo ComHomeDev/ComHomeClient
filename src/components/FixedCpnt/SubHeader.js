@@ -46,6 +46,7 @@ function SubHeader({ menu, sub, search }) {
 
 SubHeader.defaultProps = {
   fontSize: "38px",
+  search: true,
 };
 export default SubHeader;
 
@@ -60,7 +61,6 @@ const StyledSubTitle = styled.div`
   align-items: center;
   height: 30px;
   word-break: keep-all;
-
   .page-title {
     font-size: 18px;
     font-weight: 600;
@@ -77,17 +77,14 @@ const StyledSubTitle = styled.div`
     color: black;
     font-weight: 400;
   }
-
   .subTitle:last-child::after {
     content: "";
     display: none;
   }
-
   .subTitle.selected {
     color: black;
     font-weight: 500;
   }
-
   .sub-search-form {
     margin: 0 10px 0 auto;
     position: relative;
@@ -103,12 +100,10 @@ const StyledSubTitle = styled.div`
     border: none;
     border-bottom: 2px solid rgb(var(--mid-gray));
   }
-
   .sub-search-form .sub-search::placeholder {
     margin-top: 7px;
     font-size: 14px;
   }
-
   .sub-search-form .sub-search-button {
     position: absolute;
     border: none;
@@ -125,7 +120,6 @@ const StyledSubTitle = styled.div`
       margin-left: 10px;
     }
   }
-
   @media (max-width: 700px) {
     grid-template-rows: 30px 30px;
     grid-template-columns: 1fr 1fr;
