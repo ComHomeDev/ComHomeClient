@@ -5,7 +5,11 @@ import Menu from "../../components/FixedCpnt/Menu";
 import Footer from "../../components/FixedCpnt/Footer";
 import NoticeCard from "./NoticeCard";
 
-import { postSubscription, getPublicKey } from "../../api/main";
+import {
+  postSubscription,
+  getPublicKey,
+  getSubscription,
+} from "../../api/main";
 
 import "./Home.css";
 import { fastMenu } from "../../components/variables";
@@ -19,7 +23,9 @@ function Home() {
   const userId = "aaaaaaaaaaaa";
 
   //처음 랜딩되면 구독 정보 가져옴
-  useEffect(() => {
+  useEffect(async () => {
+    // const data = await getSubscription();
+    // console.log(data);
     if ("serviceWorker" in navigator && userId !== null) {
       navigator.serviceWorker.ready.then((registration) => {
         if (registration.pushManager) {

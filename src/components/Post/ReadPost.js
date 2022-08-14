@@ -12,6 +12,7 @@ import Footer from "../FixedCpnt/Footer";
 import SubHeader from "../FixedCpnt/SubHeader";
 
 import { headerMenu } from "../../components/variables";
+import { createComment } from "../../api/main";
 
 function ReadPost() {
   let { board, sub, id } = useParams();
@@ -29,6 +30,7 @@ function ReadPost() {
     edited_date: "2022-07-31T15:45:20.000Z",
   });
   const [files, setFiles] = useState([]);
+  const [comment, setComment] = useState([]);
   const navigate = useNavigate();
   const location = window.location.pathname.split("/");
   // const userId = window.localStorage.getItem("userID");
@@ -45,24 +47,29 @@ function ReadPost() {
   };
 
   const fetchData = async () => {
-    const response = await readPost(sub, id);
-    // const response = {
-    //   data: {
-    //     data_det: {
-    //       no: 3,
-    //       title: "뫄뫄",
-    //       content: "과과고가과과곽",
-    //       views: 4,
-    //       upload_time: "2022-07-31T15:45:20.000Z",
-    //       edited_date: "2022-07-31T15:45:20.000Z",
-    //     },
-    //   },
-    // };
-    setData(response.data.data_det);
-    if (response.data.file !== undefined) {
-      setFiles(response.data.file);
-    }
+    // const response = await readPost(sub, id);
+    // // const response = {
+    // //   data: {
+    // //     data_det: {
+    // //       no: 3,
+    // //       title: "뫄뫄",
+    // //       content: "과과고가과과곽",
+    // //       views: 4,
+    // //       upload_time: "2022-07-31T15:45:20.000Z",
+    // //       edited_date: "2022-07-31T15:45:20.000Z",
+    // //     },
+    // //   },
+    // // };
+    // setData(response.data.data_det);
+    // if (response.data.file !== undefined) {
+    //   setFiles(response.data.file);
+    // }
+    // if (response.data.comment !== undefined) {
+    //   setComment(response.data.comment);
+    // }
+    setComment(datas.comment);
   };
+  console.log(datas.comment);
 
   const onDelete = () => {
     if (window.confirm("글이 삭제됩니다.\n정말 진행하시겠습니까?")) {
@@ -138,8 +145,98 @@ function ReadPost() {
         <hr style={HrStyle} />
 
         <div className="article-content">{data.content}</div>
+        <hr style={HrStyle} />
+        {sub === "edu_contest" && <Comment data={comment} postData={data} />}
       </div>
       <Footer />
+    </div>
+  );
+}
+
+function Comment({ data, postData }) {
+  const [inputs, setInputs] = useState({
+    text: "",
+    anon: true,
+    secret: false,
+  });
+  const { text, anon, secret } = inputs;
+
+  const onChangeHandler = (e) => {
+    const { value, name } = e.target;
+    if (name === "text") {
+      setInputs({
+        ...inputs,
+        text: value,
+      });
+    } else if (name === "anon") {
+      setInputs({
+        ...inputs,
+        anon: !anon,
+      });
+    } else if (name === "secret") {
+      setInputs({
+        ...inputs,
+        secret: !secret,
+      });
+    }
+  };
+
+  // useEffect(() => {}, [data]);
+  const onSubmitHandler = () => {
+    //어쩌고저쩌고..
+    createComment(postData, inputs);
+  };
+  console.log(inputs);
+  return (
+    <div className="comment-container">
+      {data.length === 0 ? (
+        <div className="empty-comment">아직 작성된 댓글이 없습니다.</div>
+      ) : (
+        <div className="comments">
+          {data.map((com) => {
+            return (
+              <div className="comment">
+                <div className="comment-original">
+                  {com.content === null ? "비밀 댓글입니다." : com.content}
+                </div>
+                {com.recomment !== null && (
+                  <div className="comment-recomment">
+                    {com.recomment === null
+                      ? "비밀 댓글입니다."
+                      : com.recomment}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+      <div className="create-comment">
+        <form onSubmit={onSubmitHandler}>
+          <input
+            required
+            type="text"
+            name="text"
+            value={text}
+            onChange={onChangeHandler}
+          />
+          익명
+          <input
+            type="checkbox"
+            name="anon"
+            value={anon}
+            onChange={onChangeHandler}
+          />
+          비밀
+          <input
+            type="checkbox"
+            name="secret"
+            value={secret}
+            onChange={onChangeHandler}
+          />
+          <button type="submit">댓글 작성하기</button>
+        </form>
+      </div>
     </div>
   );
 }
@@ -152,4 +249,70 @@ export const HrStyle = {
   backgroundColor: "#b0c4eb",
   border: "none",
   margin: "20px 0 10px -20px",
+};
+
+const datas = {
+  data: {
+    no: 7,
+    title: "글 작성",
+    content: "1111",
+    upload_time: "2022-08-07 01:01:29",
+    edited_date: "2022-08-07 01:30:53",
+    img: "uploads\\1659802781795.png",
+    views: null,
+    iduser: "112815002397150634161",
+    end_date: "2022-08-13",
+  },
+  comment: [
+    {
+      no: 24,
+      content: null,
+      upload_time: "2022-08-07 02:20:15",
+      iduser: null,
+      edu_contest_no: 7,
+      secret_check: 1,
+      anon_check: 1,
+      recomment: null,
+    },
+    {
+      no: 25,
+      content: null,
+      upload_time: "2022-08-07 02:20:29",
+      iduser: null,
+      edu_contest_no: 7,
+      secret_check: 1,
+      anon_check: 0,
+      recomment: null,
+    },
+    {
+      no: 26,
+      content: "비밀 안체크, 익명 체크",
+      upload_time: "2022-08-07 02:20:37",
+      iduser: null,
+      edu_contest_no: 7,
+      secret_check: 0,
+      anon_check: 1,
+      recomment: null,
+    },
+    {
+      no: 27,
+      content: "비밀, 익명 안체크",
+      upload_time: "2022-08-07 02:20:43",
+      iduser: null,
+      edu_contest_no: 7,
+      secret_check: 0,
+      anon_check: 0,
+      recomment: null,
+    },
+    {
+      no: 28,
+      content: "글쓴이 댓글",
+      upload_time: "2022-08-07 11:04:35",
+      iduser: null,
+      edu_contest_no: 7,
+      secret_check: 0,
+      anon_check: 0,
+      recomment: null,
+    },
+  ],
 };
