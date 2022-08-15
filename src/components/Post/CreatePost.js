@@ -44,7 +44,7 @@ function CreatePost() {
     end_date,
   } = inputs;
   const [imgFile, setImgFile] = useState(null);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(undefined);
   const userId = window.localStorage.getItem("userID");
 
   let info = headerMenu.find((menu) => menu.eng === board);
@@ -88,10 +88,11 @@ function CreatePost() {
   };
 
   const onFileChange = (form, event) => {
+    console.log(event.target.files[0]);
     if (form === "img") {
       setImgFile(event.target.files);
     } else {
-      setFiles(files.concat(event.target.files));
+      setFiles(event.target.files[0]);
     }
   };
 
@@ -101,16 +102,29 @@ function CreatePost() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const data = { id: userId, inputs };
-    console.log(data);
-    const postId = createPost(sub, data);
-    console.log(postId);
+    const formData = new FormData();
+    formData.append("iduser", "111865899156782818991");
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("award", award);
+    formData.append("team", team);
+    formData.append("keyword", keyword);
+    formData.append("stack", stack);
+    formData.append("contestName", contestName);
+    formData.append("link_github", link_github);
+    formData.append("link_service", link_service);
+    formData.append("start_date", start_date);
+    formData.append("end_date", end_date);
+    formData.append("file", files);
+
+    createPost(sub, formData);
+
     navigate(
       `/${board}/${sub}?page=${sub === "exhibition" ? "display" : "list"}`,
       { replace: true }
     );
   };
-  console.log(start_date);
+
   return (
     <div className="create-post-container">
       <div className="create-info">
@@ -134,6 +148,7 @@ function CreatePost() {
           <div className="post-title">제목</div>
           <input
             required
+            maxLength={45}
             className="create-title"
             type="text"
             name="title"

@@ -6,14 +6,21 @@ import format from "date-fns/format";
 import { useNavigate } from "react-router-dom";
 import { IoIosAttach } from "react-icons/io";
 import "./Post.css";
-import { readPost, getFiles, deletePost } from "../../api/main";
+import {
+  readPost,
+  getFiles,
+  deletePost,
+  postScrap,
+  postUnscrap,
+  createComment,
+  createRecomment,
+} from "../../api/main";
 import Menu from "../FixedCpnt/Menu";
 import Footer from "../FixedCpnt/Footer";
 import SubHeader from "../FixedCpnt/SubHeader";
 import KakaoShareBtn from "../Button/KakaoShareBtn";
 
 import { headerMenu } from "../../components/variables";
-import { createComment } from "../../api/main";
 
 const fetchData = async (sub, id) => {
   const response = await readPost(sub, id);
@@ -38,13 +45,15 @@ function ReadPost() {
     edited_date: format(new Date(), "yyyy-MM-dd"),
   });
   const [files, setFiles] = useState([]);
+  const [scrap, setScrap] = useState(undefined);
   const [comment, setComment] = useState([]);
   const navigate = useNavigate();
-  const userId = "111865899156782818991";
+  const userId = "105160463951938701131";
 
   const result = useQuery({
     queryKey: [`${sub}`, `${id}`],
     queryFn: () => fetchData(sub, id),
+    retry: 0,
   });
 
   useEffect(() => {
@@ -62,7 +71,9 @@ function ReadPost() {
   useEffect(() => {
     if (result.status === "success") {
       const getData = queryClient.getQueryData([`${sub}`, `${id}`]);
+      console.log(getData);
       setData(getData.data_det);
+      setScrap(getData.scrap);
       if (
         sub !== "job_review" &&
         sub !== "extra_review" &&
@@ -88,6 +99,22 @@ function ReadPost() {
       //삭제 api
       deletePost(sub, id);
       navigate(`../${board}/${sub}?page=list`, { replace: true });
+    }
+  };
+
+  const onScrapHandler = () => {
+    const datas = {
+      userId: userId,
+      no: data.no,
+      board: sub,
+      title: data.title,
+    };
+    if (scrap) {
+      setScrap(false);
+      postUnscrap(datas);
+    } else {
+      setScrap(true);
+      postScrap(datas);
     }
   };
 
@@ -166,7 +193,11 @@ function ReadPost() {
         <hr style={HrStyle} />
 
         <div className="article-content">{data.content}</div>
-        <button className="scrap-button">☆스크랩하기</button>
+        {scrap !== undefined && (
+          <button className="scrap-button" onClick={onScrapHandler}>
+            {scrap ? "☆스크랩 취소하기" : "☆스크랩하기"}
+          </button>
+        )}
         <hr style={HrStyle} />
         {sub === "edu_contest" && <Comment data={comment} postData={data} />}
       </div>
@@ -181,7 +212,9 @@ function Comment({ data, postData }) {
     anon: true,
     secret: false,
   });
+  const [openRec, setOpenRec] = useState(false);
   const { text, anon, secret } = inputs;
+  const userId = window.localStorage.getItem("userID");
 
   const onChangeHandler = (e) => {
     const { value, name } = e.target;
@@ -208,7 +241,10 @@ function Comment({ data, postData }) {
     //어쩌고저쩌고..
     createComment(postData, inputs);
   };
-  console.log(inputs);
+
+  const onRecSubmitHandler = (commentNo) => {
+    createRecomment(commentNo, inputs);
+  };
   return (
     <div className="comment-container">
       {data.length === 0 ? (
@@ -220,7 +256,38 @@ function Comment({ data, postData }) {
               <div className="comment">
                 <div className="comment-original">
                   {com.content === null ? "비밀 댓글입니다." : com.content}
+                  {userId === com.iduser && (
+                    <button onClick={() => setOpenRec(true)}>답글 달기</button>
+                  )}
                 </div>
+                {openRec === true && (
+                  <div className="create-comment">
+                    <form onSubmit={() => onRecSubmitHandler(com.no)}>
+                      <input
+                        required
+                        type="text"
+                        name="text"
+                        value={text}
+                        onChange={onChangeHandler}
+                      />
+                      익명
+                      <input
+                        type="checkbox"
+                        name="anon"
+                        value={anon}
+                        onChange={onChangeHandler}
+                      />
+                      비밀
+                      <input
+                        type="checkbox"
+                        name="secret"
+                        value={secret}
+                        onChange={onChangeHandler}
+                      />
+                      <button type="submit">댓글 작성하기</button>
+                    </form>
+                  </div>
+                )}
                 {com.recomment !== null && (
                   <div className="comment-recomment">
                     {com.recomment === null

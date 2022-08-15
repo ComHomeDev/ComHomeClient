@@ -116,7 +116,7 @@ function NoticeCard({ userId, menu, noticeList }) {
           className={`bulletin-title ${
             userBoardSubscribe === 1
               ? "sub"
-              : userBoardSubscribe === 0
+              : userBoardSubscribe === 0 || userBoardSubscribe === null
               ? "unsub"
               : "cantsub"
           }`}
@@ -129,7 +129,8 @@ function NoticeCard({ userId, menu, noticeList }) {
               className={`subscribe-button getsub`}
               onClick={onSubscriptBtnHandler}
             />
-          ) : userId !== null && userBoardSubscribe === 0 ? (
+          ) : userId !== null &&
+            (userBoardSubscribe === 0 || userBoardSubscribe === null) ? (
             <BsBellSlash
               className={`subscribe-button unsub`}
               onClick={onSubscriptBtnHandler}

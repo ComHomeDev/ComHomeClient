@@ -1,9 +1,3 @@
-import { MdPermDeviceInformation } from "react-icons/md";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { AiOutlinePartition } from "react-icons/ai";
-import { SiStarship } from "react-icons/si";
-import { FaRegObjectGroup } from "react-icons/fa";
-
 export const fastMenu = [
   {
     name: "교수 소개",
@@ -30,8 +24,6 @@ export const fastMenu = [
     address: "https://ipsi.sungshin.ac.kr/main.htm",
   },
 ];
-
-//IoAnalyticsOutline;IoGitBranchOutline;MdTimeline;
 
 export const headerMenu = [
   {
@@ -154,7 +146,7 @@ export const headerMenu = [
       {
         name: "졸업생 인터뷰",
         eng: "interview",
-        address: "/community/interview?page=list",
+        address: "/community/interview?page=chat",
       },
     ],
   },

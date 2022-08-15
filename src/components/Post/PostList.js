@@ -10,7 +10,6 @@ import "./Post.css";
 import Card from "../Card";
 import Pagination from "../Pagination/Pagination";
 import {
-  getPostList,
   getSubscription,
   postBoardSubscription,
   postBoardUnsubscription,
@@ -51,7 +50,6 @@ function PostList({ data }) {
           setPushSupport(true);
           registration.pushManager.getSubscription().then((subscription) => {
             Notification.requestPermission().then((permission) => {
-              console.log("push permission : ", permission);
               if (Notification.permission !== "granted") {
                 return;
               } else {
@@ -67,7 +65,6 @@ function PostList({ data }) {
   const getSubArr = async () => {
     const response = await getSubscription(userId);
     const data = await response.data[0];
-    console.log(data);
     switch (sub) {
       case "cs_notice":
         setUserBoardSubscribe(data.cs_notice);
@@ -117,7 +114,6 @@ function PostList({ data }) {
       return;
     } else {
       Notification.requestPermission().then((permission) => {
-        console.log("push permission : ", permission);
         if (Notification.permission !== "granted") {
           window.alert("알림 권한을 설정해주세요!");
           return;

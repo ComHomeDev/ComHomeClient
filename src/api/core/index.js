@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const request = axios.create({
-  baseURL: "http://172.30.1.21:5000/api",
+  baseURL: `http://${process.env.REACT_APP_BACK_URL}:5000/api`,
 });
 
-request.defaults.timeout = 2500;
+// request.defaults.timeout = 2500;
 
 request.interceptors.response.use(
   (response) => {

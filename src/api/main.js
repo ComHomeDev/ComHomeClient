@@ -1,33 +1,19 @@
 import request from "./core";
-import format from "date-fns/format";
 
 export const getPostList = (category) => {
   return request({ url: `/${category}_list` });
 };
 
 export const getExhibitList = () => {
-  return request({ url: `/exhibition_list` });
+  return request({ url: `/exhibition` });
 };
 export const createPost = (category, data) => {
+  console.log(data);
   let number = "";
   request({
     method: "post",
     url: `/${category}/post`,
-    data: {
-      iduser: "111865899156782818991", //data.id.toString(),
-      title: data.inputs.title,
-      content: data.inputs.content,
-      team: data.inputs.team,
-      award: data.inputs.award,
-      keyword: data.inputs.keyword,
-      stack: data.inputs.stack,
-      contestName: data.inputs.contestName,
-      link_github: data.inputs.link_github,
-      link_service: data.inputs.link_service,
-      start_date: format(data.inputs.start_date, "yyyy-MM-dd"), //학생회
-      end_date: format(data.inputs.end_date, "yyyy-MM-dd"),
-      files: { img: undefined, file: undefined },
-    },
+    data: data,
   }).then((response) => {
     number = response.no;
   });
@@ -36,7 +22,7 @@ export const createPost = (category, data) => {
 
 export const readPost = (category, no) => {
   return request({
-    url: `/${category}_detail/${no.toString()}`,
+    url: `/${category}_detail/${no.toString()}?iduser=${"105160463951938701131"}`,
   });
 };
 
@@ -45,20 +31,7 @@ export const updatePost = (category, data) => {
   request({
     method: "post",
     url: `/${category}_edit/update`,
-    data: {
-      no: data.inputs.no.toString(),
-      title: data.inputs.title,
-      content: data.inputs.content,
-      award: data.inputs.award,
-      keyword: data.inputs.keyword,
-      stack: data.inputs.stack,
-      contestName: data.inputs.contestName,
-      link_github: data.inputs.link_github,
-      link_service: data.inputs.link_service,
-      start_date: data.inputs.start_date, //학생회
-      end_date: data.inputs.end_date,
-      files: { img: undefined, file: undefined },
-    },
+    data: data,
   });
 };
 
@@ -84,7 +57,7 @@ export const getSubscription = (user) => {
   return request({
     url: `/`,
     params: {
-      iduser: "111865899156782818991",
+      iduser: "105160463951938701131",
     },
   });
 };
@@ -94,7 +67,7 @@ export const postSubscription = (user, subscription, isSubscribe) => {
     method: "post",
     url: `/pushSubscription`,
     data: {
-      iduser: "111865899156782818991",
+      iduser: "105160463951938701131",
       subscription,
       bool: isSubscribe,
     },
@@ -106,7 +79,7 @@ export const postBoardSubscription = (user, type) => {
     method: "post",
     url: `/pushSubscription/sub`,
     data: {
-      iduser: "111865899156782818991",
+      iduser: "105160463951938701131",
       type: type,
     },
   });
@@ -117,7 +90,7 @@ export const postBoardUnsubscription = (user, type) => {
     method: "post",
     url: `/pushSubscription/sub_cancel`,
     data: {
-      iduser: "111865899156782818991",
+      iduser: "105160463951938701131",
       type: type,
     },
   });
@@ -186,5 +159,40 @@ export const deleteRecomment = (commentNo) => {
     },
   }).then((response) => {
     return response;
+  });
+};
+
+export const postScrap = (data) => {
+  request({
+    method: "post",
+    url: `/scrap/${data.board}`,
+    data: {
+      iduser: "105160463951938701131", //data.userId
+      no: data.no, //게시글의 아이디
+      type: data.board,
+      title: data.title,
+    },
+  }).then((response) => {
+    return response;
+  });
+};
+
+export const postUnscrap = (data) => {
+  request({
+    method: "post",
+    url: `/scrap/${data.board}_cancel`,
+    data: {
+      iduser: "105160463951938701131", //data.userId
+      no: data.no, //게시글의 아이디
+      type: data.board,
+    },
+  }).then((response) => {
+    return response;
+  });
+};
+
+export const getMypage = (userId) => {
+  return request({
+    url: `/mypage?iduser=${"105160463951938701131"}`,
   });
 };

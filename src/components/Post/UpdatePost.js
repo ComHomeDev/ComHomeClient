@@ -29,7 +29,7 @@ function UpdatePost() {
     end_date,
   } = inputs;
   const [imgFile, setImgFile] = useState(null);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(undefined);
   const userId = window.localStorage.getItem("userID");
 
   let info = headerMenu.find((menu) => menu.eng === board);
@@ -61,15 +61,29 @@ function UpdatePost() {
     if (form === "img") {
       setImgFile(event.target.files);
     } else {
-      setFiles(files.concat(event.target.files));
+      setFiles(event.target.files[0]);
     }
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const data = { inputs };
-    updatePost(sub, data);
-    console.log(inputs);
+    const formData = new FormData();
+    formData.append("iduser", "111865899156782818991");
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("award", award);
+    formData.append("team", team);
+    formData.append("keyword", keyword);
+    formData.append("stack", stack);
+    formData.append("contestName", contestName);
+    formData.append("link_github", link_github);
+    formData.append("link_service", link_service);
+    formData.append("start_date", start_date);
+    formData.append("end_date", end_date);
+    formData.append("file", files);
+
+    updatePost(sub, formData);
+
     if (sub === "exhibition") {
       navigate(`/${board}/${sub}`, { replace: true });
     } else {

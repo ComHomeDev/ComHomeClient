@@ -9,6 +9,7 @@ import {
   postSubscription,
   getPublicKey,
   getSubscription,
+  getMypage,
 } from "../../api/main";
 
 import "./Home.css";
@@ -24,8 +25,6 @@ function Home() {
 
   //처음 랜딩되면 구독 정보 가져옴
   useEffect(() => {
-    // const data = await getSubscription();
-    // console.log(data);
     if ("serviceWorker" in navigator && userId !== null) {
       navigator.serviceWorker.ready.then((registration) => {
         if (registration.pushManager) {
@@ -49,10 +48,8 @@ function Home() {
 
   const pushSubscribe = async () => {
     const response = await getPublicKey();
-    console.log(response);
     if (response === undefined) return;
     const publicKey = urlB64ToUint8Array(response);
-    console.log(publicKey);
     navigator.serviceWorker.ready.then((registration) => {
       const option = {
         userVisibleOnly: true,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AiOutlineGithub, AiOutlineAppstore } from "react-icons/ai";
 
@@ -9,6 +10,7 @@ import Modal from "../../components/Modal/Modal";
 import Card from "../../components/Card";
 
 import { HrStyle } from "../../components/Post/ReadPost";
+import { deletePost } from "../../api/main";
 
 export default function StudentActivity({ data }) {
   const [projectArr, setProjectArr] = useState(data);
@@ -107,6 +109,8 @@ export function StudentClub() {
 }
 
 const ProjectModal = ({ project }) => {
+  let { board, sub } = useParams();
+  const navigate = useNavigate();
   const awardColor = (award) =>
     award === "금상"
       ? "gold"
@@ -115,6 +119,14 @@ const ProjectModal = ({ project }) => {
       : award === "동상"
       ? "bronze"
       : "award";
+
+  const onDelete = () => {
+    if (window.confirm("글이 삭제됩니다.\n정말 진행하시겠습니까?")) {
+      //삭제 api
+      deletePost(sub, project.no);
+      navigate(`../${board}/${sub}?page=display`, { replace: true });
+    }
+  };
   return (
     <div className="display-modal">
       <div className="display-modal-btn"></div>
@@ -139,6 +151,22 @@ const ProjectModal = ({ project }) => {
                 return data + " | ";
               })}
             </div>
+          </div>
+          <div className="article-edit-buttons">
+            {project.iduser === "111865899156782818991" && ( //window.localStorage.getItem("userID")
+              <>
+                <Link
+                  to={`/${board}/${sub}/update`}
+                  className="article-edit"
+                  state={{ data: project, files: null }}
+                >
+                  수정하기
+                </Link>
+                <button className="article-delete" onClick={onDelete}>
+                  삭제하기
+                </button>
+              </>
+            )}
           </div>
         </div>
         <div className="display-desc-container">
