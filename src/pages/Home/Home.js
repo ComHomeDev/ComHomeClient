@@ -35,6 +35,7 @@ function Home() {
             Notification.requestPermission().then((permission) => {
               console.log("push permission : ", permission);
               if (Notification.permission !== "granted") {
+                updateSubscription(subscription, false);
                 return;
               } else {
                 pushSubscribe();
@@ -48,7 +49,10 @@ function Home() {
 
   const pushSubscribe = async () => {
     const response = await getPublicKey();
-    const publicKey = urlB64ToUint8Array(response.data);
+    console.log(response);
+    if (response === undefined) return;
+    const publicKey = urlB64ToUint8Array(response);
+    console.log(publicKey);
     navigator.serviceWorker.ready.then((registration) => {
       const option = {
         userVisibleOnly: true,
@@ -58,11 +62,10 @@ function Home() {
         .subscribe(option)
         .then((subscription) => {
           setUserSubscription(subscription);
-          updateSubscription(subscription);
+          updateSubscription(subscription, true);
           console.log("push subscribed!", subscription);
         })
         .catch((err) => {
-          setUserSubscription(null);
           console.error(err);
           window.alert("푸시 알림을 구독할 수 없습니다");
         });
@@ -70,8 +73,8 @@ function Home() {
   };
 
   // 구독 정보 서버로 전달
-  function updateSubscription(subscription) {
-    postSubscription(userId, subscription);
+  function updateSubscription(subscription, isSubscribe) {
+    postSubscription(userId, subscription, isSubscribe);
   }
 
   return (
@@ -89,7 +92,7 @@ function Home() {
             />
           </div>
           <div className="block menu-card-container">
-            <div className="scroll-card">
+            {/* <div className="scroll-card">
               {menus.map((menu) => {
                 return (
                   <NoticeCard
@@ -103,7 +106,7 @@ function Home() {
                   />
                 );
               })}
-            </div>
+            </div> */}
           </div>
           <div className="block">
             <div className="main-fast-block">
@@ -163,7 +166,7 @@ const menus = [
   {
     name: "학과공지",
     eng: "cs_notice",
-    address: "/notice/csnotice?page=1",
+    address: "/notice/cs_notice?page=1",
     subscribe: true,
   },
   {

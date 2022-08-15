@@ -113,10 +113,41 @@
   flex-direction: column;
   align-items: center;
 }
+
+.postlist-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.subscribe-button {
+  border: none;
+}
+
+.subscribe-button.on {
+  background-color: rgb(var(--blue));
+}
+
+.subscribe-button.off {
+  background-color: #e4e4e4;
+}
+
+.scrap-button {
+  margin-top: 50px;
+  width: fit-content;
+  padding: 5px 10px;
+  color: #ffc32a;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(244, 244, 244);
+}
 .list-create-button {
   text-decoration: none;
   color: black;
-  margin: 0 10px 10px auto;
+  margin-right: 10px;
   font-weight: 500;
 }
 
