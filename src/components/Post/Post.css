@@ -118,20 +118,30 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
 }
 
-.subscribe-button {
+.subscribe-click-button {
   border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
 }
 
-.subscribe-button.on {
-  background-color: rgb(var(--blue));
+.subscribe-click-button.on {
+  background-color: #aec9ff;
 }
 
-.subscribe-button.off {
+.subscribe-click-button.off {
   background-color: #e4e4e4;
+}
+
+.subscribe-click-button .subscribe-buttton {
+  padding: -10px;
 }
 
 .scrap-button {

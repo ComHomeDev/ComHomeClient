@@ -92,7 +92,7 @@ function Home() {
             />
           </div>
           <div className="block menu-card-container">
-            {/* <div className="scroll-card">
+            <div className="scroll-card">
               {menus.map((menu) => {
                 return (
                   <NoticeCard
@@ -102,11 +102,10 @@ function Home() {
                     noticeList={noticeList}
                     pushSupport={pushSupport}
                     userSubscription={userSubscription}
-                    userBoardSubscription={menu.subscribe}
                   />
                 );
               })}
-            </div> */}
+            </div>
           </div>
           <div className="block">
             <div className="main-fast-block">
@@ -166,44 +165,37 @@ const menus = [
   {
     name: "학과공지",
     eng: "cs_notice",
-    address: "/notice/cs_notice?page=1",
-    subscribe: true,
+    address: "/notice/cs_notice?page=list",
   },
   {
     name: "학생회공지",
     eng: "student_council_notice",
-    address: "/studentcouncil/student_council_notice?page=1",
-    subscribe: true,
+    address: "/studentcouncil/student_council_notice?page=list",
   },
   {
     name: "학생회달력",
     eng: "student_council_notice",
     address: "/studentcouncil/calendar",
-    subscribe: null,
   },
   {
     name: "교육/공모전",
     eng: "edu_contest",
-    address: "/notice/edu_contest?page=1",
-    subscribe: true,
+    address: "/notice/edu_contest?page=list",
   },
   {
     name: "채용/인턴십",
     eng: "recruit_intern",
-    address: "/notice/recruit_internship?page=1",
-    subscribe: true,
+    address: "/notice/recruit_intern?page=list",
   },
   {
     name: "대외활동 후기",
     eng: "extra_review",
-    address: "/community/extra_review?page=1",
-    subscribe: false,
+    address: "/community/extra_review?page=list",
   },
   {
     name: "취업 후기",
     eng: "job_review",
-    address: "/community/extra_review?page=1",
-    subscribe: false,
+    address: "/community/extra_review?page=list",
   },
 ];
 

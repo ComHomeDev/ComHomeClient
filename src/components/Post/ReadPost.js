@@ -40,7 +40,7 @@ function ReadPost() {
   const [files, setFiles] = useState([]);
   const [comment, setComment] = useState([]);
   const navigate = useNavigate();
-  const userId = "105160463951938701131";
+  const userId = "111865899156782818991";
 
   const result = useQuery({
     queryKey: [`${sub}`, `${id}`],

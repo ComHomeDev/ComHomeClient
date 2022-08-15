@@ -72,7 +72,7 @@ function PostList({ data }) {
       case "cs_notice":
         setUserBoardSubscribe(data.cs_notice);
         break;
-      case "recruit_internship":
+      case "recruit_intern":
         setUserBoardSubscribe(data.recruit_intern);
         break;
       case "edu_contest":
@@ -122,39 +122,10 @@ function PostList({ data }) {
           window.alert("알림 권한을 설정해주세요!");
           return;
         } else {
-          let type = returnType(sub);
-
-          updateBoardSubscription(type, userBoardSubscribe);
+          updateBoardSubscription(sub, userBoardSubscribe);
         }
       });
     }
-  };
-
-  const returnType = (sub) => {
-    let type = "";
-    switch (sub) {
-      case "cs_notice":
-        type = "cs_notice";
-        break;
-      case "recruit_internship":
-        type = "recruit_intern";
-        break;
-      case "edu_contest":
-        type = "edu_contest";
-        break;
-      case "student_council_notice":
-        type = "student_council_notice";
-        break;
-      case "extra_review":
-        type = "extra_review";
-        break;
-      case "job_review":
-        type = "job_review";
-        break;
-      default:
-        break;
-    }
-    return type;
   };
 
   const updateBoardSubscription = (type, isSubscribe) => {
@@ -174,7 +145,9 @@ function PostList({ data }) {
       <div className="postlist-button-container">
         {sub !== "interview" && (
           <button
-            className={`subscribe-button ${userBoardSubscribe ? "on" : "off"}`}
+            className={`subscribe-click-button ${
+              userBoardSubscribe ? "on" : "off"
+            }`}
             onClick={onSubscriptBtnHandler}
           >
             {userId !== null && userBoardSubscribe === 1 ? (

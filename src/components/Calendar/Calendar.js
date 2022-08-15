@@ -47,8 +47,7 @@ function Calendar({ showEvent, postEvent, setDay, contactDate }) {
 
   const fetchData = async () => {
     const response = await getPostList("student_council_notice");
-    console.log(response.data);
-    setEventArr(response.data.data_det);
+    setEventArr(response.data_det);
   };
 
   const getHeader = () => {

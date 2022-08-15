@@ -91,8 +91,8 @@ export const headerMenu = [
       },
       {
         name: "채용/인턴십",
-        eng: "recruit_internship",
-        address: "/notice/recruit_internship?page=list",
+        eng: "recruit_intern",
+        address: "/notice/recruit_intern?page=list",
       },
       {
         name: "교육/공모전",
