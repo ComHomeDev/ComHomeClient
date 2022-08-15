@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { useQuery, useQueryClient } from "react-query";
 
 import Menu from "../../components/FixedCpnt/Menu";
 import SubHeader from "../../components/FixedCpnt/SubHeader";
@@ -15,16 +16,25 @@ import StudentActivity, {
 } from "../StudentActivity/StudentActivity";
 import StudentCouncil from "../StudentCouncil/StudentCouncil";
 
-const getPostList = (category) => {
-  return data1;
+import { getPostList, getExhibitList } from "../../api/main";
+
+const fetchPostList = async (category) => {
+  const response = await getPostList(category);
+  const data = await response.data_det;
+  console.log(data);
+  return data;
 };
 
-const getDisplaylist = () => {
-  return data2;
+const fetchDisplaylist = async () => {
+  const response = await getExhibitList();
+  console.log(response.data);
+  const data = await response.data_det;
+  return data;
 };
 
 function Board() {
   let { board, sub } = useParams();
+  const queryClient = useQueryClient();
 
   const [currentMenu, setCurrentMenu] = useState(
     headerMenu.find((menu) => menu.eng === board)
@@ -32,18 +42,20 @@ function Board() {
   const [searchParams, setSearchParams] = useSearchParams();
   let pageType = searchParams.get("page");
 
-  const [postList, setPostList] = useState([]);
+  const result = useQuery({
+    queryKey: `${sub}`,
+    queryFn: () =>
+      pageType === "list"
+        ? fetchPostList(sub)
+        : sub === "exhibition"
+        ? fetchDisplaylist()
+        : {},
+    retry: 0,
+  });
 
   useEffect(() => {
     let current = headerMenu.find((menu) => menu.eng === board);
     setCurrentMenu(current);
-    if (pageType === "list") {
-      let tmpData = getPostList(sub);
-      setPostList(tmpData.data_det);
-    } else if (pageType === "display") {
-      let tmpData = getDisplaylist();
-      setPostList(tmpData.data_det);
-    }
   }, [board, sub, pageType]);
 
   const getInfoContent = (board) => {
@@ -63,15 +75,20 @@ function Board() {
 
   const getBodyContent = (pageType) => {
     let content = "";
+    let getData = [];
+    if (result.status === "success") {
+      getData = queryClient.getQueryData(`${sub}`);
+      console.log(getData);
+    }
     switch (pageType) {
       case "info":
         content = getInfoContent(board);
         break;
       case "list":
-        content = <PostList data={postList} />;
+        content = <PostList data={getData} />;
         break;
       case "display":
-        content = <StudentActivity data={postList} />;
+        content = <StudentActivity data={getData} />;
         break;
 
       default:

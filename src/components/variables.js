@@ -82,12 +82,12 @@ export const headerMenu = [
   {
     name: "공지사항",
     eng: "notice",
-    address: "/notice/csnotice?page=list",
+    address: "/notice/cs_notice?page=list",
     detail: [
       {
         name: "학과 공지",
-        eng: "csnotice",
-        address: "/notice/csnotice?page=list",
+        eng: "cs_notice",
+        address: "/notice/cs_notice?page=list",
       },
       {
         name: "채용/인턴십",
@@ -126,7 +126,7 @@ export const headerMenu = [
   {
     name: "학생 활동",
     eng: "student",
-    address: "/student/club?page=true",
+    address: "/student/club?page=info",
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=info" },
       {
