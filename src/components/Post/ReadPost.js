@@ -48,8 +48,8 @@ function ReadPost() {
   const [scrap, setScrap] = useState(undefined);
   const [comment, setComment] = useState([]);
   const navigate = useNavigate();
-  const userId = "105160463951938701131";
-
+  // const userId = "105160463951938701131";
+  const userId = window.localStorage.getItem("userID");
   const result = useQuery({
     queryKey: [`${sub}`, `${id}`],
     queryFn: () => fetchData(sub, id),

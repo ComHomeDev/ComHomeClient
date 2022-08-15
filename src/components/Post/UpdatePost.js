@@ -68,7 +68,7 @@ function UpdatePost() {
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("iduser", "111865899156782818991");
+    formData.append("iduser", userId);
     formData.append("title", title);
     formData.append("content", content);
     formData.append("award", award);

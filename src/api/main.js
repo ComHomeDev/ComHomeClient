@@ -20,9 +20,9 @@ export const createPost = (category, data) => {
   return number;
 };
 
-export const readPost = (category, no) => {
+export const readPost = (category, no, userId) => {
   return request({
-    url: `/${category}_detail/${no.toString()}?iduser=${"105160463951938701131"}`,
+    url: `/${category}_detail/${no.toString()}?iduser=${userId}`,
   });
 };
 
@@ -57,7 +57,7 @@ export const getSubscription = (user) => {
   return request({
     url: `/`,
     params: {
-      iduser: "105160463951938701131",
+      iduser: user.toString(),
     },
   });
 };
@@ -67,7 +67,7 @@ export const postSubscription = (user, subscription, isSubscribe) => {
     method: "post",
     url: `/pushSubscription`,
     data: {
-      iduser: "105160463951938701131",
+      iduser: user.toString(),
       subscription,
       bool: isSubscribe,
     },
@@ -79,7 +79,7 @@ export const postBoardSubscription = (user, type) => {
     method: "post",
     url: `/pushSubscription/sub`,
     data: {
-      iduser: "105160463951938701131",
+      iduser: user.toString(),
       type: type,
     },
   });
@@ -90,7 +90,7 @@ export const postBoardUnsubscription = (user, type) => {
     method: "post",
     url: `/pushSubscription/sub_cancel`,
     data: {
-      iduser: "105160463951938701131",
+      iduser: user.toString(),
       type: type,
     },
   });
@@ -167,7 +167,7 @@ export const postScrap = (data) => {
     method: "post",
     url: `/scrap/${data.board}`,
     data: {
-      iduser: "105160463951938701131", //data.userId
+      iduser: data.userId, //data.userId
       no: data.no, //게시글의 아이디
       type: data.board,
       title: data.title,
@@ -182,7 +182,7 @@ export const postUnscrap = (data) => {
     method: "post",
     url: `/scrap/${data.board}_cancel`,
     data: {
-      iduser: "105160463951938701131", //data.userId
+      iduser: data.userId, //data.userId
       no: data.no, //게시글의 아이디
       type: data.board,
     },
@@ -193,6 +193,6 @@ export const postUnscrap = (data) => {
 
 export const getMypage = (userId) => {
   return request({
-    url: `/mypage?iduser=${"105160463951938701131"}`,
+    url: `/mypage?iduser=${userId}`,
   });
 };

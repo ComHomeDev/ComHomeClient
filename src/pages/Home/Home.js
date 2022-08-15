@@ -5,12 +5,7 @@ import Menu from "../../components/FixedCpnt/Menu";
 import Footer from "../../components/FixedCpnt/Footer";
 import NoticeCard from "./NoticeCard";
 
-import {
-  postSubscription,
-  getPublicKey,
-  getSubscription,
-  getMypage,
-} from "../../api/main";
+import { postSubscription, getPublicKey } from "../../api/main";
 
 import "./Home.css";
 import { fastMenu } from "../../components/variables";
@@ -20,8 +15,8 @@ function Home() {
   const [pushSupport, setPushSupport] = useState(false);
   const [userSubscription, setUserSubscription] = useState(null);
   const [noticeList, setNoticeList] = useState(postList.data.data_det);
-  // const userId = window.localStorage.getItem("userID");
-  const userId = "aaaaaaaaaaaa";
+  const userId = window.localStorage.getItem("userID");
+  // const userId = "aaaaaaaaaaaa";
 
   //처음 랜딩되면 구독 정보 가져옴
   useEffect(() => {
@@ -192,7 +187,7 @@ const menus = [
   {
     name: "취업 후기",
     eng: "job_review",
-    address: "/community/extra_review?page=list",
+    address: "/community/extra_review?page=chat",
   },
 ];
 
