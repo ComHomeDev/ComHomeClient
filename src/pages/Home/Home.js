@@ -9,6 +9,7 @@ import {
   postSubscription,
   getPublicKey,
   getSubscription,
+  getMypage,
 } from "../../api/main";
 
 import "./Home.css";
@@ -24,8 +25,6 @@ function Home() {
 
   //처음 랜딩되면 구독 정보 가져옴
   useEffect(() => {
-    // const data = await getSubscription();
-    // console.log(data);
     if ("serviceWorker" in navigator && userId !== null) {
       navigator.serviceWorker.ready.then((registration) => {
         if (registration.pushManager) {
@@ -35,6 +34,7 @@ function Home() {
             Notification.requestPermission().then((permission) => {
               console.log("push permission : ", permission);
               if (Notification.permission !== "granted") {
+                updateSubscription(subscription, false);
                 return;
               } else {
                 pushSubscribe();
@@ -48,7 +48,8 @@ function Home() {
 
   const pushSubscribe = async () => {
     const response = await getPublicKey();
-    const publicKey = urlB64ToUint8Array(response.data);
+    if (response === undefined) return;
+    const publicKey = urlB64ToUint8Array(response);
     navigator.serviceWorker.ready.then((registration) => {
       const option = {
         userVisibleOnly: true,
@@ -58,11 +59,10 @@ function Home() {
         .subscribe(option)
         .then((subscription) => {
           setUserSubscription(subscription);
-          updateSubscription(subscription);
+          updateSubscription(subscription, true);
           console.log("push subscribed!", subscription);
         })
         .catch((err) => {
-          setUserSubscription(null);
           console.error(err);
           window.alert("푸시 알림을 구독할 수 없습니다");
         });
@@ -70,8 +70,8 @@ function Home() {
   };
 
   // 구독 정보 서버로 전달
-  function updateSubscription(subscription) {
-    postSubscription(userId, subscription);
+  function updateSubscription(subscription, isSubscribe) {
+    postSubscription(userId, subscription, isSubscribe);
   }
 
   return (
@@ -99,7 +99,6 @@ function Home() {
                     noticeList={noticeList}
                     pushSupport={pushSupport}
                     userSubscription={userSubscription}
-                    userBoardSubscription={menu.subscribe}
                   />
                 );
               })}
@@ -163,44 +162,37 @@ const menus = [
   {
     name: "학과공지",
     eng: "cs_notice",
-    address: "/notice/csnotice?page=1",
-    subscribe: true,
+    address: "/notice/cs_notice?page=list",
   },
   {
     name: "학생회공지",
     eng: "student_council_notice",
-    address: "/studentcouncil/student_council_notice?page=1",
-    subscribe: true,
+    address: "/studentcouncil/student_council_notice?page=list",
   },
   {
     name: "학생회달력",
     eng: "student_council_notice",
     address: "/studentcouncil/calendar",
-    subscribe: null,
   },
   {
     name: "교육/공모전",
     eng: "edu_contest",
-    address: "/notice/edu_contest?page=1",
-    subscribe: true,
+    address: "/notice/edu_contest?page=list",
   },
   {
     name: "채용/인턴십",
     eng: "recruit_intern",
-    address: "/notice/recruit_internship?page=1",
-    subscribe: true,
+    address: "/notice/recruit_intern?page=list",
   },
   {
     name: "대외활동 후기",
     eng: "extra_review",
-    address: "/community/extra_review?page=1",
-    subscribe: false,
+    address: "/community/extra_review?page=list",
   },
   {
     name: "취업 후기",
     eng: "job_review",
-    address: "/community/extra_review?page=1",
-    subscribe: false,
+    address: "/community/extra_review?page=list",
   },
 ];
 

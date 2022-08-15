@@ -1,9 +1,3 @@
-import { MdPermDeviceInformation } from "react-icons/md";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { AiOutlinePartition } from "react-icons/ai";
-import { SiStarship } from "react-icons/si";
-import { FaRegObjectGroup } from "react-icons/fa";
-
 export const fastMenu = [
   {
     name: "교수 소개",
@@ -30,8 +24,6 @@ export const fastMenu = [
     address: "https://ipsi.sungshin.ac.kr/main.htm",
   },
 ];
-
-//IoAnalyticsOutline;IoGitBranchOutline;MdTimeline;
 
 export const headerMenu = [
   {
@@ -82,17 +74,17 @@ export const headerMenu = [
   {
     name: "공지사항",
     eng: "notice",
-    address: "/notice/csnotice?page=list",
+    address: "/notice/cs_notice?page=list",
     detail: [
       {
         name: "학과 공지",
-        eng: "csnotice",
-        address: "/notice/csnotice?page=list",
+        eng: "cs_notice",
+        address: "/notice/cs_notice?page=list",
       },
       {
         name: "채용/인턴십",
-        eng: "recruit_internship",
-        address: "/notice/recruit_internship?page=list",
+        eng: "recruit_intern",
+        address: "/notice/recruit_intern?page=list",
       },
       {
         name: "교육/공모전",
@@ -126,7 +118,7 @@ export const headerMenu = [
   {
     name: "학생 활동",
     eng: "student",
-    address: "/student/club?page=true",
+    address: "/student/club?page=info",
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=info" },
       {
@@ -154,7 +146,7 @@ export const headerMenu = [
       {
         name: "졸업생 인터뷰",
         eng: "interview",
-        address: "/community/interview?page=list",
+        address: "/community/interview?page=chat",
       },
     ],
   },

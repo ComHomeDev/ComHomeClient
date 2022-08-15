@@ -22,7 +22,7 @@ import "./Calendar.css";
 
 import { getPostList } from "../../api/main";
 
-function Calendar({ showEvent, postEvent }) {
+function Calendar({ showEvent, postEvent, setDay, contactDate }) {
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
@@ -38,13 +38,16 @@ function Calendar({ showEvent, postEvent }) {
     if (postEvent) {
       postEvent(tempEvent);
     }
+    if (contactDate) {
+      setSelectedDate(contactDate);
+      setActiveDate(contactDate);
+    }
     setEvent(tempEvent);
   }, [selectedDate]);
 
   const fetchData = async () => {
     const response = await getPostList("student_council_notice");
-    console.log(response.data);
-    setEventArr(response.data.data_det);
+    setEventArr(response.data_det);
   };
 
   const getHeader = () => {
@@ -114,6 +117,9 @@ function Calendar({ showEvent, postEvent }) {
     if (postEvent) {
       postEvent(tempEvent);
     }
+    if (setDay) {
+      setDay(date);
+    }
   };
 
   const generateDatesForCurrentWeek = (date, selectedDate, activeDate) => {
@@ -139,7 +145,10 @@ function Calendar({ showEvent, postEvent }) {
           <div className="events">
             {getEvent(cloneDate).map((e, index) => {
               return (
-                <div className={`event ${e.charge}`} key={Math.random()}>
+                <div
+                  className={`event ${e.charge}`}
+                  key={Math.random() + index}
+                >
                   ⦁
                 </div>
               );
@@ -205,44 +214,3 @@ export default Calendar;
 Calendar.defaultProps = {
   showEvent: true,
 };
-
-//타입 alliance 제휴 event 단기이벤트 contest 대회
-
-const eventArr = [
-  {
-    name: "안과제휴",
-    type: "alliance",
-    charge: "react",
-    startDate: "2022-07-21",
-    endDate: "2022-07-30",
-    desc: "어쩌구저쩌구행사입니다",
-    link: "www.naver.com",
-  },
-  {
-    name: "교보문고 제휴",
-    type: "alliance",
-    charge: "chanran",
-    startDate: "2022-06-21",
-    endDate: "2022-07-27",
-    desc: "눈이좋아지게해수제요",
-    link: "www.naver.com",
-  },
-  {
-    name: "컴공엠티",
-    type: "event",
-    charge: "react",
-    startDate: "2022-07-02",
-    endDate: "2022-07-02",
-    desc: "mt 또하고싶돠",
-    link: "www.naver.com",
-  },
-  {
-    name: "어쩌구대회저쩌구대회",
-    type: "contest",
-    charge: "official",
-    startDate: "2022-07-18",
-    endDate: "2022-08-02",
-    desc: "뾰로롱...",
-    link: "www.naver.com",
-  },
-];
