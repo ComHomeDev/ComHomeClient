@@ -86,7 +86,7 @@ function Board() {
       <SubHeader menu={currentMenu} sub={sub} />
       <div className="page-body">{getBodyContent(pageType)}</div>
 
-      <Footer />
+      {sub !== "course" && <Footer />}
     </div>
   );
 }

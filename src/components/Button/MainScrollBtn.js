@@ -18,7 +18,7 @@ function MainScrollBtn({ page, onClick }) {
       <div className="scroll-desc">더보기</div>
 
       <div
-        className={`bounce-top scroll-btn ${page === 2 ? "disabled" : ""}`}
+        className={`bounce-top scroll-btn ${page === 3 ? "disabled" : ""}`}
         onClick={() => onClickHandler("down")}
       >
         <BsArrowDownShort

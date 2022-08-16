@@ -1,15 +1,24 @@
-
-.prof-img{
-    width: 150px;
-    height: 200px;
+.prof-img {
+  width: 150px;
+  height: 200px;  
+  max-width: 150px;
 }
 
-.prof-table{
-    margin-left:20px;
+.prof-table {
+  margin-left: 20px;
 }
 
-.prof-card{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.prof-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.table-item{
+  padding-right: 2vw;
+}
+
+.prof-card-link{
+  text-decoration: none;
+  color:black;
 }
