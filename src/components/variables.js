@@ -1,9 +1,3 @@
-import { MdPermDeviceInformation } from "react-icons/md";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { AiOutlinePartition } from "react-icons/ai";
-import { SiStarship } from "react-icons/si";
-import { FaRegObjectGroup } from "react-icons/fa";
-
 export const fastMenu = [
   {
     name: "교수 소개",
@@ -30,8 +24,6 @@ export const fastMenu = [
     address: "https://ipsi.sungshin.ac.kr/main.htm",
   },
 ];
-
-//IoAnalyticsOutline;IoGitBranchOutline;MdTimeline;
 
 export const headerMenu = [
   {
@@ -82,17 +74,17 @@ export const headerMenu = [
   {
     name: "공지사항",
     eng: "notice",
-    address: "/notice/csnotice?page=list",
+    address: "/notice/cs_notice?page=list",
     detail: [
       {
         name: "학과 공지",
-        eng: "csnotice",
-        address: "/notice/csnotice?page=list",
+        eng: "cs_notice",
+        address: "/notice/cs_notice?page=list",
       },
       {
         name: "채용/인턴십",
-        eng: "recruit_internship",
-        address: "/notice/recruit_internship?page=list",
+        eng: "recruit_intern",
+        address: "/notice/recruit_intern?page=list",
       },
       {
         name: "교육/공모전",
@@ -126,7 +118,7 @@ export const headerMenu = [
   {
     name: "학생 활동",
     eng: "student",
-    address: "/student/club?page=true",
+    address: "/student/club?page=info",
     detail: [
       { name: "동아리 소개", eng: "club", address: "/student/club?page=info" },
       {
@@ -154,7 +146,7 @@ export const headerMenu = [
       {
         name: "졸업생 인터뷰",
         eng: "interview",
-        address: "/community/interview?page=list",
+        address: "/community/interview?page=chat",
       },
     ],
   },
@@ -495,66 +487,3 @@ const classes = {
     { name: "", isue: "심화전공", dept: "컴퓨터공학과", semester: 1 },
   ],
 };
-
-
-export const simpleBodyContent = [
-  {
-    name: "학과 소개\n | 학사 정보",
-    address: "/",
-    icon: <MdPermDeviceInformation />,
-  },
-  {
-    name: "교수 소개",
-    address: "/",
-    icon: <BsFillPersonLinesFill />,
-  },
-  {
-    name: "교육과정",
-    address: "/",
-    icon: <AiOutlinePartition />,
-  },
-];
-export const detailBodyContent = [
-  {
-    name: "학생 활동",
-    address: "/",
-    icon: <SiStarship />,
-    detail: [
-      { name: "동아리 소개", eng: "club", address: "/student/club?page=1" },
-      { name: "학생 수상작", eng: "prize", address: "/student/prize?page=1" },
-      { name: "작품 전시", eng: "display", address: "/student/display?page=1" },
-    ],
-  },
-  {
-    name: "커뮤니티",
-    address: "/",
-    icon: <FaRegObjectGroup />,
-    detail: [
-      {
-        name: "대외활동 후기",
-        eng: "extracurricular",
-        address: "/community/extracurricular?page=1",
-      },
-      {
-        name: "취업 후기",
-        eng: "employment",
-        address: "/community/employment?page=1",
-      },
-      {
-        name: "졸업생 인터뷰",
-        eng: "interview",
-        address: "/community/interview?page=1",
-      },
-    ],
-  },
-  {
-    name: "교육과정",
-    address: "/",
-    icon: <AiOutlinePartition />,
-    detail: [
-      { name: "학생별수상작", address: "/" },
-      { name: "작품전시게시판", address: "/" },
-      { name: "동아리,소모임 소개", address: "/" },
-    ],
-  },
-];

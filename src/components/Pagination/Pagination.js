@@ -49,7 +49,7 @@ export default Pagination;
 
 const SytledPage = styled.div`
   position: relative;
-  z-index: 100;
+  z-index: 30;
   .nav {
     display: flex;
     justify-content: center;
