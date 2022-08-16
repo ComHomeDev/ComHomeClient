@@ -20,6 +20,7 @@ function Course() {
     verticalSwiping: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    centerPadding: '0px',
     afterChange: (current) => setPage(current),
   };
 
@@ -65,9 +66,9 @@ function Course() {
           <SlideThird />
         </div>
 
-        <div className="slick-cell">
+        {/* <div className="slick-cell">
           <SlideLast />
-        </div>
+        </div> */}
       </Slider>
       <MainScrollBtn page={page} onClick={onClickHandler} />
     </div>

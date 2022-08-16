@@ -1,3 +1,7 @@
+*{
+  white-space: pre-line
+}
+
 .bachelor-track {
   width: 100%;
 }
@@ -6,4 +10,28 @@
   .bachelor-body {
     padding-top: 120px;
   }
+}
+.line{
+  width: 41px;
+  height: 6px;
+  margin-bottom: 12px;
+  background-color: #0047FF;
+}
+
+.connect-title{
+  font-size:32px;
+  margin-left:5vw;
+  margin-bottom: 3vw;
+}
+
+.connect-content-box{
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 2vw;
+  margin-bottom: 3vw;
+}
+
+.connect-subtitle{
+  font-size:24px;
+  margin-bottom: 1vw;
 }
