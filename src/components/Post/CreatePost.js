@@ -90,7 +90,8 @@ function CreatePost() {
   const onFileChange = (form, event) => {
     console.log(event.target.files[0]);
     if (form === "img") {
-      setImgFile(event.target.files);
+      console.log(event.target.files[0]);
+      setImgFile(event.target.files[0]);
     } else {
       setFiles(event.target.files[0]);
     }
@@ -115,9 +116,14 @@ function CreatePost() {
     formData.append("link_service", link_service);
     formData.append("start_date", format(start_date, "yyyy-MM-dd"));
     formData.append("end_date", format(end_date, "yyyy-MM-dd"));
-    formData.append("file", files);
-
-    createPost(sub, formData);
+    if (sub !== "job_review") {
+      formData.append("file", files);
+      formData.append("img", imgFile);
+    }
+    const data = { iduser: userId, title: title, content: content };
+    if (sub === "job_review") {
+      createPost(sub, data);
+    } else createPost(sub, formData);
 
     navigate(
       `/${board}/${sub}?page=${sub === "exhibition" ? "display" : "list"}`,
@@ -304,21 +310,25 @@ function CreatePost() {
           </>
         )}
         <div className="button-group">
-          <input
-            id="image-file"
-            type="file"
-            accept="image/*"
-            onChange={(e) => onFileChange("img", e)}
-          />
+          {sub !== "job_review" && (
+            <>
+              <input
+                id="image-file"
+                type="file"
+                accept="image/*"
+                onChange={(e) => onFileChange("img", e)}
+              />
 
-          <input
-            id="upload-file"
-            type="file"
-            name="filefield"
-            multiple
-            onChange={(e) => onFileChange("file", e)}
-            accept=".pdf, text/plain, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .hwp, .word"
-          />
+              <input
+                id="upload-file"
+                type="file"
+                name="filefield"
+                multiple
+                onChange={(e) => onFileChange("file", e)}
+                accept=".pdf, text/plain, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .hwp, .word"
+              />
+            </>
+          )}
           <button
             className="form-button"
             type="cancel"
