@@ -22,8 +22,8 @@ import KakaoShareBtn from "../Button/KakaoShareBtn";
 
 import { headerMenu } from "../../components/variables";
 
-const fetchData = async (sub, id) => {
-  const response = await readPost(sub, id);
+const fetchData = async (sub, id, userId) => {
+  const response = await readPost(sub, id, userId);
   console.log(response);
   return response;
 };
@@ -48,11 +48,12 @@ function ReadPost() {
   const [scrap, setScrap] = useState(undefined);
   const [comment, setComment] = useState([]);
   const navigate = useNavigate();
-  // const userId = "105160463951938701131";
   const userId = window.localStorage.getItem("userID");
+  // const userId = "105160463951938701131";
+
   const result = useQuery({
     queryKey: [`${sub}`, `${id}`],
-    queryFn: () => fetchData(sub, id),
+    queryFn: () => fetchData(sub, id, userId),
     retry: 0,
   });
 
@@ -212,7 +213,8 @@ function Comment({ data, postData }) {
     anon: true,
     secret: false,
   });
-  const [openRec, setOpenRec] = useState(false);
+  const [mode, setMode] = useState("read");
+  const [openRec, setOpenRec] = useState(0);
   const { text, anon, secret } = inputs;
   const userId = window.localStorage.getItem("userID");
 
@@ -243,6 +245,7 @@ function Comment({ data, postData }) {
   };
 
   const onRecSubmitHandler = (commentNo) => {
+    setOpenRec(0);
     createRecomment(commentNo, inputs);
   };
   return (
@@ -256,11 +259,13 @@ function Comment({ data, postData }) {
               <div className="comment">
                 <div className="comment-original">
                   {com.content === null ? "비밀 댓글입니다." : com.content}
-                  {userId === com.iduser && (
-                    <button onClick={() => setOpenRec(true)}>답글 달기</button>
+                  {com.recomment_check !== 1 && postData.iduser === userId && (
+                    <button onClick={() => setOpenRec(com.no)}>
+                      답글 달기
+                    </button>
                   )}
                 </div>
-                {openRec === true && (
+                {openRec === com.no && (
                   <div className="create-comment">
                     <form onSubmit={() => onRecSubmitHandler(com.no)}>
                       <input
@@ -300,6 +305,7 @@ function Comment({ data, postData }) {
           })}
         </div>
       )}
+      댓글 작성하기
       <div className="create-comment">
         <form onSubmit={onSubmitHandler}>
           <input
@@ -338,70 +344,4 @@ export const HrStyle = {
   backgroundColor: "#b0c4eb",
   border: "none",
   margin: "20px 0 10px -20px",
-};
-
-const datas = {
-  data: {
-    no: 7,
-    title: "글 작성",
-    content: "1111",
-    upload_time: "2022-08-07 01:01:29",
-    edited_date: "2022-08-07 01:30:53",
-    img: "uploads\\1659802781795.png",
-    views: null,
-    iduser: "112815002397150634161",
-    end_date: "2022-08-13",
-  },
-  comment: [
-    {
-      no: 24,
-      content: null,
-      upload_time: "2022-08-07 02:20:15",
-      iduser: null,
-      edu_contest_no: 7,
-      secret_check: 1,
-      anon_check: 1,
-      recomment: null,
-    },
-    {
-      no: 25,
-      content: null,
-      upload_time: "2022-08-07 02:20:29",
-      iduser: null,
-      edu_contest_no: 7,
-      secret_check: 1,
-      anon_check: 0,
-      recomment: null,
-    },
-    {
-      no: 26,
-      content: "비밀 안체크, 익명 체크",
-      upload_time: "2022-08-07 02:20:37",
-      iduser: null,
-      edu_contest_no: 7,
-      secret_check: 0,
-      anon_check: 1,
-      recomment: null,
-    },
-    {
-      no: 27,
-      content: "비밀, 익명 안체크",
-      upload_time: "2022-08-07 02:20:43",
-      iduser: null,
-      edu_contest_no: 7,
-      secret_check: 0,
-      anon_check: 0,
-      recomment: null,
-    },
-    {
-      no: 28,
-      content: "글쓴이 댓글",
-      upload_time: "2022-08-07 11:04:35",
-      iduser: null,
-      edu_contest_no: 7,
-      secret_check: 0,
-      anon_check: 0,
-      recomment: null,
-    },
-  ],
 };
