@@ -153,7 +153,7 @@ const ProjectModal = ({ project }) => {
             </div>
           </div>
           <div className="article-edit-buttons">
-            {project.iduser === "111865899156782818991" && ( //window.localStorage.getItem("userID")
+            {project.iduser === window.localStorage.getItem("userID") && ( //window.localStorage.getItem("userID")
               <>
                 <Link
                   to={`/${board}/${sub}/update`}

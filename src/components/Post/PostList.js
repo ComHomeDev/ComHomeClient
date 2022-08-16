@@ -22,12 +22,12 @@ function PostList({ data }) {
   const [limit, setLimit] = useState(6);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-  // const userId = window.localStorage.getItem("userID");
+  const userId = window.localStorage.getItem("userID");
   const [loading, setLoading] = useState(true);
   const [pushSupport, setPushSupport] = useState(false);
   const [buttonText, setButtonText] = useState("알림 설정");
   const [userBoardSubscribe, setUserBoardSubscribe] = useState();
-  const userId = "aaaaaaaa";
+  // const userId = "aaaaaaaa";
   let diff = (end) =>
     differenceInDays(parseISO(end), new Date()) <= 0
       ? false
