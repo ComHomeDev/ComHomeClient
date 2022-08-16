@@ -1,54 +1,54 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 .slide-second-container {
-    width: 100vw;
-    height: 90vh;
-    padding-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* justify-content: center; */
-    align-items: center;
-    background-color: #F5FBFF;
-  }
-
-.second-box{
-  font-family:'Noto Sans KR', sans-serif;
-    padding:2%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+  width: 100vw;
+  height: calc(100%);
+  /* padding-top: 5vh; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #f5fbff;
 }
 
-.second-content-box{
+.second-box {
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.second-content-box {
   margin-top: 5%;
   width: 45%;
   margin-left: 5%;
 }
 
-.line{
+.line {
   width: 41px;
   height: 6px;
   margin-bottom: 12px;
-  background-color: #0047FF;
+  background-color: #0047ff;
 }
 
-.title{
-  font-size:24px;
+.title {
+  font-size: 24px;
   font-weight: bold;
-  padding-bottom:30px;
+  padding-bottom: 30px;
 }
 
-.content{
-  font-size:15px;
+.content {
+  font-size: 15px;
   line-height: 191%;
 }
 
-.second-image{
+.second-image {
   width: 40%;
   margin-top: 100px;
-  margin-right:3%;
+  margin-right: 3%;
   min-width: 300px;
   background-image: url(https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);
   background-size: contain;

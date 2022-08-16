@@ -1,7 +1,12 @@
 .prof-img {
   width: 150px;
-  height: 200px;  
+  height: 200px;
   max-width: 150px;
+}
+
+.prof-body.scroll-fix {
+  height: calc(100vh - 200px);
+  width: 100%;
 }
 
 .prof-table {
@@ -14,11 +19,11 @@
   flex-wrap: wrap;
 }
 
-.table-item{
+.table-item {
   padding-right: 2vw;
 }
 
-.prof-card-link{
+.prof-card-link {
   text-decoration: none;
-  color:black;
+  color: black;
 }

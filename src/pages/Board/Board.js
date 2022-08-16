@@ -84,7 +84,9 @@ function Board() {
     <div className="page-container">
       <Menu />
       <SubHeader menu={currentMenu} sub={sub} />
-      <div className="page-body">{getBodyContent(pageType)}</div>
+      <div className={`page-body ${sub === "course" ? "scroll-fix" : ""}`}>
+        {getBodyContent(pageType)}
+      </div>
 
       {sub !== "course" && <Footer />}
     </div>
