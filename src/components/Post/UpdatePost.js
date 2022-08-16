@@ -78,8 +78,8 @@ function UpdatePost() {
     formData.append("contestName", contestName);
     formData.append("link_github", link_github);
     formData.append("link_service", link_service);
-    formData.append("start_date", start_date);
-    formData.append("end_date", end_date);
+    formData.append("start_date", format(start_date, "yyyy-MM-dd"));
+    formData.append("end_date", format(end_date, "yyyy-MM-dd"));
     formData.append("file", files);
 
     updatePost(sub, formData);
