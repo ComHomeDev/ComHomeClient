@@ -69,6 +69,14 @@ function Chat() {
 
   const onMessageSubmit = (e) => {
     e.preventDefault();
+    // const data = {
+    //   chatid: 0,
+    //   roomid: roomnum,
+    //   senderid: sender,
+    //   message: chatMessage,
+    //   date: new Date(),
+    // };
+    // setChat((chat) => [...chat, data]);
     socket.emit("req_room_message", roomnum, sender, chatMessage);
     setChatMessage("");
   };
@@ -145,7 +153,8 @@ function Chat() {
             label="Message"
           />
         </div>
-        <FiSend className="chat-sendBtn" />
+
+        <FiSend className="chat-sendBtn" onClick={onMessageSubmit} />
       </form>
     </div>
   );
