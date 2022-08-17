@@ -1,0 +1,171 @@
+/* 첫번째 페이지 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.main-container {
+  width: 100vw;
+  height: 100%;
+  padding-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: white;
+}
+
+.box {
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.content-box {
+  width: 50%;
+  margin-right: 5%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 30px;
+}
+.line {
+  width: 41px;
+  height: 6px;
+  margin-bottom: 12px;
+  background-color: #0047ff;
+}
+
+.content {
+  font-size: 15px;
+  line-height: 191%;
+}
+
+.image {
+  width: 40%;
+  margin-top: 70px;
+  min-width: 300px;
+  background-image: url(https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* 두번째 페이지 */
+
+.slide-second-container {
+  width: 100vw;
+  height: calc(100%);
+  /* padding-top: 5vh; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: #f5fbff;
+}
+
+.second-box {
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 2%;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.second-content-box {
+  margin-top: 5%;
+  width: 45%;
+  margin-left: 5%;
+}
+
+.line {
+  width: 41px;
+  height: 6px;
+  margin-bottom: 12px;
+  background-color: #0047ff;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 30px;
+}
+
+.content {
+  font-size: 15px;
+  line-height: 191%;
+}
+
+.second-image {
+  width: 40%;
+  margin-top: 100px;
+  margin-right: 3%;
+  min-width: 300px;
+  background-image: url(https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* 세번째 페이지 */
+
+.slide-third-container {
+  width: 100vw;
+  height: 100%;
+  /* padding-top: 5vh; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.third-line {
+  width: 41px;
+  height: 6px;
+  margin-bottom: 12px;
+  background-color: #0047ff;
+  margin-left: 7%;
+}
+
+.content-table-one {
+  overflow-x: auto;
+  float: left;
+  width: 40%;
+  border: 1px solid #444444;
+  border-collapse: collapse;
+  margin-left: 7%;
+}
+
+.third-title {
+  font-size: 24px;
+  margin-left: 7%;
+}
+
+.third-th {
+  padding: 1vw;
+  background-color: #f5fbff;
+  border: 1px solid #444444;
+}
+
+.third-td {
+  padding: 1vw;
+  border: 1px solid #444444;
+}
+
+.content-table-two {
+  overflow-x: auto;
+  float: right;
+  width: 40%;
+  margin-right: 7%;
+  border: 1px solid #444444;
+  border-collapse: collapse;
+}
+
+.table-box {
+  margin-top: 2vw;
+}
