@@ -16,6 +16,7 @@ const CACHE_LIST = IMMUTABLE_APPSHELL.concat(MUTABLE_APPSHELL);
 const DYNAMIC_PATTERN = /(\.eot$|\.ttf$|\.woff$|\/icons)/;
 
 self.addEventListener("install", (event) => {
+  console.log("insta");
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(CACHE_LIST);
@@ -24,6 +25,7 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
+  console.log("activated");
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(

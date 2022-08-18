@@ -27,7 +27,11 @@ function StudentCouncil() {
                 return (
                   <div className="council-event">
                     <div className="council-event-name">{data.title}</div>
-                    <div className="council-event-desc">{data.content}</div>
+                    <div className="council-event-desc">
+                      {data.content !== undefined &&
+                        data.content.substring(0, 100)}
+                      ...
+                    </div>
                     <div className="council-event-date">
                       시작 날짜 : {data.start_date}
                     </div>

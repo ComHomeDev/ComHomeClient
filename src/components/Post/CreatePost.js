@@ -120,15 +120,16 @@ function CreatePost() {
       formData.append("file", files);
       formData.append("img", imgFile);
     }
-    const data = { iduser: userId, title: title, content: content };
-    if (sub === "job_review") {
-      createPost(sub, data);
-    } else createPost(sub, formData);
+    // const data = { iduser: userId, title: title, content: content };
+    // if (sub === "job_review") {
+    //   createPost(sub, data);
+    // } else createPost(sub, formData);
 
-    navigate(
-      `/${board}/${sub}?page=${sub === "exhibition" ? "display" : "list"}`,
-      { replace: true }
-    );
+    // navigate(
+    //   `/${board}/${sub}?page=${sub === "exhibition" ? "display" : "list"}`,
+    //   { replace: true }
+    // );
+    navigate("/studentcouncil/student_council_notice/v1/11", { replace: true });
   };
 
   return (

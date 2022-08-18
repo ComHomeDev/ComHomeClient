@@ -306,7 +306,7 @@ export const curriculum = [
   },
 ];
 
-const classes = {
+export const classes = {
   first: [
     {
       name: "IT개론",

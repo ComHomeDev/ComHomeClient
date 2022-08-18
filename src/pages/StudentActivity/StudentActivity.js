@@ -46,7 +46,7 @@ export default function StudentActivity({ data }) {
               onClick={() => openModal(pro)}
             >
               <Card key={pro.no} className={"project-card"}>
-                <img src={img} alt="img" className="display-modal-img" />
+                <img src={pro.img[0]} alt="img" className="display-modal-img" />
                 <div className="project-simple-info">
                   {pro.title} | {pro.team}
                 </div>
@@ -132,7 +132,7 @@ const ProjectModal = ({ project }) => {
       <div className="display-modal-btn"></div>
       <div className="display-modal-container">
         <div className="display-title-container">
-          <img src={img} alt="img" className="display-modal-img" />
+          <img src={project.img[0]} alt="img" className="display-modal-img" />
           <div className="display-simple-desc">
             <div className="display-title">
               {project.title}
@@ -206,10 +206,6 @@ const ProjectModal = ({ project }) => {
               </div>
               <div className="display-box-desc">{project.contestName}</div>
             </div>
-          </div>
-          <div className="display-desc-box">
-            <div className="display-box-title">구현 화면</div>
-            <div className="display-box-desc"></div>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import ReadPost from "./components/Post/ReadPost";
 import UpdatePost from "./components/Post/UpdatePost";
 import MyPage from "./pages/MyPage/MyPage";
 import Chat from "./pages/Chat/Chat";
+import Temp from "./components/Post/Temp";
 
 function App() {
   const queryClient = new QueryClient({
@@ -25,6 +26,11 @@ function App() {
 
         <Route path="/userid/:userid" element={<Login />} />
         <Route path="/chat/bubble/c/:id" element={<Chat />} />
+        <Route
+          exact
+          path="/studentcouncil/student_council_notice/v1/11"
+          element={<Temp />}
+        />
         <Route path="/:board/:sub" element={<Board />} />
         <Route path="/:board/:sub/new" element={<CreatePost />} />
         <Route path="/:board/:sub/update" element={<UpdatePost />} />

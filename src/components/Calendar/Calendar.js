@@ -21,6 +21,7 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import "./Calendar.css";
 
 import { getPostList } from "../../api/main";
+import { test_student_council_notice } from "../../pages/Board/Board";
 
 function Calendar({ showEvent, postEvent, setDay, contactDate }) {
   const navigate = useNavigate();
@@ -46,8 +47,8 @@ function Calendar({ showEvent, postEvent, setDay, contactDate }) {
   }, [selectedDate]);
 
   const fetchData = async () => {
-    const response = await getPostList("student_council_notice");
-    setEventArr(response.data_det);
+    // const response = await getPostList("student_council_notice");
+    setEventArr(test_student_council_notice.data_det);
   };
 
   const getHeader = () => {
