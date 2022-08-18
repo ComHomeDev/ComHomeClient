@@ -1,0 +1,17 @@
+.mypage-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.myinfo-box {
+  border-bottom: 1px solid rgb(var(--basic-blue));
+  padding: 20px;
+}
+.myinfo-value {
+  font-size: 0.8rem;
+}
+
+.logoutbtn {
+  cursor: pointer;
+}

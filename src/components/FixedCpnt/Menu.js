@@ -54,7 +54,13 @@ function Menu() {
         onMouseLeave={() => setToggle(false)}
       >
         {userId === null || userId === undefined ? (
-          <IoLogIn className="login-icon menu-icon" />
+          <IoLogIn
+            className="login-icon menu-icon"
+            onClick={() => {
+              window.localStorage.setItem("userID", "565675675");
+              window.alert("로그인 되었습니다.");
+            }}
+          />
         ) : (
           <AiOutlineUser className="user-icon menu-icon" />
         )}
@@ -65,7 +71,7 @@ function Menu() {
                 {`성신 계정으로\n 로그인하기`}
               </a>
             ) : (
-              "마이페이지"
+              <Link to="/mypage">마이페이지</Link>
             )}
           </div>
         )}
@@ -78,7 +84,13 @@ function Menu() {
         <div className="menu-wrap-test mobile">
           <div className="menu-user-mobile">
             {userId === null || userId === undefined ? (
-              <IoLogIn className="login-icon menu-icon" />
+              <IoLogIn
+                className="login-icon menu-icon"
+                onClick={() => {
+                  window.localStorage.setItem("userID", "565675675");
+                  window.alert("로그인 되었습니다.");
+                }}
+              />
             ) : (
               <AiOutlineUser className="user-icon menu-icon" />
             )}

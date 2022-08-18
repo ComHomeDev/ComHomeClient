@@ -23,7 +23,7 @@ function Home() {
   const [pushSupport, setPushSupport] = useState(false);
   const [userSubscription, setUserSubscription] = useState(null);
   const [noticeList, setNoticeList] = useState(postList.data.data_det);
-  window.localStorage.setItem("userID", "aaa");
+  // window.localStorage.setItem("userID", "aaa");
   const userId = window.localStorage.getItem("userID");
 
   // const userId = "aaaaaaaaaaaa";
