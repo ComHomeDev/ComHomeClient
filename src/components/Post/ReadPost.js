@@ -38,7 +38,7 @@ const fetchData = async (sub, id, userId) => {
   } else if (sub === "student_council_notice") {
     return test_student_council_notice.data_det[id];
   } else if (sub === "edu_contest") {
-    return test_edu_contest.data_det[0];
+    return test_edu_contest.data_det[id];
   } else if (sub === "extra_review") {
     return test_extra_review.data_det[id - 1];
   }
@@ -64,7 +64,7 @@ function ReadPost() {
     edited_date: format(new Date(), "yyyy-MM-dd"),
   });
   const [files, setFiles] = useState([]);
-  const [scrap, setScrap] = useState(undefined);
+  const [scrap, setScrap] = useState(0);
   const [comment, setComment] = useState([]);
   const navigate = useNavigate();
   const userId = window.localStorage.getItem("userID");
@@ -254,10 +254,16 @@ function Comment({ data, postData }) {
     anon: true,
     secret: false,
   });
+  const [comments, setComments] = useState(data);
   const [mode, setMode] = useState("read");
   const [openRec, setOpenRec] = useState(0);
   const { text, anon, secret } = inputs;
   const userId = window.localStorage.getItem("userID");
+  console.log(comments);
+
+  useEffect(() => {
+    setComments(data);
+  }, [data]);
 
   const onChangeHandler = (e) => {
     const { value, name } = e.target;
@@ -280,9 +286,27 @@ function Comment({ data, postData }) {
   };
 
   // useEffect(() => {}, [data]);
-  const onSubmitHandler = () => {
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
     //어쩌고저쩌고..
-    createComment(postData, inputs);
+    setComments([
+      ...comments,
+      {
+        no: 4,
+        content: inputs.text,
+        iduser: userId,
+        edu_contest_no: 0,
+        secret_check: secret ? 1 : 0,
+        anon_check: anon ? 1 : 0,
+        recomment: null,
+        recomment_check: 0,
+      },
+    ]);
+    setInputs({
+      text: "",
+      anon: true,
+      secret: false,
+    });
   };
 
   const onRecSubmitHandler = (commentNo) => {
@@ -291,21 +315,36 @@ function Comment({ data, postData }) {
   };
   return (
     <div className="comment-container">
-      {data.length === 0 ? (
+      {comments.length === 0 ? (
         <div className="empty-comment">아직 작성된 댓글이 없습니다.</div>
       ) : (
         <div className="comments">
-          {data.map((com) => {
+          {comments.map((com) => {
             return (
               <div className="comment">
-                <div className="comment-original">
-                  {com.content === null ? "비밀 댓글입니다." : com.content}
+                <div className="comm comment-original">
+                  익명 :{" "}
+                  {com.secret_check === 0
+                    ? com.content
+                    : com.iduser === postData.iduser || com.iduser === userId
+                    ? com.content
+                    : "비밀 댓글입니다."}
                   {com.recomment_check !== 1 && postData.iduser === userId && (
                     <button onClick={() => setOpenRec(com.no)}>
                       답글 달기
                     </button>
                   )}
                 </div>
+                {com.recomment_check === 1 && (
+                  <div className="comm comment-reply">
+                    글쓴이 :{" "}
+                    {com.secret_check === 0
+                      ? com.recomment
+                      : com.iduser === postData.iduser || com.iduser === userId
+                      ? com.recomment
+                      : "비밀 답글입니다."}
+                  </div>
+                )}
                 {openRec === com.no && (
                   <div className="create-comment">
                     <form onSubmit={() => onRecSubmitHandler(com.no)}>
@@ -334,43 +373,49 @@ function Comment({ data, postData }) {
                     </form>
                   </div>
                 )}
-                {com.recomment !== null && (
-                  <div className="comment-recomment">
-                    {com.recomment === null
-                      ? "비밀 댓글입니다."
-                      : com.recomment}
-                  </div>
-                )}
               </div>
             );
           })}
         </div>
       )}
-      댓글 작성하기
+      &nbsp;&nbsp;댓글 작성하기
       <div className="create-comment">
         <form onSubmit={onSubmitHandler}>
           <input
+            className="new-comment-input"
             required
             type="text"
             name="text"
             value={text}
             onChange={onChangeHandler}
           />
-          익명
+          &nbsp;&nbsp;익명
           <input
+            className="new-comment-check"
             type="checkbox"
             name="anon"
             value={anon}
             onChange={onChangeHandler}
           />
-          비밀
+          &nbsp;&nbsp;비밀
           <input
             type="checkbox"
             name="secret"
             value={secret}
             onChange={onChangeHandler}
           />
-          <button type="submit">댓글 작성하기</button>
+          <button
+            type="submit"
+            style={{
+              marginLeft: "5px",
+              border: "none",
+              backgroundColor: "rgb(var(--basic-blue))",
+              padding: "10px 20px",
+              borderRadius: "15px",
+            }}
+          >
+            댓글 작성하기
+          </button>
         </form>
       </div>
     </div>

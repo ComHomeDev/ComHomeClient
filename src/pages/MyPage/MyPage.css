@@ -9,7 +9,12 @@
   padding: 20px;
 }
 .myinfo-value {
+  padding: 5px 0;
   font-size: 0.8rem;
+  color: rgb(86, 86, 86);
+}
+.myinfo-label {
+  padding: 5px 0;
 }
 
 .logoutbtn {

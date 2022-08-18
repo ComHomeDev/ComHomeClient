@@ -129,7 +129,9 @@ function CreatePost() {
     //   `/${board}/${sub}?page=${sub === "exhibition" ? "display" : "list"}`,
     //   { replace: true }
     // );
-    navigate("/studentcouncil/student_council_notice/v1/11", { replace: true });
+    navigate("/student/exhibition?page=display", {
+      replace: true,
+    });
   };
 
   return (

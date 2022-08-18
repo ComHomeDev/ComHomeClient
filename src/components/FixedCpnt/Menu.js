@@ -57,7 +57,7 @@ function Menu() {
           <IoLogIn
             className="login-icon menu-icon"
             onClick={() => {
-              window.localStorage.setItem("userID", "565675675");
+              window.localStorage.setItem("userID", "111865899156782818991");
               window.alert("로그인 되었습니다.");
             }}
           />
@@ -101,7 +101,7 @@ function Menu() {
                   {`성신 계정으로\n 로그인하기`}
                 </a>
               ) : (
-                "마이페이지"
+                <Link to="/mypage">마이페이지</Link>
               )}
             </div>
           </div>

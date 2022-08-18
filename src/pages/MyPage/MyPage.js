@@ -30,14 +30,14 @@ function MyPage() {
           <div className="myinfo-label">내가 쓴 글 v</div>
           {toggle === 1 &&
             myarticle.map((ar) => {
-              return <div className="info-value">{ar.title}</div>;
+              return <div className="myinfo-value">{ar.title}</div>;
             })}
         </div>
         <div className="myinfo-box" onClick={() => setToggle(2)}>
           <div className="myinfo-label">내 스크랩 v</div>
           {toggle === 2 &&
             myscrap.map((ar) => {
-              return <div className="info-value">{ar.title}</div>;
+              return <div className="myinfo-value">{ar.title}</div>;
             })}
         </div>
         <div className="myinfo-box">
