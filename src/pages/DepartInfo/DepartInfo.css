@@ -17,3 +17,8 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.prof-card-link {
+  text-decoration: none;
+  color: black;
+}

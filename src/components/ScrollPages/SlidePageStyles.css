@@ -106,7 +106,7 @@
   margin-top: 100px;
   margin-right: 3%;
   min-width: 300px;
-  background-image: url(https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80);
+  background-image: url("../../../public/img/jobs_id.jpg");
   background-size: contain;
   background-repeat: no-repeat;
 }
