@@ -26,11 +26,7 @@ function App() {
 
         <Route path="/userid/:userid" element={<Login />} />
         <Route path="/chat/bubble/c/:id" element={<Chat />} />
-        <Route
-          exact
-          path="/studentcouncil/student_council_notice/v1/11"
-          element={<Temp />}
-        />
+        <Route exact path="/notice/edu_contest/v1/11" element={<Temp />} />
         <Route path="/:board/:sub" element={<Board />} />
         <Route path="/:board/:sub/new" element={<CreatePost />} />
         <Route path="/:board/:sub/update" element={<UpdatePost />} />

@@ -20,24 +20,26 @@ function Temp() {
   const queryClient = useQueryClient();
 
   const [currentMenu, setCurrentMenu] = useState(
-    headerMenu.find((menu) => menu.eng === "studentcouncil")
+    headerMenu.find((menu) => menu.eng === "notice")
   );
   const [data, setData] = useState({
     no: 11,
-    iduser: "0788757853",
-    title: "[리액트 컴퓨터공학과 행사 수요조사]",
-    content: `안녕하세요. 컴퓨터공학과 제 6대 학생회 리액트입니다! <br />
-저희가 드디어 3년만에 컴공 MT를 진행하게 되었습니다! <br />
-아래사항들을 참고하시고 구글폼 작성과 mt비용 입금을 해주셔야 신청이 됩니다! <br />
-이전 수요조사 폼을 작성하신 분들도 꼭 이 폼을 작성해주셔야합니다! <br />
-코로나19의 여파로 저희 학생회도 엠티 경험이 전무하여 부족함이 있을 수 있으니 학우분들의 너른 양해 부탁드립니다!`,
+    iduser: "22342345",
+    title: "내년 소프트웨어 경진대회 미리 준비하실 분 모집합니다.",
+    content: `안녕하세요. 컴퓨터공학과 20학번 수정입니다. <br />
+내년 소웨경 미리미리 준비하실 분 모집합니다! <br />
+열심히 하시는 분 환영합니다~~~ <br />
+편하게 댓글 주세요! <br />`,
     views: 1,
-    img: [],
+    img: [
+      "https://firebasestorage.googleapis.com/v0/b/comhome-7cab0.appspot.com/o/images%2F%EC%86%8C%EC%9B%A8%EA%B2%BD_%ED%8F%AC%EC%8A%A4%ED%84%B0.png?alt=media&token=a54f407c-d2d5-4f21-a3df-a4bd0b5f40ec",
+    ],
+    end_date: "2022-08-31",
     upload_time: format(new Date(), "yyyy-MM-dd"),
     edited_date: format(new Date(), "yyyy-MM-dd"),
   });
   const [files, setFiles] = useState([]);
-  const [scrap, setScrap] = useState(undefined);
+  const [scrap, setScrap] = useState(0);
   const [comment, setComment] = useState([]);
   const navigate = useNavigate();
   const userId = window.localStorage.getItem("userID");
@@ -91,7 +93,7 @@ function Temp() {
 
   return (
     <div className="page-container">
-      <Menu /> <SubHeader menu={currentMenu} sub="student_council_notice" />
+      <Menu /> <SubHeader menu={currentMenu} sub="edu_contest" />
       <div className="article-container">
         <div className="article-title-wrap">
           <h2 className="article-title">{data.title}</h2>
@@ -192,6 +194,9 @@ function Temp() {
           </button>
         )}
         <hr style={HrStyle} />
+        <div className="empty-comment" style={{ marginBottom: "100px" }}>
+          아직 작성된 댓글이 없습니다.
+        </div>
       </div>
       <Footer />
     </div>

@@ -137,6 +137,22 @@ export default Board;
 export const test_exhibition = {
   data_det: [
     {
+      no: 0,
+      iduser: "109559345542221094986",
+      title: "크리스탈 갤러리",
+      content: "취미로 그림 그리는 사람들이 경매를 체험할 수 있는 웹 서비스",
+      img: [
+        "https://firebasestorage.googleapis.com/v0/b/comhome-7cab0.appspot.com/o/images%2F%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%83%88%EA%B0%A4%EB%9F%AC%EB%A6%AC.png?alt=media&token=321047dc-ea2a-4ab6-9db1-093d1ab440c9",
+      ],
+      award: "",
+      stack: "django",
+      keyword: "아마추어 모의경매 작품",
+      team: "TLC",
+      contestName: "멋쟁이 사자처럼",
+      link_github: "https://github.com/naeyoung123/CrystalGallery-V2.0",
+      link_service: "",
+    },
+    {
       no: 1,
       iduser: "109559345542221094986",
       title: "컴홈",
@@ -897,6 +913,22 @@ export const test_student_council_notice = {
 export const test_edu_contest = {
   data_det: [
     {
+      no: 0,
+      iduser: "22342345",
+      title: "내년 소프트웨어 경진대회 미리 준비하실 분 모집합니다.",
+      content: `안녕하세요. 컴퓨터공학과 20학번 수정입니다. <br />
+    내년 소웨경 미리미리 준비하실 분 모집합니다! <br />
+    열심히 하시는 분 환영합니다~~~ <br />
+    편하게 댓글 주세요! <br />`,
+      views: 1,
+      img: [
+        "https://firebasestorage.googleapis.com/v0/b/comhome-7cab0.appspot.com/o/images%2F%EC%86%8C%EC%9B%A8%EA%B2%BD_%ED%8F%AC%EC%8A%A4%ED%84%B0.png?alt=media&token=a54f407c-d2d5-4f21-a3df-a4bd0b5f40ec",
+      ],
+      end_date: "2022-08-31",
+      upload_time: "2022-08-15",
+      edited_date: "2022-08-15",
+    },
+    {
       no: 1,
       title: "교육실습 후기 및 수업자료 공모전 팀원 모집합니다!",
       content: "",
@@ -1040,43 +1072,23 @@ ualcomm.com/kr/snapdragoninsiders) 참조
 
   comment: [
     {
+      //답/댓 둘다 보임
       no: 1,
-      content: "교육 실습 공모전 장학금 언제 들어오나요?",
+      content: "팀원은 몇명정도 생각하고 계신가요?",
       upload_time: "2022-03-16 14:10:32",
-      iduser: "111865899156782818991",
+      iduser: "46746565557464535",
       edu_contest_no: 8,
       secret_check: 0,
       anon_check: 1,
-      recomment: "18일 장학수혜내역에 있습니다.",
+      recomment: "3-4명정도 생각하고 있습니다!",
       recomment_check: 1,
     },
     {
+      //비밀 답글로 작성됩니다. 안내 표시하기
       no: 2,
-      content: "입상 연락은 몇 시에 오나요?",
+      content: "대면으로 진행하시나요?",
       upload_time: "2022-03-16 14:10:32",
-      iduser: "111865899156782818991",
-      edu_contest_no: 8,
-      secret_check: 1,
-      anon_check: 0,
-      recomment: "오후 12시 쯤 문자로 전달될 예정입니다.",
-      recomment_check: 1,
-    },
-    {
-      no: 3,
-      content: "내년에도 교육 실습 공모전 하나요??",
-      upload_time: "2022-03-16 14:10:32",
-      iduser: "111865899156782818991",
-      edu_contest_no: 8,
-      secret_check: 0,
-      anon_check: 0,
-      recomment: null,
-      recomment_check: 0,
-    },
-    {
-      no: 4,
-      content: "혹시 이미 제출했는데 수정 가능한가요..?",
-      upload_time: "2022-03-16 14:10:32",
-      iduser: "111865899156782818991",
+      iduser: "3456324563565674567",
       edu_contest_no: 8,
       secret_check: 1,
       anon_check: 1,
