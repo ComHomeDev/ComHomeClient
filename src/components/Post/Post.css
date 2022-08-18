@@ -105,7 +105,30 @@
 }
 
 /*read post*/
+.article-img {
+  max-width: 500px;
+  width: 60%;
+  margin-left: 20px;
+}
+.img-scroll-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  padding-bottom: 20px;
+}
 
+.img-scroll-box::-webkit-scrollbar {
+  height: 5px;
+}
+.img-scroll-box::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+}
+.img-scroll-box::-webkit-scrollbar-track {
+  background-color: rgb(221, 221, 221);
+  border-radius: 10px;
+}
 .read-post-container {
   position: relative;
   width: 100%;

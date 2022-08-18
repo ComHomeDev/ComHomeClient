@@ -10,12 +10,22 @@ import { postSubscription, getPublicKey } from "../../api/main";
 import "./Home.css";
 import { fastMenu } from "../../components/variables";
 import { urlB64ToUint8Array } from "../../components/util";
+import {
+  test_cs_notice,
+  test_student_council_notice,
+  test_edu_contest,
+  test_recruit_intern,
+  test_extra_review,
+  test_job_review,
+} from "../Board/Board";
 
 function Home() {
   const [pushSupport, setPushSupport] = useState(false);
   const [userSubscription, setUserSubscription] = useState(null);
   const [noticeList, setNoticeList] = useState(postList.data.data_det);
+  window.localStorage.setItem("userID", "aaa");
   const userId = window.localStorage.getItem("userID");
+
   // const userId = "aaaaaaaaaaaa";
 
   //처음 랜딩되면 구독 정보 가져옴
@@ -91,7 +101,7 @@ function Home() {
                     key={menu.name + menu.subscribe}
                     userId={userId}
                     menu={menu}
-                    noticeList={noticeList}
+                    noticeList={menu.noticeList}
                     pushSupport={pushSupport}
                     userSubscription={userSubscription}
                   />
@@ -117,14 +127,17 @@ function Home() {
             </div>
           </div>
           <div className="block main-interact-container">
-            <Link to="/notice/edu_contest?page=1" className="main-interact">
+            <Link to="/notice/edu_contest?page=list" className="main-interact">
               진행중인 프로그램 알아보기
             </Link>
-            <Link to="/student/exhibition?page=1" className="main-interact">
+            <Link
+              to="/student/exhibition?page=display"
+              className="main-interact"
+            >
               학생 작품 보러가기
             </Link>
             <Link
-              to="/community/interview?page=1"
+              to="/community/interview?page=chat"
               className={`main-interact ${
                 userId === null ? "not-contact" : ""
               }`}
@@ -158,36 +171,43 @@ const menus = [
     name: "학과공지",
     eng: "cs_notice",
     address: "/notice/cs_notice?page=list",
+    noticeList: test_cs_notice.data_det,
   },
   {
     name: "학생회공지",
     eng: "student_council_notice",
     address: "/studentcouncil/student_council_notice?page=list",
+    noticeList: test_student_council_notice.data_det,
   },
   {
     name: "학생회달력",
     eng: "student_council_notice",
     address: "/studentcouncil/calendar",
+    noticeList: test_student_council_notice.data_det,
   },
   {
     name: "교육/공모전",
     eng: "edu_contest",
     address: "/notice/edu_contest?page=list",
+    noticeList: test_edu_contest.data_det,
   },
   {
     name: "채용/인턴십",
     eng: "recruit_intern",
     address: "/notice/recruit_intern?page=list",
+    noticeList: test_recruit_intern.data_det,
   },
   {
     name: "대외활동 후기",
     eng: "extra_review",
     address: "/community/extra_review?page=list",
+    noticeList: test_extra_review.data_det,
   },
   {
     name: "취업 후기",
     eng: "job_review",
     address: "/community/extra_review?page=chat",
+    noticeList: test_job_review.data_det,
   },
 ];
 

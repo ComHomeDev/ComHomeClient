@@ -26,7 +26,7 @@ function PostList({ data }) {
   const [loading, setLoading] = useState(true);
   const [pushSupport, setPushSupport] = useState(false);
   const [buttonText, setButtonText] = useState("알림 설정");
-  const [userBoardSubscribe, setUserBoardSubscribe] = useState();
+  const [userBoardSubscribe, setUserBoardSubscribe] = useState(1);
   // const userId = "aaaaaaaa";
   let diff = (end) =>
     differenceInDays(parseISO(end), new Date()) <= 0
@@ -36,6 +36,7 @@ function PostList({ data }) {
       : true;
 
   useEffect(() => {
+    setPage(1);
     if (data !== null && data !== undefined) {
       setPosts(data);
       setLoading(false);
@@ -213,6 +214,7 @@ function PostList({ data }) {
                         )}
                       </div>
                     </div>
+                    {console.log(data.file_status)}
 
                     {data.upload_time !== undefined && (
                       <div className="post-list-date" value={index}>

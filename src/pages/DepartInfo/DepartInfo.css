@@ -1,15 +1,19 @@
-
-.prof-img{
-    width: 150px;
-    height: 200px;
+.prof-img {
+  width: 150px;
+  height: 200px;
 }
 
-.prof-table{
-    margin-left:20px;
+.prof-body.scroll-fix {
+  height: calc(100vh - 160px);
+  width: 100%;
 }
 
-.prof-card{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.prof-table {
+  margin-left: 20px;
+}
+
+.prof-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

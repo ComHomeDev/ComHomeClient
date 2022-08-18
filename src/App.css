@@ -28,6 +28,10 @@ textarea::-webkit-scrollbar-thumb {
   justify-content: center;
   min-height: 100vh;
 }
+.page-body.scroll-fix {
+  height: calc(100% - 160px);
+  min-height: calc(100% - 160px);
+}
 .page-content {
   min-height: 100vh;
 }
